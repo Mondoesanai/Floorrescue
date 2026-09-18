@@ -1,8 +1,9 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Project } from "@/content/types";
 
-export function MatchingProjects({ projects }: { projects: Project[] }) {
+export function MatchingProjects({ projects, atmospherePhoto }: { projects: Project[]; atmospherePhoto?: string }) {
   if (projects.length === 0) return null;
 
   return (
@@ -12,11 +13,14 @@ export function MatchingProjects({ projects }: { projects: Project[] }) {
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <div key={project.id} className="overflow-hidden rounded-md border border-warm-white/10 bg-charcoal-900 shadow-elevated">
-              {/* No confirmed jobsite photo yet — a stylized material texture stands
-                  in rather than a placeholder that could read as a real photo. */}
-              <div className="relative flex h-36 items-center justify-center overflow-hidden bg-gradient-to-br from-charcoal-800 via-charcoal-700 to-charcoal-900">
-                <div className="absolute inset-0 opacity-40 [background-image:repeating-linear-gradient(115deg,rgba(203,164,86,0.08)_0px,rgba(203,164,86,0.08)_1px,transparent_1px,transparent_14px)]" />
-                <span className="relative text-xs font-semibold tracking-[0.2em] text-warm-white/40 uppercase">
+              {/* No confirmed jobsite photo yet — a real environment atmosphere shot
+                  stands in, clearly tagged, rather than a flat placeholder gradient. */}
+              <div className="relative h-40 overflow-hidden">
+                {atmospherePhoto ? (
+                  <Image src={atmospherePhoto} alt="" fill className="object-cover" sizes="(min-width: 1024px) 33vw, 50vw" />
+                ) : null}
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/55 to-charcoal-950/20" />
+                <span className="absolute bottom-3 left-3 rounded-full bg-charcoal-950/70 px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-warm-white/70 uppercase backdrop-blur-sm">
                   Photos Pending
                 </span>
               </div>

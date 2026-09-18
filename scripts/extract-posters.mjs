@@ -38,8 +38,8 @@ for (const [src, out, seek] of jobs) {
     "-ss", String(seekSeconds),
     "-i", inputFile,
     "-frames:v", "1",
-    "-vf", "scale='min(1920,iw)':-2",
-    "-q:v", "4",
+    "-vf", "scale='min(1920,iw)':-2:flags=lanczos",
+    "-q:v", "2",
     outputFile,
   ]);
   if (result.status !== 0) {

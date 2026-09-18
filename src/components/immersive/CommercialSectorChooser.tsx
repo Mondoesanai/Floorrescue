@@ -3,8 +3,6 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { commercialSectorIds, getSector } from "@/content/sectors";
-import { useAudio } from "@/lib/audio/context";
-import { playClick } from "@/lib/audio/sfx";
 import { trackEvent } from "@/lib/analytics";
 
 interface Props {
@@ -16,10 +14,8 @@ export function CommercialSectorChooser({ visible, onSelect }: Props) {
   const [showOther, setShowOther] = useState(false);
   const [otherText, setOtherText] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const { muted } = useAudio();
 
   function choose(sectorId: string) {
-    if (!muted) playClick();
     trackEvent("sector_selected", { sectorId });
     onSelect(sectorId);
   }
@@ -46,17 +42,17 @@ export function CommercialSectorChooser({ visible, onSelect }: Props) {
   return (
     <div
       className={clsx(
-        "absolute inset-x-0 bottom-0 px-6 pb-14 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10 sm:pb-20",
-        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0",
+        "absolute inset-y-0 left-0 z-10 flex w-full max-w-sm items-center px-6 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10",
+        visible ? "translate-x-0 opacity-100" : "pointer-events-none -translate-x-3 opacity-0",
       )}
       aria-hidden={!visible}
     >
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="w-full">
         <p className="text-sm font-medium tracking-wide text-warm-white/70">What kind of space are we working with?</p>
 
         {!showOther ? (
           <>
-            <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+            <div className="mt-4 grid grid-cols-2 gap-2">
               {commercialSectorIds.map((id) => {
                 const sector = getSector(id);
                 if (!sector) return null;
@@ -66,7 +62,7 @@ export function CommercialSectorChooser({ visible, onSelect }: Props) {
                     type="button"
                     tabIndex={visible ? 0 : -1}
                     onClick={() => choose(id)}
-                    className="rounded-md border border-warm-white/15 bg-charcoal-950/50 px-3 py-3 text-sm font-medium text-warm-white backdrop-blur-sm transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-900/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
+                    className="rounded-md border border-warm-white/15 bg-charcoal-950/55 px-3 py-3 text-left text-sm font-medium text-warm-white backdrop-blur-sm transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-900/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
                   >
                     {sector.shortLabel}
                   </button>
@@ -96,12 +92,8 @@ export function CommercialSectorChooser({ visible, onSelect }: Props) {
               rows={2}
               className="w-full rounded-md border border-warm-white/20 bg-charcoal-950/60 px-4 py-3 text-sm text-warm-white placeholder:text-warm-white/40 focus:border-gold-300 focus:outline-none"
             />
-            <div className="mt-2 flex justify-center gap-3">
-              <button
-                type="button"
-                onClick={() => setShowOther(false)}
-                className="text-sm text-warm-white/50 hover:text-warm-white"
-              >
+            <div className="mt-2 flex gap-3">
+              <button type="button" onClick={() => setShowOther(false)} className="text-sm text-warm-white/50 hover:text-warm-white">
                 Back
               </button>
               <button

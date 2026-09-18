@@ -6,16 +6,6 @@ import { initialJourneyState, journeyReducer, type JourneyAction } from "./reduc
 
 const STORAGE_KEY = "fr_journey_v1";
 
-const stableStages: JourneyState["stage"][] = [
-  "garage-idle",
-  "commercial-sector",
-  "commercial-project-state",
-  // "commercial-landing" is deliberately excluded: that transition is a real
-  // route change (handled directly by CommercialDeepDiveScene's router.replace),
-  // not an in-place scene swap on "/". Pushing a manual history entry for "/"
-  // at that exact moment raced with the navigation and reverted the URL.
-];
-
 interface JourneyContextValue {
   state: JourneyState;
   dispatch: (action: JourneyAction) => void;
@@ -52,18 +42,17 @@ export function JourneyProvider({ children }: { children: ReactNode }) {
     }
   }, [state]);
 
-  // Push a history entry at each stable stage so the browser Back button
-  // steps to the previous meaningful scene instead of leaving the page.
-  useEffect(() => {
-    if (!stableStages.includes(state.stage)) return;
-    const current = window.history.state as { frStage?: string } | null;
-    if (current?.frStage === state.stage) return;
-    window.history.pushState({ frStage: state.stage }, "", window.location.pathname + window.location.search);
-  }, [state.stage]);
-
+  // The cinematic journey's intermediate scenes live entirely in in-memory
+  // state on "/" and are never individually pushed into browser history —
+  // trying to reconstruct each micro-stage from popstate proved fragile and
+  // was the source of "back takes me to a random page." Instead: landing
+  // back on "/" via the browser Back button always returns to the main
+  // chooser (skipping a redundant intro replay), which is what "back to the
+  // beginning" actually means to a visitor. The personalized landing page
+  // itself is a real pushed route, so Back from there naturally arrives here.
   useEffect(() => {
     function onPopState() {
-      dispatch({ type: "GO_BACK" });
+      if (window.location.pathname === "/") dispatch({ type: "RESET" });
     }
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);

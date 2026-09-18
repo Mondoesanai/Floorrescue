@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useJourney } from "@/lib/journey/context";
-import { getEnvironmentPoster } from "@/lib/video/registry";
+import { getEnvironmentPoster, getEnvironmentCardPhoto } from "@/lib/video/registry";
 import { resolveHeroCopy } from "@/content/heroCopy";
 import { getProjectsBySector } from "@/content/projects";
 import { getResourcesByIds } from "@/content/resources";
@@ -54,7 +54,7 @@ export function SectorLandingPage({ sector }: { sector: Sector }) {
       <Hero copy={heroCopy} posterSrc={getEnvironmentPoster(sector.environment)} quoteHref={quoteHref} />
       <PrioritySummary concernIds={sector.commonConcerns} activeConcernIds={activeConcerns} onToggle={toggleConcern} />
       <RelevantSystems systemIds={sector.relevantSystemIds} environment={sector.environment} />
-      <MatchingProjects projects={projects} />
+      <MatchingProjects projects={projects} atmospherePhoto={getEnvironmentCardPhoto(sector.environment)} />
       <EducationModule resources={resources} />
       <ProcessSteps />
       <TestimonialsModule testimonials={testimonials} />

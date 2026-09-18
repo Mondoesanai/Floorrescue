@@ -101,7 +101,8 @@ export function journeyReducer(state: JourneyState, action: JourneyAction): Jour
     }
 
     case "RESET":
-      return { ...initialJourneyState, introSeen: state.introSeen };
+      // Skip the one-time intro replay if they've already seen it this session.
+      return { ...initialJourneyState, introSeen: state.introSeen, stage: state.introSeen ? "garage-idle" : "intro" };
 
     default:
       return state;

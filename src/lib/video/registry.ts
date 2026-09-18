@@ -68,11 +68,17 @@ export function getEnvironmentPoster(environment: "residential" | "commercial" |
     case "commercial":
       return image("05-commercial-final-hero.jpg");
     case "industrial":
-      return image("04-commercial-ground-floor-lobby.jpg");
+      return image("hero-industrial.jpg");
     case "residential":
     default:
-      return image("01-gold-garage-hero.jpg");
+      return image("hero-residential.jpg");
   }
+}
+
+/** Portrait-cropped real photo per environment — used for supporting imagery
+ *  (matching-project atmosphere cards, etc.) elsewhere on sector pages. */
+export function getEnvironmentCardPhoto(environment: "residential" | "commercial" | "industrial"): string {
+  return image(`card-${environment}.jpg`);
 }
 
 export function getViewport(width: number): Viewport {

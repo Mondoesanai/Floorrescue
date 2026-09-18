@@ -3,7 +3,6 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JourneyProvider } from "@/lib/journey/context";
-import { AudioProvider } from "@/lib/audio/context";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -31,13 +30,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-charcoal-950 text-warm-white">
-        <AudioProvider>
-          <JourneyProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </JourneyProvider>
-        </AudioProvider>
+        <JourneyProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </JourneyProvider>
       </body>
     </html>
   );

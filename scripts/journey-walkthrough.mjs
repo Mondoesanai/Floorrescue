@@ -21,12 +21,17 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function clickByText(page, selector, text) {
   const handle = await page.evaluateHandle(
-    (sel, txt) => [...document.querySelectorAll(sel)].find((el) => el.textContent?.includes(txt)),
+    (sel, txt) =>
+      [...document.querySelectorAll(sel)].find((el) => {
+        if (!el.textContent?.includes(txt)) return false;
+        const rect = el.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0 && getComputedStyle(el).pointerEvents !== "none";
+      }),
     selector,
     text,
   );
   const el = handle.asElement();
-  if (!el) throw new Error(`Could not find ${selector} with text "${text}"`);
+  if (!el) throw new Error(`Could not find a visible, clickable ${selector} with text "${text}"`);
   await el.click();
 }
 

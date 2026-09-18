@@ -18,10 +18,11 @@ await page.goto(fileUrl, { waitUntil: "networkidle0" });
 await new Promise((r) => setTimeout(r, 600));
 
 const shots = [
-  { name: "deck-slide-1", presses: 0 },
-  { name: "deck-slide-3", presses: 2 },
-  { name: "deck-slide-9", presses: 6 },
-  { name: "deck-slide-14", presses: 5 },
+  { name: "deck-slide-gutcheck", presses: 6 },
+  { name: "deck-slide-painrecap", presses: 1 },
+  { name: "deck-slide-hero-shot", presses: 2 },
+  { name: "deck-slide-outcomes-v2", presses: 6 },
+  { name: "deck-slide-final-v2", presses: 3 },
 ];
 
 for (const s of shots) {
