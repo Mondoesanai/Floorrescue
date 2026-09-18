@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { useJourney } from "@/lib/journey/context";
-import { SearchDrawer } from "@/components/browse/SearchDrawer";
 
 const links = [
   { href: "/residential", label: "Residential" },
@@ -21,7 +20,6 @@ const links = [
 
 export function HamburgerMenu({ dark }: { dark?: boolean }) {
   const [open, setOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const { dispatch } = useJourney();
   const router = useRouter();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -81,20 +79,6 @@ export function HamburgerMenu({ dark }: { dark?: boolean }) {
           <div className="min-h-0 flex-1 overflow-y-auto p-2">
             <button
               type="button"
-              onClick={() => {
-                setOpen(false);
-                setSearchOpen(true);
-              }}
-              className="flex w-full items-center gap-2.5 rounded-md border border-warm-white/10 bg-warm-white/[0.04] px-4 py-3 text-left text-sm font-medium text-warm-white/50 transition-colors hover:border-gold-300/40 hover:bg-warm-white/[0.07] hover:text-warm-white/70"
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="flex-none text-gold-300">
-                <circle cx="11" cy="11" r="7" />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
-              Search anything…
-            </button>
-            <button
-              type="button"
               onClick={backToHome}
               className="block w-full rounded-md px-4 py-3 text-left text-sm font-medium text-warm-white/85 hover:bg-warm-white/5 hover:text-gold-100"
             >
@@ -133,8 +117,6 @@ export function HamburgerMenu({ dark }: { dark?: boolean }) {
           </div>
         </div>
       </div>
-
-      <SearchDrawer open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

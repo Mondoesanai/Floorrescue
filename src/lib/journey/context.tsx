@@ -17,12 +17,17 @@ export function JourneyProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(journeyReducer, initialJourneyState);
   const hydrated = useRef(false);
 
-  // Hydrate from sessionStorage once on mount so a refresh mid-journey
-  // doesn't drop the visitor back to the intro.
+  // Hydrate from sessionStorage once on mount — except on an actual browser
+  // reload, which should always replay the intro from a clean slate. Client
+  // -side navigation (the logo, Back to Home) never hits this effect at all,
+  // since the provider stays mounted for the whole SPA session — only a real
+  // reload does, which is exactly the distinction that was asked for.
   useEffect(() => {
     if (hydrated.current) return;
     hydrated.current = true;
     try {
+      const navEntry = window.performance?.getEntriesByType?.("navigation")[0] as PerformanceNavigationTiming | undefined;
+      if (navEntry?.type === "reload") return;
       const raw = window.sessionStorage.getItem(STORAGE_KEY);
       if (raw) {
         const saved = JSON.parse(raw) as JourneyState;

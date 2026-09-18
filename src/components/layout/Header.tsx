@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { HamburgerMenu } from "./HamburgerMenu";
+import { SearchDrawer } from "@/components/browse/SearchDrawer";
 import { useJourney } from "@/lib/journey/context";
 
 /**
@@ -14,6 +16,7 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const { dispatch } = useJourney();
+  const [searchOpen, setSearchOpen] = useState(false);
 
   function goHome() {
     // The whole cinematic journey (space -> project -> deep dive) lives on
@@ -42,7 +45,26 @@ export function Header() {
           />
         </button>
       </div>
+
+      {/* Search lives on its own, outside the hamburger — it needs to be
+          reachable in one press, not buried a menu-open away. */}
+      <div className="fixed top-5 right-[4.75rem] z-40">
+        <button
+          type="button"
+          onClick={() => setSearchOpen(true)}
+          aria-label="Search Floor Rescue"
+          className="flex h-11 items-center gap-2 rounded-full border border-warm-white/25 bg-charcoal-950/55 px-4 text-sm text-warm-white/60 backdrop-blur-md transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-gold-300/50 hover:text-warm-white/80"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="flex-none text-gold-300">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <span className="hidden sm:inline">Search anything…</span>
+        </button>
+      </div>
+
       <HamburgerMenu dark />
+      <SearchDrawer open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

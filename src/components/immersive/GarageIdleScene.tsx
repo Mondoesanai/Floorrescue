@@ -94,7 +94,7 @@ export function GarageIdleScene() {
         <p className="hidden text-xs font-semibold tracking-[0.3em] text-gold-300 uppercase sm:block">
           Concrete Floors + Resinous Systems
         </p>
-        <h1 className="mx-auto mt-1 text-balance text-3xl font-bold tracking-[-0.02em] text-warm-white sm:mt-3 sm:text-6xl lg:text-7xl">
+        <h1 className="text-3d-gold mx-auto mt-1 text-balance text-3xl font-black tracking-[-0.02em] sm:mt-3 sm:text-6xl lg:text-7xl">
           Take Pride in Your Floors.
         </h1>
 
