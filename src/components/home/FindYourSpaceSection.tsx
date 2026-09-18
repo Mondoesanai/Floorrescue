@@ -43,8 +43,14 @@ export function FindYourSpaceSection() {
         <div className="mt-12 space-y-6">
           {rows.map((row, i) => {
             const photo = (
-              <div className="relative aspect-[16/10] overflow-hidden rounded-xl lg:aspect-auto lg:h-full lg:rounded-none">
-                <Image src={row.image} alt="" fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+              <div className="group/photo relative aspect-[16/10] min-h-[16rem] w-full overflow-hidden rounded-xl lg:min-h-[22rem] lg:rounded-none">
+                <Image
+                  src={row.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/photo:scale-105"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/40 via-transparent to-transparent" />
               </div>
             );

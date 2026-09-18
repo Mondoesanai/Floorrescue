@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useJourney } from "@/lib/journey/context";
 import { getSector } from "@/content/sectors";
@@ -54,7 +54,6 @@ export function ImmersiveJourney() {
   const router = useRouter();
   const navigatedRef = useRef(false);
   const staticResolved = useRef<Map<SceneKey, boolean>>(new Map());
-  const [fadingOut, setFadingOut] = useState(false);
 
   const sceneKey = sceneKeyForStage(state.stage);
 
@@ -84,18 +83,17 @@ export function ImmersiveJourney() {
         ? "/residential"
         : "/commercial";
     trackEvent("personalized_page_viewed", { sectorId: state.sectorId, projectState: state.projectState });
-    // Fade the frozen final frame to black before the route change instead of
-    // cutting straight to it — the landing page's own hero-fade-in picks up
-    // from black, so together they read as one continuous dissolve. A short
-    // linear fade over a bright frame reads as a "flash," not a fade — this
-    // eases in (holds the image, then commits to black) and is held solid
-    // for a beat before navigating so the route swap never lands mid-fade.
-    setFadingOut(true);
+    // No black cut: the deep-dive video's last frame IS the landing page's
+    // Hero poster image (same file, see getEnvironmentPoster), so holding
+    // briefly then routing straight there reads as one continuous freeze —
+    // the video settles, then the landing page's own HTML content fades in
+    // on top of what looks like the same still shot. Only a short hold so
+    // the video visually finishes easing to a stop before the route change.
     window.setTimeout(() => {
       // push (not replace): keeps "/" in history underneath the landing page
       // so browser Back returns there instead of leaving the site entirely.
       router.push(`${destination}?via=journey`);
-    }, 750);
+    }, 350);
   }
 
   function handleDeepDiveEnded() {
@@ -117,28 +115,23 @@ export function ImmersiveJourney() {
 
   return (
     <div className="relative h-[100svh] w-full overflow-hidden bg-charcoal-950">
-      <div
-        className="absolute inset-0 h-full w-full transition-[filter] duration-[600ms] ease-[cubic-bezier(0.42,0,1,1)]"
-        style={{ filter: fadingOut ? "brightness(0.15) saturate(0.7)" : "brightness(1) saturate(1)" }}
-      >
-        <CinematicStage
-          sceneKey={sceneKey}
-          loop={state.stage === "garage-idle"}
-          static={isStatic}
-          onNearEnd={() => {
-            if (state.stage === "commercial-build") dispatch({ type: "COMMERCIAL_BUILD_SETTLED" });
-            else if (state.stage === "commercial-door-entry") dispatch({ type: "DOOR_ENTRY_SETTLED" });
-            else if (state.stage === "residential-build") dispatch({ type: "RESIDENTIAL_BUILD_SETTLED" });
-            else if (state.stage === "residential-door-entry") dispatch({ type: "DOOR_ENTRY_SETTLED" });
-          }}
-          onEnded={() => {
-            if (state.stage === "intro") dispatch({ type: "INTRO_FINISHED" });
-            else if (state.stage === "commercial-deep-dive") handleDeepDiveEnded();
-            else if (state.stage === "residential-deep-dive") handleDeepDiveEnded();
-          }}
-          className="absolute inset-0 h-full w-full"
-        />
-      </div>
+      <CinematicStage
+        sceneKey={sceneKey}
+        loop={state.stage === "garage-idle"}
+        static={isStatic}
+        onNearEnd={() => {
+          if (state.stage === "commercial-build") dispatch({ type: "COMMERCIAL_BUILD_SETTLED" });
+          else if (state.stage === "commercial-door-entry") dispatch({ type: "DOOR_ENTRY_SETTLED" });
+          else if (state.stage === "residential-build") dispatch({ type: "RESIDENTIAL_BUILD_SETTLED" });
+          else if (state.stage === "residential-door-entry") dispatch({ type: "DOOR_ENTRY_SETTLED" });
+        }}
+        onEnded={() => {
+          if (state.stage === "intro") dispatch({ type: "INTRO_FINISHED" });
+          else if (state.stage === "commercial-deep-dive") handleDeepDiveEnded();
+          else if (state.stage === "residential-deep-dive") handleDeepDiveEnded();
+        }}
+        className="absolute inset-0 h-full w-full"
+      />
 
       <JourneyProgress stage={state.stage} />
 
@@ -167,12 +160,6 @@ export function ImmersiveJourney() {
           Go Back
         </button>
       ) : null}
-
-      <div
-        className="pointer-events-none absolute inset-0 z-20 bg-charcoal-950 transition-opacity duration-[650ms] ease-[cubic-bezier(0.42,0,1,1)]"
-        style={{ opacity: fadingOut ? 1 : 0 }}
-        aria-hidden="true"
-      />
     </div>
   );
 }
