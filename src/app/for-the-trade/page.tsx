@@ -14,6 +14,7 @@ const slugs: Record<string, string> = {
   "architects-designers": "architects",
   "builders-developers": "builders",
   "general-contractors": "general-contractors",
+  "developers-owners": "developers",
 };
 
 export default function ForTheTradeIndexPage() {
@@ -21,7 +22,7 @@ export default function ForTheTradeIndexPage() {
     <div className="py-16">
       <Container>
         <SectionHeading eyebrow="For the Trade" title="Built for how you actually work" />
-        <div className="mt-8 grid gap-5 sm:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {audiences.map((audience) => (
             <Link
               key={audience.id}

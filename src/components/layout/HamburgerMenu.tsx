@@ -7,6 +7,18 @@ import clsx from "clsx";
 import { useJourney } from "@/lib/journey/context";
 import { SearchDrawer } from "@/components/browse/SearchDrawer";
 
+const links = [
+  { href: "/residential", label: "Residential" },
+  { href: "/commercial", label: "Commercial" },
+  { href: "/industrial", label: "Industrial" },
+  { href: "/systems", label: "Floor Systems" },
+  { href: "/projects", label: "Projects" },
+  { href: "/resources", label: "Resources" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/for-the-trade", label: "For the Trade" },
+  { href: "/about", label: "About" },
+];
+
 export function HamburgerMenu({ dark }: { dark?: boolean }) {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -62,41 +74,59 @@ export function HamburgerMenu({ dark }: { dark?: boolean }) {
 
         <div
           className={clsx(
-            "absolute top-14 right-0 w-64 origin-top-right rounded-lg border border-warm-white/10 bg-charcoal-900/95 p-2 shadow-floating backdrop-blur-md transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            "absolute top-14 right-0 flex max-h-[80vh] w-72 origin-top-right flex-col rounded-lg border border-warm-white/10 bg-charcoal-900/95 shadow-floating backdrop-blur-md transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]",
             open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0",
           )}
         >
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(false);
-              setSearchOpen(true);
-            }}
-            className="block w-full rounded-md px-4 py-3 text-left text-sm font-medium text-warm-white/85 hover:bg-warm-white/5 hover:text-gold-100"
-          >
-            I know what I need
-          </button>
-          <Link
-            href="/explore"
-            onClick={() => setOpen(false)}
-            className="block rounded-md px-4 py-3 text-sm font-medium text-warm-white/85 hover:bg-warm-white/5 hover:text-gold-100"
-          >
-            Explore Floor Rescue
-          </Link>
-          <button
-            type="button"
-            onClick={backToHome}
-            className="block w-full rounded-md px-4 py-3 text-left text-sm font-medium text-warm-white/85 hover:bg-warm-white/5 hover:text-gold-100"
-          >
-            Back to Home
-          </button>
-          <Link
-            href="/quote"
-            onClick={() => setOpen(false)}
-            className="mt-1 block rounded-md bg-gradient-to-b from-gold-300 to-gold-700 px-4 py-3 text-center text-sm font-semibold text-charcoal-950"
-          >
-            Request a Quote
-          </Link>
+          <div className="min-h-0 flex-1 overflow-y-auto p-2">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                setSearchOpen(true);
+              }}
+              className="block w-full rounded-md px-4 py-3 text-left text-sm font-medium text-warm-white/85 hover:bg-warm-white/5 hover:text-gold-100"
+            >
+              I know what I need
+            </button>
+            <button
+              type="button"
+              onClick={backToHome}
+              className="block w-full rounded-md px-4 py-3 text-left text-sm font-medium text-warm-white/85 hover:bg-warm-white/5 hover:text-gold-100"
+            >
+              Back to Home
+            </button>
+            <Link
+              href="/explore"
+              onClick={() => setOpen(false)}
+              className="block rounded-md px-4 py-3 text-sm font-medium text-warm-white/85 hover:bg-warm-white/5 hover:text-gold-100"
+            >
+              Explore Floor Rescue
+            </Link>
+
+            <div className="my-1.5 border-t border-warm-white/10" />
+
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-4 py-2.5 text-sm text-warm-white/70 hover:bg-warm-white/5 hover:text-gold-100"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="border-t border-warm-white/10 p-2">
+            <Link
+              href="/quote"
+              onClick={() => setOpen(false)}
+              className="block rounded-md bg-gradient-to-b from-gold-300 to-gold-700 px-4 py-3 text-center text-sm font-semibold text-charcoal-950"
+            >
+              Request a Quote
+            </Link>
+          </div>
         </div>
       </div>
 

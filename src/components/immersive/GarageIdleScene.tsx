@@ -31,6 +31,18 @@ const cards = [
   },
 ] as const;
 
+/** Small "you can click this" affordance badge for the bottom-right of each card. */
+function ClickBadge() {
+  return (
+    <div className="absolute right-1.5 bottom-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-gold-300/60 bg-gradient-to-b from-gold-300 to-gold-700 shadow-elevated transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 sm:right-2 sm:bottom-2 sm:h-7 sm:w-7">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-charcoal-950 sm:h-[13px] sm:w-[13px]">
+        <path d="M9 3v10.5M9 3 6 6M9 3l3 3" />
+        <path d="M6.5 12.5 5 20a1 1 0 0 0 1.4 1.1L9 20l1 2.5a1 1 0 0 0 1.9-.2l1.6-6.8 3-1a1 1 0 0 0 .1-1.9L7 8.5" />
+      </svg>
+    </div>
+  );
+}
+
 export function GarageIdleScene() {
   const { dispatch } = useJourney();
   const { leaving, transition } = useSceneTransition();
@@ -43,7 +55,7 @@ export function GarageIdleScene() {
   function choose(id: (typeof cards)[number]["id"]) {
     trackEvent("environment_selected", { environment: id });
     if (id === "commercial") {
-      transition({ type: "CHOOSE_ENVIRONMENT", environment: "commercial" });
+      transition({ type: "CHOOSE_ENVIRONMENT", environment: id });
       return;
     }
     dispatch({ type: "CHOOSE_ENVIRONMENT", environment: id });
@@ -58,48 +70,63 @@ export function GarageIdleScene() {
   }
 
   return (
-    <div className="absolute inset-0 z-10 flex flex-col items-center justify-end overflow-hidden px-6 pb-14 sm:pb-16">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal-950/92 via-charcoal-950/10 to-transparent" />
+    <div className="absolute inset-0 z-10 flex flex-col items-center justify-end overflow-hidden px-4 pb-6 sm:px-6 sm:pb-10 lg:pb-12">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/35 to-transparent sm:from-charcoal-950/92 sm:via-charcoal-950/10" />
 
       <div
         className={clsx(
-          "relative z-10 w-full max-w-4xl text-center transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          "relative z-10 w-full max-w-5xl text-center transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
           leaving ? "translate-y-3 opacity-0" : "translate-y-0 opacity-100",
         )}
       >
-        <p className="text-xs font-semibold tracking-[0.25em] text-gold-300 uppercase">Concrete Floors + Resinous Systems</p>
-        <h1 className="mt-3 text-balance text-4xl font-semibold tracking-[-0.03em] text-warm-white sm:text-5xl">
+        <p className="hidden text-xs font-semibold tracking-[0.3em] text-gold-300 uppercase sm:block">
+          Concrete Floors + Resinous Systems
+        </p>
+        <h1 className="mx-auto mt-1 text-balance text-3xl font-bold tracking-[-0.02em] text-warm-white sm:mt-3 sm:text-6xl lg:text-7xl">
           The Power Is in the Install.
         </h1>
-        <p className="mx-auto mt-3 max-w-xl text-base leading-[1.7] text-warm-white/75">
-          Floor systems engineered around the slab, the space, and the way it actually gets used.
-        </p>
 
-        <p className="mt-8 text-sm font-medium tracking-wide text-warm-white/70">What are you looking for?</p>
+        <div className="mx-auto mt-3 flex flex-col items-center gap-1 sm:mt-6 sm:gap-1.5">
+          <p className="text-sm font-extrabold tracking-[0.06em] text-gold-200 uppercase sm:text-xl lg:text-2xl">
+            Select Your Space
+          </p>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            className="animate-bounce text-gold-300 sm:h-5 sm:w-5"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="mx-auto mt-2.5 grid max-w-4xl grid-cols-2 gap-2 sm:mt-5 sm:gap-4 sm:[perspective:1600px] sm:grid-cols-4">
           {cards.map((card) => (
             <button
               key={card.id}
               type="button"
               onClick={() => choose(card.id)}
-              className="group relative aspect-[3/4] overflow-hidden rounded-xl shadow-elevated transition-[transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] [perspective:900px] hover:-translate-y-1.5 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300"
+              className="group flex h-28 flex-col overflow-hidden rounded-lg border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:h-64 sm:rounded-xl sm:[transform:perspective(1600px)_rotateY(-7deg)] sm:hover:[transform:perspective(1600px)_rotateY(-1deg)_translateY(-4px)]"
             >
-              <Image
-                src={card.image}
-                alt=""
-                fill
-                sizes="(min-width: 640px) 22vw, 45vw"
-                className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/25 to-charcoal-950/10 mix-blend-multiply" />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-transparent" />
-              <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10 transition-[box-shadow] duration-300 group-hover:ring-gold-300/60" />
-              <div className="absolute inset-x-0 bottom-0 p-3 text-left sm:p-4">
-                <span className="block text-[10px] font-semibold tracking-[0.15em] text-gold-300 uppercase sm:text-xs">
+              <div className="flex-none px-2.5 pt-2 pb-1 sm:px-3.5 sm:pt-3.5 sm:pb-2">
+                <span className="block truncate text-[8px] font-semibold tracking-[0.1em] text-gold-300 uppercase sm:text-[10px] sm:tracking-[0.15em]">
                   {card.eyebrow}
                 </span>
-                <span className="mt-0.5 block text-base font-semibold text-warm-white sm:text-lg">{card.title}</span>
+                <span className="mt-0.5 block text-sm font-extrabold text-warm-white sm:text-xl lg:text-2xl">{card.title}</span>
+              </div>
+              <div className="relative flex-1 overflow-hidden">
+                <Image
+                  src={card.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 640px) 22vw, 45vw"
+                  className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
+                <ClickBadge />
               </div>
             </button>
           ))}
@@ -107,17 +134,37 @@ export function GarageIdleScene() {
           <button
             type="button"
             onClick={goToQuote}
-            className="group relative aspect-[3/4] overflow-hidden rounded-xl border border-gold-500/30 bg-gradient-to-br from-charcoal-900 via-charcoal-900 to-gold-900/25 shadow-elevated transition-[transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:shadow-floating hover:border-gold-300/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300"
+            className="group flex h-28 flex-col overflow-hidden rounded-lg border border-gold-500/30 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/70 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:h-64 sm:rounded-xl sm:[transform:perspective(1600px)_rotateY(-7deg)] sm:hover:[transform:perspective(1600px)_rotateY(-1deg)_translateY(-4px)]"
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-3 text-center">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-gold-300">
-                <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
-              </svg>
-              <span className="text-[10px] font-semibold tracking-[0.15em] text-gold-300 uppercase sm:text-xs">I Already Know</span>
-              <span className="text-sm font-semibold text-warm-white sm:text-base">Request a Quote Now</span>
+            <div className="flex-none px-2.5 pt-2 pb-1 sm:px-3.5 sm:pt-3.5 sm:pb-2">
+              <span className="block truncate text-[8px] font-semibold tracking-[0.1em] text-gold-300 uppercase sm:text-[10px] sm:tracking-[0.15em]">
+                I Already Know
+              </span>
+              <span className="mt-0.5 block text-sm font-extrabold text-warm-white sm:text-xl lg:text-2xl">Request a Quote</span>
+            </div>
+            <div className="relative flex-1 overflow-hidden">
+              <Image
+                src="/assets/images/card-install.jpg"
+                alt=""
+                fill
+                sizes="(min-width: 640px) 22vw, 45vw"
+                className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
+              <ClickBadge />
             </div>
           </button>
         </div>
+
+        <a
+          href="#learn-more"
+          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-warm-white/60 transition-colors hover:text-gold-200 sm:mt-7 sm:text-sm"
+        >
+          Learn more about Floor Rescue
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </a>
       </div>
     </div>
   );

@@ -116,6 +116,71 @@ export const resources: Resource[] = [
     ],
     environments: ["residential", "commercial", "industrial"],
   },
+  {
+    id: "epoxy-vs-polyaspartic",
+    slug: "epoxy-vs-polyaspartic-which-is-right",
+    category: "System Comparisons",
+    title: "Epoxy vs. Polyaspartic: Which Is Right for Your Floor?",
+    summary: "Two different chemistries, often used together rather than as competitors.",
+    body: [
+      "Epoxy provides build thickness and strong adhesion to the slab — it's the workhorse base layer for most resinous systems.",
+      "Polyaspartic cures fast, resists UV yellowing, and applies across a much wider temperature range than epoxy. Most high-performance floors use it as a topcoat over an epoxy base, combining the strengths of both.",
+      "For UV-exposed spaces, exterior-adjacent areas, or tight schedules, an all-polyaspartic system is often the better call. For maximum build at a lower cost, the hybrid epoxy-base-plus-polyaspartic-topcoat architecture usually wins.",
+    ],
+    environments: ["residential", "commercial", "industrial"],
+  },
+  {
+    id: "polished-concrete-vs-epoxy",
+    slug: "polished-concrete-vs-epoxy-comparison",
+    category: "System Comparisons",
+    title: "Polished Concrete vs. Epoxy: The Complete Comparison",
+    summary: "Two of the most common floors we install — and two very different ways of finishing a slab.",
+    body: [
+      "Polished concrete works with the existing slab as the finished surface — grinding and honing it to a satin or mirror sheen. There's no coating to wear through, chip, or recoat.",
+      "Epoxy and resinous coatings add an engineered layer on top, built for a specific exposure: chemicals, washdown, heavy traffic, or a decorative look concrete alone can't achieve.",
+      "The right choice depends on the slab's condition, the exposure the floor will face, and the look the space needs — not a default preference for one over the other.",
+    ],
+    environments: ["residential", "commercial", "industrial"],
+  },
+  {
+    id: "urethane-cement-no-one-talks-about",
+    slug: "urethane-cement-industrial-floor-system",
+    category: "Resinous Systems",
+    title: "Urethane Cement: The Industrial Floor System No One Talks About",
+    summary: "If your space deals with thermal shock, heavy chemicals, and constant washdown, this is the system to understand.",
+    body: [
+      "Urethane cement is a cementitious resinous system built specifically for the combination most other coatings can't handle at once: hot water and steam washdown, thermal cycling, and heavy daily traffic.",
+      "It shows up most often in commercial kitchens, breweries, food and beverage processing, and cold storage — anywhere a facility washes down aggressively and needs the floor to survive it for years, not months.",
+      "It's a more specialized (and typically more expensive) system than standard epoxy, which is exactly why it doesn't get talked about as often — but it's the right spec for the environments that actually need it.",
+    ],
+    environments: ["commercial", "industrial"],
+  },
+  {
+    id: "moisture-testing-step-skipped",
+    slug: "moisture-testing-the-step-most-contractors-skip",
+    category: "Technical Guides",
+    title: "Moisture Testing: The Step Most Contractors Skip",
+    summary: "Skipping moisture testing is how a brand-new floor fails in year one.",
+    body: [
+      "Concrete slabs hold moisture, and that moisture moves upward over time — especially on ground-floor and below-grade slabs. If a coating or overlay goes down before that vapor drive is measured and addressed, the new floor can fail from underneath regardless of how well it was installed.",
+      "Proper moisture testing takes time — often 72 hours for an accurate reading — which is exactly why it's the step that gets skipped under schedule pressure.",
+      "Floor Rescue tests before recommending a system, not after a floor has already started failing.",
+    ],
+    environments: ["residential", "commercial", "industrial"],
+  },
+  {
+    id: "five-levels-surface-prep",
+    slug: "five-levels-of-concrete-surface-preparation",
+    category: "Concrete Fundamentals",
+    title: "The Five Levels of Concrete Surface Preparation — and Why Every Level Matters",
+    summary: "Surface preparation is the step that determines whether everything after it actually holds.",
+    body: [
+      "Every coating, overlay, or polish job depends on how the substrate was prepared before it — grinding, shot blasting, or chemical profiling to open the surface enough for real adhesion or the right sheen.",
+      "Skip or under-do this step and it doesn't matter how good the material on top is; it will delaminate, peel, or wear unevenly.",
+      "The right preparation level depends on the existing slab's condition and what's going on top of it — not a one-size-fits-all pass with a single tool.",
+    ],
+    environments: ["residential", "commercial", "industrial"],
+  },
 ];
 
 export function getResource(slug: string): Resource | undefined {

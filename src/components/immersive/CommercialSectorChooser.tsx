@@ -42,44 +42,43 @@ export function CommercialSectorChooser({ visible, onSelect }: Props) {
   return (
     <div
       className={clsx(
-        "absolute inset-y-0 left-0 z-10 flex w-full max-w-sm items-center px-6 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10",
+        "absolute inset-y-0 left-0 z-10 flex w-full max-w-xl items-center px-6 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10",
         visible ? "translate-x-0 opacity-100" : "pointer-events-none -translate-x-3 opacity-0",
       )}
       aria-hidden={!visible}
     >
       <div className="w-full">
-        <p className="text-sm font-medium tracking-wide text-warm-white/70">What kind of space are we working with?</p>
+        <p className="text-2xl font-bold tracking-[-0.02em] text-warm-white sm:text-3xl">What&apos;s Your Space?</p>
+        <p className="mt-1.5 text-sm text-warm-white/55">Select the option that best describes it.</p>
 
         {!showOther ? (
-          <>
-            <div className="mt-4 grid grid-cols-2 gap-2">
-              {commercialSectorIds.map((id) => {
-                const sector = getSector(id);
-                if (!sector) return null;
-                return (
-                  <button
-                    key={id}
-                    type="button"
-                    tabIndex={visible ? 0 : -1}
-                    onClick={() => choose(id)}
-                    className="rounded-md border border-warm-white/15 bg-charcoal-950/55 px-3 py-3 text-left text-sm font-medium text-warm-white backdrop-blur-sm transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-900/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
-                  >
-                    {sector.shortLabel}
-                  </button>
-                );
-              })}
-            </div>
+          <div className="mt-5 grid grid-cols-2 gap-2.5">
+            {commercialSectorIds.map((id) => {
+              const sector = getSector(id);
+              if (!sector) return null;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  tabIndex={visible ? 0 : -1}
+                  onClick={() => choose(id)}
+                  className="rounded-lg border border-warm-white/15 bg-charcoal-950/60 px-4 py-4 text-left text-sm font-semibold text-warm-white backdrop-blur-sm transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-900/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
+                >
+                  {sector.shortLabel}
+                </button>
+              );
+            })}
             <button
               type="button"
               tabIndex={visible ? 0 : -1}
               onClick={() => setShowOther(true)}
-              className="mt-3 text-sm font-medium text-warm-white/55 underline-offset-4 hover:text-gold-100 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-300"
+              className="col-span-2 rounded-lg border border-gold-500/30 bg-charcoal-950/60 px-4 py-4 text-left text-sm font-semibold text-gold-200 backdrop-blur-sm transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-900/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
             >
-              Other Commercial
+              Other Commercial — describe it
             </button>
-          </>
+          </div>
         ) : (
-          <div className="mt-4">
+          <div className="mt-5">
             <label htmlFor="commercial-other" className="sr-only">
               Tell us what you&apos;re working with
             </label>
@@ -89,10 +88,11 @@ export function CommercialSectorChooser({ visible, onSelect }: Props) {
               value={otherText}
               onChange={(e) => setOtherText(e.target.value)}
               placeholder="Tell us what you're working with."
-              rows={2}
-              className="w-full rounded-md border border-warm-white/20 bg-charcoal-950/60 px-4 py-3 text-sm text-warm-white placeholder:text-warm-white/40 focus:border-gold-300 focus:outline-none"
+              rows={3}
+              className="w-full rounded-lg border border-warm-white/20 bg-charcoal-950/70 px-4 py-3 text-base text-warm-white placeholder:text-warm-white/40 focus:border-gold-300 focus:outline-none"
+              autoFocus
             />
-            <div className="mt-2 flex gap-3">
+            <div className="mt-3 flex gap-3">
               <button type="button" onClick={() => setShowOther(false)} className="text-sm text-warm-white/50 hover:text-warm-white">
                 Back
               </button>
@@ -100,7 +100,7 @@ export function CommercialSectorChooser({ visible, onSelect }: Props) {
                 type="button"
                 onClick={submitOther}
                 disabled={submitting || !otherText.trim()}
-                className="rounded-sm bg-gradient-to-b from-gold-300 to-gold-700 px-5 py-2 text-sm font-medium text-charcoal-950 shadow-elevated transition-transform hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-40"
+                className="rounded-md bg-gradient-to-b from-gold-300 to-gold-700 px-6 py-2.5 text-sm font-semibold text-charcoal-950 shadow-elevated transition-transform hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-40"
               >
                 {submitting ? "Routing…" : "Continue"}
               </button>

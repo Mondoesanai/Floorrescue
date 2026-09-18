@@ -7,7 +7,12 @@ import { useViewport } from "@/lib/video/useViewport";
 import { usePrefersReducedMotion } from "@/lib/motion/useReducedMotion";
 
 const CROSSFADE_MS = 420;
-const PLAYBACK_RATE = 1.15;
+const DEFAULT_PLAYBACK_RATE = 1.15;
+// The building build-up reads slow at normal speed with this much room to move —
+// speed it up more aggressively than the rest of the journey.
+const PLAYBACK_RATE_BY_SCENE: Partial<Record<SceneKey, number>> = {
+  commercialBuild: 1.35,
+};
 
 interface CinematicStageProps {
   sceneKey: SceneKey;
@@ -80,7 +85,7 @@ export function CinematicStage({
     if (!el || !asset.video) return;
 
     el.src = asset.video;
-    el.playbackRate = PLAYBACK_RATE;
+    el.playbackRate = PLAYBACK_RATE_BY_SCENE[sceneKey] ?? DEFAULT_PLAYBACK_RATE;
     el.loop = Boolean(loop);
     el.load();
 

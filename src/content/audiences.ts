@@ -6,7 +6,7 @@ export const audiences: ProfessionalAudience[] = [
     name: "Architects & Designers",
     positioningLine: "System selection you can specify with confidence.",
     description:
-      "Technical documents, physical samples, and pre-pour consultation so a floor system can be specified — not guessed at.",
+      "We work from your spec or help you develop one. Samples, technical data sheets, and on-site mockups are available. We coordinate directly with your project team from specification through installation.",
     focus: [
       "Technical documents and specifications",
       "Physical samples and on-site mockups",
@@ -22,7 +22,7 @@ export const audiences: ProfessionalAudience[] = [
     name: "Builders & Developers",
     positioningLine: "The Floor Starts With the Slab.",
     description:
-      "Pre-pour planning and slab requirements that prevent the downstream floor problems that show up months after closing.",
+      "Pre-pour planning and slab requirements that prevent the downstream floor problems that show up months after closing. You want floors that look incredible and hold up — we bring the same systems used in high-end commercial builds, without shortcuts.",
     focus: [
       "Pre-pour coordination",
       "Slab flatness and joint layout",
@@ -37,14 +37,23 @@ export const audiences: ProfessionalAudience[] = [
     name: "General Contractors",
     positioningLine: "One Trade. No Surprises.",
     description:
-      "Coordination, substrate reporting, and schedule reliability for GCs who need one less variable on the job.",
+      "As a subcontractor, we understand that your schedule, your budget, and your reputation are on the line. We show up on time, we hit our numbers, and we don't create problems for your schedule. That's been our standard for 20+ years.",
     focus: [
-      "Schedule coordination",
-      "Substrate condition reporting",
-      "Qualification documentation",
-      "Fast-turn options where needed",
-      "Reliable installation execution",
+      "Fully insured and bonded — COI provided on request",
+      "Fast-cure system options for tight project timelines",
+      "Coordination with other trades from day one",
+      "Dedicated project superintendent on every job",
+      "Substrate assessment before bid — no surprises mid-project",
     ],
+    relevantResourceIds: [],
+  },
+  {
+    id: "developers-owners",
+    name: "Developers & Owners",
+    positioningLine: "System selection, investment guidance, long-term performance.",
+    description:
+      "For developers and owners weighing flooring as a capital decision, not just a finish — the right system choice affects maintenance cost, tenant experience, and asset value for decades, not just the punch-list walkthrough.",
+    focus: ["System selection guidance", "Investment and lifecycle guidance", "Long-term performance planning", "Multi-property / multi-phase coordination"],
     relevantResourceIds: [],
   },
 ];

@@ -89,7 +89,8 @@ export const sectors: Sector[] = [
     environment: "commercial",
     name: "Retail / Showroom",
     shortLabel: "Retail / Showroom",
-    description: "Sales floors and showrooms where the floor is part of how the brand presents itself.",
+    description:
+      "Auto dealerships, furniture and home goods showrooms, boutique and big-box retail, and shopping center common areas — sales floors where the floor is part of how the brand presents itself.",
     aliases: ["retail", "showroom", "boutique", "store"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["appearance-design", "heavy-traffic", "downtime"],
@@ -125,7 +126,8 @@ export const sectors: Sector[] = [
     environment: "commercial",
     name: "Restaurant / Food Service",
     shortLabel: "Restaurant / Food Service",
-    description: "Kitchens, dish pits, dining rooms, and bars built around washdown and constant cleaning.",
+    description:
+      "Commercial kitchens, front-of-house dining, bars and breweries, food prep and processing areas, and bakeries and cafés — built around washdown and constant cleaning.",
     aliases: ["restaurant", "kitchen", "bar", "food service", "dish pit"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["washdown", "downtime", "sanitation", "slip-resistance"],
@@ -161,7 +163,8 @@ export const sectors: Sector[] = [
     environment: "commercial",
     name: "Office / Corporate",
     shortLabel: "Office / Corporate",
-    description: "Lobbies, open floor plans, and corporate interiors where finish and durability both matter.",
+    description:
+      "Corporate lobbies and reception areas, open office floors, conference rooms, breakrooms and cafeterias, and multi-tenant office buildings — where finish and durability both matter.",
     aliases: ["office", "corporate", "lobby", "workplace"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["appearance-design", "downtime", "maintenance"],
@@ -197,7 +200,8 @@ export const sectors: Sector[] = [
     environment: "commercial",
     name: "Hotel / Hospitality",
     shortLabel: "Hotel / Hospitality",
-    description: "Lobbies, corridors, and back-of-house areas that see round-the-clock traffic.",
+    description:
+      "Hotel lobbies and corridors, event venues and banquet halls, fitness centers and spas, and entertainment complexes — back-of-house and front-of-house spaces that see round-the-clock traffic.",
     aliases: ["hotel", "hospitality", "lobby", "resort"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["heavy-traffic", "appearance-design", "downtime"],
@@ -233,7 +237,8 @@ export const sectors: Sector[] = [
     environment: "commercial",
     name: "Healthcare / Medical",
     shortLabel: "Healthcare / Medical",
-    description: "Clinical and medical spaces where sanitation and seamless surfaces are non-negotiable.",
+    description:
+      "Medical offices and clinics, dental and veterinary practices, surgical prep and procedure rooms, pharmacies, and senior living facilities — where sanitation and seamless surfaces are non-negotiable.",
     aliases: ["healthcare", "medical", "clinic", "veterinary"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["sanitation", "downtime", "chemical-exposure"],
@@ -269,7 +274,8 @@ export const sectors: Sector[] = [
     environment: "commercial",
     name: "Education / Institutional",
     shortLabel: "Education / Institutional",
-    description: "Schools, campuses, and institutional buildings, including churches and worship centers.",
+    description:
+      "K–12 schools and universities, libraries and media centers, gymnasiums and athletic facilities, government buildings, and houses of worship.",
     aliases: ["school", "education", "campus", "institutional", "church", "worship center"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["heavy-traffic", "maintenance", "downtime"],
@@ -305,7 +311,8 @@ export const sectors: Sector[] = [
     environment: "commercial",
     name: "Automotive / Dealership",
     shortLabel: "Automotive / Dealership",
-    description: "Showroom and service-bay floors that have to do two very different jobs.",
+    description:
+      "New car showrooms, service bays and quick-lube, detailing centers, and used car lots — floors that have to do two very different jobs under one roof.",
     aliases: ["automotive", "dealership", "showroom floor", "service bay", "auto service"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["chemical-exposure", "heavy-traffic", "appearance-design"],
@@ -380,7 +387,8 @@ export const sectors: Sector[] = [
     environment: "industrial",
     name: "Manufacturing / Production",
     shortLabel: "Manufacturing / Production",
-    description: "Production floors built around heavy equipment, forklift traffic, and chemical exposure.",
+    description:
+      "Forklifts, machinery, pallet racking, and non-stop operations — floors engineered for load-bearing, dust control, and durability.",
     aliases: ["manufacturing", "production", "plant floor"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["heavy-traffic", "chemical-exposure", "downtime"],
@@ -394,7 +402,8 @@ export const sectors: Sector[] = [
     environment: "industrial",
     name: "Food & Beverage / Processing",
     shortLabel: "Food & Beverage",
-    description: "Processing floors built for aggressive washdown, thermal shock, and sanitation compliance.",
+    description:
+      "Processing plants, breweries, and distilleries — USDA/FDA-compliant, seamless systems engineered for washdown, steam cleaning, and chemical exposure, with coved bases and drain detail.",
     aliases: ["food processing", "beverage", "food and beverage"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["washdown", "thermal-shock", "sanitation", "chemical-exposure"],
@@ -408,7 +417,8 @@ export const sectors: Sector[] = [
     environment: "industrial",
     name: "Warehouse / Distribution",
     shortLabel: "Warehouse / Distribution",
-    description: "Large-format floors built for racking loads, forklift traffic, and fast turnaround.",
+    description:
+      "Large-format warehouses, distribution centers, and logistics hubs — systems designed for maximum durability, racking loads, and minimal downtime.",
     aliases: ["warehouse", "distribution center", "logistics"],
     projectStates: ["new-construction", "renovation", "failed-floor", "other"],
     commonConcerns: ["heavy-traffic", "fast-return-to-service"],
