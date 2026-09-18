@@ -23,6 +23,8 @@ const industrialTilt =
 const quoteTilt =
   "sm:[transform:perspective(1800px)_rotate3d(1,1,0,13deg)_translateY(10px)_scale(1.04)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,4deg)_translateY(4px)_scale(1.04)]";
 
+// Left-to-right order: Commercial (big, forward) - Industrial (small, back) -
+// Request a Quote (small, back) - Residential (big, forward).
 const cards = [
   {
     id: "commercial",
@@ -30,13 +32,6 @@ const cards = [
     title: "Commercial",
     image: "/assets/images/card-commercial.jpg",
     tilt: commercialTilt,
-  },
-  {
-    id: "residential",
-    eyebrow: "My Home",
-    title: "Residential",
-    image: "/assets/images/card-residential.jpg",
-    tilt: residentialTilt,
   },
   {
     id: "industrial",
@@ -84,7 +79,7 @@ export function GarageIdleScene() {
     preloadVideo(resolveSceneAsset("residentialBuild", "desktop").video);
   }, []);
 
-  function choose(id: (typeof cards)[number]["id"]) {
+  function choose(id: "commercial" | "industrial" | "residential") {
     trackEvent("environment_selected", { environment: id });
     if (id === "commercial" || id === "residential") {
       transition({ type: "CHOOSE_ENVIRONMENT", environment: id });
@@ -171,7 +166,7 @@ export function GarageIdleScene() {
             onClick={goToQuote}
             className={clsx(
               "group flex flex-col overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/70 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-72 lg:w-80",
-              quoteTilt,
+              residentialTilt,
             )}
           >
             <div className="flex-none px-3 pt-2.5 pb-1.5 sm:px-4 sm:pt-4 sm:pb-2">
@@ -183,6 +178,33 @@ export function GarageIdleScene() {
             <div className="relative aspect-video w-full overflow-hidden">
               <Image
                 src="/assets/images/card-install.jpg"
+                alt=""
+                fill
+                sizes="(min-width: 640px) 20rem, 45vw"
+                className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
+              <SelectHint />
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => choose("residential")}
+            className={clsx(
+              "group flex flex-col overflow-hidden rounded-xl border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-72 lg:w-80",
+              quoteTilt,
+            )}
+          >
+            <div className="flex-none px-3 pt-2.5 pb-1.5 sm:px-4 sm:pt-4 sm:pb-2">
+              <span className="block truncate text-[9px] font-semibold tracking-[0.1em] text-gold-300 uppercase sm:text-[11px] sm:tracking-[0.15em]">
+                My Home
+              </span>
+              <span className="mt-0.5 block text-base font-extrabold text-warm-white sm:text-2xl">Residential</span>
+            </div>
+            <div className="relative aspect-video w-full overflow-hidden">
+              <Image
+                src="/assets/images/06-residential-house-arrival.jpg"
                 alt=""
                 fill
                 sizes="(min-width: 640px) 20rem, 45vw"
