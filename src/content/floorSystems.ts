@@ -15,14 +15,16 @@ export const floorSystems: FloorSystem[] = [
     environments: ["residential", "commercial", "industrial"],
     applications: ["retail", "office", "warehouse", "loft", "showroom"],
     summaryByAudience: {
-      residential: "A ground and polished slab that stays low-maintenance and handles real daily life underfoot.",
+      residential:
+        "The concrete itself becomes the floor — ground, densified, and polished to a satin or mirror finish that stays low-maintenance and handles real daily life underfoot. There's no coating layer to peel or chip.",
       commercial: "A durable, design-forward floor that holds up to steady foot traffic without constant upkeep.",
       industrial: "A hard-wearing, easy-to-clean floor for facilities that don't want a coating to maintain.",
       trade:
         "Grind and densify existing slabs to satin or mirror finishes with integrated color options. CSDA finish levels 1–4, aggregate exposure classes A–D (cream finish through full aggregate), LEED-compliant materials.",
     },
     technicalNotes: [
-      "CSDA Finish Level 1 (Flat/Matte) through Level 4 (Highly Polished); Aggregate Exposure Class A (Cream Finish) through Class D (Full Aggregate) — choice is based on the existing slab's condition and desired look.",
+      "CSDA Finish Level 1 (Flat/Matte) through Level 4 (Highly Polished); Aggregate Exposure Class A (Cream Finish, paste only) through Class D (Full Aggregate, heavy grind) — Class B (Salt & Pepper, fine aggregate) and Class C (Medium Aggregate, terrazzo-like) fall in between. Choice is based on the existing slab's condition and desired look.",
+      "Process sequence: slab assessment (hardness, moisture, existing coatings, aggregate mix) → surface preparation → coarse grinding to expose the specified aggregate class → progressive grinding through finer tooling → densification (a silica-based densifier reacts chemically with the slab to fill pores and increase surface hardness) → polishing to the specified finish level → guard/sealer where appropriate.",
       "Typical performance range from prior projects: 6–8 Mohs hardness, ≤40mg abrasion loss, ≥0.6 wet DCOF slip resistance, 20+ year service life — reconfirm current figures before publishing.",
     ],
     claimsStatus: "needs-review",
@@ -116,7 +118,7 @@ export const floorSystems: FloorSystem[] = [
         "Penetrating or film-forming sealers that protect stained, stamped, or exposed-aggregate concrete long-term — the finishing step that keeps a decorative floor or patio looking like the day it was installed.",
       commercial: "A maintenance-cycle sealer program keeps polished, stained, or coated floors performing between full refinishes, protecting the investment in the original system.",
       trade:
-        "Penetrating (silane/siloxane, densifying) sealers soak into the slab and don't change the surface look or add sheen; film-forming (acrylic, urethane, epoxy) sealers sit on top and add gloss and a sacrificial wear layer. Choice depends on the substrate, the traffic it takes, and whether the client wants a sheen change. Reapplication interval depends on traffic and exposure, not a fixed calendar date.",
+        "Penetrating (silane/siloxane, densifying) sealers soak into the slab and don't change the surface look or add sheen; film-forming (acrylic, urethane, epoxy) sealers sit on top and add gloss and a sacrificial wear layer. Choice depends on the substrate, the traffic it takes, and whether the client wants a sheen change. Reapplication interval depends on traffic and exposure, not a fixed calendar date. Over stained or decorative concrete, the seal system is its own build: a water-based epoxy primer with an aliphatic urethane topcoat for clarity without heavy build (residential interiors, light commercial); a solvent-based acrylic penetrating sealer with a ceramic-enhanced topcoat for added hardness (high-traffic commercial, exterior); an epoxy sealer with a polyaspartic topcoat for fast return to service and maximum chemical resistance (commercial, industrial, fast-track schedules); or a penetrating densifier alone on a honed/trowel finish for a dust-proof, low-sheen look with no film topcoat at all.",
     },
     technicalNotes: [
       "Sealer selection is substrate- and traffic-dependent — reconfirm with Jeremy before quoting a specific product line or reapplication schedule.",
@@ -156,7 +158,7 @@ export const floorSystems: FloorSystem[] = [
     applications: ["new-construction"],
     summaryByAudience: {
       trade:
-        "Pre-pour input on slab flatness, joint layout, curing, and finish expectations so the finish floor isn't fighting the slab later. Common preventable failures: calcium chloride in the mix, curing compound not removed, high fly ash content.",
+        "Pre-pour input on slab flatness, joint layout, curing, and finish expectations so the finish floor isn't fighting the slab later. Common preventable failures: calcium chloride in the mix, curing compound not removed, high fly ash content, an over-worked or hard-troweled finish, and a vapor retarder placed with a sand layer above it instead of direct contact. A straight Portland cement mix, a wet cure (burlap and poly sheeting) over chemical curing compounds, a medium trowel finish, and protecting the slab from construction contamination between pour and finish installation all materially affect the result.",
     },
     claimsStatus: "approved",
   },
@@ -172,7 +174,7 @@ export const floorSystems: FloorSystem[] = [
       residential: "A dimensional, three-dimensional finish that reads as a statement floor rather than a coated one — every installation is unique.",
       commercial: "A signature entry or showroom finish that photographs and presents like nothing off the shelf.",
       trade:
-        "100% solids epoxy with metallic pigments manipulated on-site — swirling patterns in copper, gold, pearl, charcoal, or custom colors. Three system options: standard metallic epoxy, polyaspartic metallic (UV-stable), and white metallics/pearls. Moisture barrier testing is non-negotiable underneath.",
+        "100% solids epoxy with metallic pigments manipulated on-site — swirling patterns in copper, gold, pearl, charcoal, or custom colors. Three system options: standard metallic epoxy, polyaspartic metallic (UV-stable), and white metallics/pearls. Topcoat sheen changes the read: high gloss maximizes depth and reflection but shows footprints; satin softens glare while keeping dimension; matte reads as a velvety, understated finish that's more forgiving of foot traffic and scratches. Custom logo, mural, and inlay artwork can be sealed permanently under the topcoat, and glow-in-the-dark/UV-reactive pigment is available for spaces that want a blacklight effect. Moisture barrier testing is non-negotiable underneath.",
     },
     claimsStatus: "approved",
   },
@@ -204,12 +206,13 @@ export const floorSystems: FloorSystem[] = [
     id: "flake-broadcast",
     name: "Flake & Broadcast",
     family: "resinous",
-    environments: ["commercial", "industrial"],
+    environments: ["residential", "commercial", "industrial"],
     applications: ["slip-resistance", "appearance"],
     summaryByAudience: {
+      residential: "A textured, slip-resistant broadcast finish for patios and other exterior surfaces that take weather and bare feet.",
       commercial: "A broadcast flake finish that adds texture, slip resistance, and a more finished look.",
       trade:
-        "Vinyl chip or quartz aggregate broadcast into an epoxy base coat, sealed with a polyaspartic topcoat. Single or double broadcast, custom logo and design inlays, large-format flake options.",
+        "Vinyl chip or quartz aggregate broadcast into an epoxy base coat, sealed with a polyaspartic topcoat. Single broadcast is the common light-duty spec; double broadcast adds denser coverage and a thicker build for high-traffic commercial spaces; large-format flake (1\"+ chip) gives a bold, high-contrast look for showroom-grade spaces. Custom logo and design inlays are broadcast in during installation, not applied after.",
     },
     claimsStatus: "approved",
   },

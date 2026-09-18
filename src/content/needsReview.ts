@@ -48,7 +48,21 @@ export const needsReview: NeedsReviewItem[] = [
     id: "contact-phone-conflict",
     topic: "Contact phone number",
     detail:
-      "Current site displays 972-293-4343; other source materials reference different numbers. No phone number is hard-coded in the site chrome — confirm the current number before adding one.",
+      "Current site displays 972-293-4343; other source materials reference different numbers, including (214) 222-3977 / info@floorrescue.com in the Base44 homepage source. No phone number or alternate email is hard-coded in the site chrome — confirm the current, correct number and inbox before adding one.",
+    status: "needs-review",
+  },
+  {
+    id: "commercial-credentials-strip-claims",
+    topic: "Commercial page 'Standards & Credentials' claims",
+    detail:
+      "Base44 commercial source included a credentials strip claiming USDA/FDA compliance, 'Matrix Certified Applicators,' AIA/CEU-accredited Lunch & Learn presentations, and 'Licensed, Insured & Bonded.' None of these were published — they need Jeremy's exact current wording and, where applicable, documentation before going on the site.",
+    status: "needs-review",
+  },
+  {
+    id: "sq-ft-installed-claim",
+    topic: "'1,000,000+ sq ft installed' homepage stat",
+    detail:
+      "Base44 homepage source lists '1,000,000+ Sq Ft Installed' as a stat, with the source material itself flagging it as verification-required. Not published anywhere on the site pending Jeremy's confirmation of a current, accurate figure.",
     status: "needs-review",
   },
   {

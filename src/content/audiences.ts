@@ -9,7 +9,8 @@ export const audiences: ProfessionalAudience[] = [
       "We work from your spec or help you develop one. Samples, technical data sheets, and on-site mockups are available. We coordinate directly with your project team from specification through installation.",
     focus: [
       "Technical documents and specifications",
-      "Physical samples and on-site mockups",
+      "Physical samples, color/finish charts, and on-site mockups",
+      "In-office Lunch & Learn presentations on system selection and specification",
       "Pre-pour and slab consultation",
       "Lighting and finish considerations",
       "System selection guidance",

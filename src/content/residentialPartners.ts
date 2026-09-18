@@ -43,3 +43,12 @@ export const residentialArchitects: string[] = [
   "Russell Buchanan",
   "Smith Arc",
 ];
+
+// Real interior design firms Floor Rescue has worked alongside on residential
+// projects, carried over directly from the client's own prior site content —
+// not invented.
+export const residentialInteriorDesigners: string[] = [
+  "Dana Bass Designs",
+  "Joshua Rice Design",
+  "Kim Lewis Designs",
+];
