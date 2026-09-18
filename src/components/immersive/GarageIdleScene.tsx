@@ -10,35 +10,30 @@ import { preloadVideo } from "@/lib/video/preload";
 import { resolveSceneAsset } from "@/lib/video/registry";
 import { trackEvent } from "@/lib/analytics";
 
-// A showcase in two facing pairs, staggered in depth — Commercial + Request a
-// Quote sit forward (larger, lower, closer to the visitor); Residential +
-// Industrial sit slightly behind them (smaller, higher), so the row reads as
-// a genuine 3D space rather than four flat cards in a line.
-const commercialTilt =
-  "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)_translateY(10px)_scale(1.1)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(4px)_scale(1.1)]";
-const residentialTilt =
-  "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)_translateY(-10px)_scale(0.95)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(-16px)_scale(0.95)]";
-const industrialTilt =
-  "sm:[transform:perspective(1800px)_rotate3d(1,1,0,13deg)_translateY(-10px)_scale(0.95)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,4deg)_translateY(-16px)_scale(0.95)]";
-const quoteTilt =
-  "sm:[transform:perspective(1800px)_rotate3d(1,1,0,13deg)_translateY(10px)_scale(1.04)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,4deg)_translateY(4px)_scale(1.04)]";
+// One uniform card size for all four choices, with a single shared slight
+// tilt — a showcase, not a flat grid, but simple: same size, same angle,
+// each just carrying its own photo and label.
+const cardTilt =
+  "sm:[transform:perspective(1800px)_rotateY(-6deg)] sm:hover:[transform:perspective(1800px)_rotateY(-1deg)_translateY(-6px)]";
 
-// Left-to-right order: Commercial (big, forward) - Industrial (small, back) -
-// Request a Quote (small, back) - Residential (big, forward).
 const cards = [
   {
     id: "commercial",
     eyebrow: "My Business",
     title: "Commercial",
     image: "/assets/images/card-commercial.jpg",
-    tilt: commercialTilt,
+  },
+  {
+    id: "residential",
+    eyebrow: "My Home",
+    title: "Residential",
+    image: "/assets/images/06-residential-house-arrival.jpg",
   },
   {
     id: "industrial",
     eyebrow: "My Facility",
     title: "Industrial",
     image: "/assets/images/card-industrial.jpg",
-    tilt: industrialTilt,
   },
 ] as const;
 
@@ -106,14 +101,11 @@ export function GarageIdleScene() {
           leaving ? "translate-y-3 opacity-0" : "translate-y-0 opacity-100",
         )}
       >
-        <p className="hidden text-xs font-semibold tracking-[0.3em] text-gold-300 uppercase sm:block">
-          Concrete Floors + Resinous Systems
-        </p>
-        <h1 className="text-3d-white mx-auto mt-1 text-balance text-3xl font-black tracking-[-0.02em] sm:mt-3 sm:text-6xl lg:text-7xl">
+        <h1 className="text-3d-white mx-auto text-balance text-3xl font-black tracking-[-0.02em] sm:text-5xl lg:text-6xl">
           Take Pride in Your Floors.
         </h1>
 
-        <div className="mx-auto mt-3 flex flex-col items-center gap-1 sm:mt-6 sm:gap-1.5">
+        <div className="mx-auto mt-3 flex flex-col items-center gap-1 sm:mt-4 sm:gap-1.5">
           <p className="text-sm font-extrabold tracking-[0.06em] text-gold-200 uppercase sm:text-xl lg:text-2xl">
             Select Your Space
           </p>
@@ -130,15 +122,15 @@ export function GarageIdleScene() {
           </svg>
         </div>
 
-        <div className="mx-auto mt-2.5 grid max-w-[92rem] grid-cols-2 gap-3 sm:mt-6 sm:flex sm:flex-row sm:items-start sm:justify-center sm:gap-7 sm:[perspective:1800px] sm:px-4">
+        <div className="mx-auto mt-2.5 grid max-w-4xl grid-cols-2 gap-3 sm:mt-5 sm:flex sm:flex-row sm:items-start sm:justify-center sm:gap-6 sm:[perspective:1800px] sm:px-4">
           {cards.map((card) => (
             <button
               key={card.id}
               type="button"
               onClick={() => choose(card.id)}
               className={clsx(
-                "group flex flex-col overflow-hidden rounded-xl border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-72 lg:w-80",
-                card.tilt,
+                "group flex flex-col overflow-hidden rounded-xl border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-64 lg:w-72",
+                cardTilt,
               )}
             >
               <div className="flex-none px-3 pt-2.5 pb-1.5 sm:px-4 sm:pt-4 sm:pb-2">
@@ -152,7 +144,7 @@ export function GarageIdleScene() {
                   src={card.image}
                   alt=""
                   fill
-                  sizes="(min-width: 640px) 20rem, 45vw"
+                  sizes="(min-width: 640px) 18rem, 45vw"
                   className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
@@ -165,8 +157,8 @@ export function GarageIdleScene() {
             type="button"
             onClick={goToQuote}
             className={clsx(
-              "group flex flex-col overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/70 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-72 lg:w-80",
-              residentialTilt,
+              "group flex flex-col overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/70 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-64 lg:w-72",
+              cardTilt,
             )}
           >
             <div className="flex-none px-3 pt-2.5 pb-1.5 sm:px-4 sm:pt-4 sm:pb-2">
@@ -180,34 +172,7 @@ export function GarageIdleScene() {
                 src="/assets/images/card-install.jpg"
                 alt=""
                 fill
-                sizes="(min-width: 640px) 20rem, 45vw"
-                className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
-              <SelectHint />
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => choose("residential")}
-            className={clsx(
-              "group flex flex-col overflow-hidden rounded-xl border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-72 lg:w-80",
-              quoteTilt,
-            )}
-          >
-            <div className="flex-none px-3 pt-2.5 pb-1.5 sm:px-4 sm:pt-4 sm:pb-2">
-              <span className="block truncate text-[9px] font-semibold tracking-[0.1em] text-gold-300 uppercase sm:text-[11px] sm:tracking-[0.15em]">
-                My Home
-              </span>
-              <span className="mt-0.5 block text-base font-extrabold text-warm-white sm:text-2xl">Residential</span>
-            </div>
-            <div className="relative aspect-video w-full overflow-hidden">
-              <Image
-                src="/assets/images/06-residential-house-arrival.jpg"
-                alt=""
-                fill
-                sizes="(min-width: 640px) 20rem, 45vw"
+                sizes="(min-width: 640px) 18rem, 45vw"
                 className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
@@ -218,7 +183,7 @@ export function GarageIdleScene() {
 
         <a
           href="#learn-more"
-          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-warm-white/60 transition-colors hover:text-gold-200 sm:mt-7 sm:text-sm"
+          className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-warm-white/60 transition-colors hover:text-gold-200 sm:mt-6 sm:text-sm"
         >
           Who We Are
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

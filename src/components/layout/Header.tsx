@@ -32,7 +32,7 @@ export function Header() {
           type="button"
           onClick={goHome}
           aria-label="Floor Rescue — back to home"
-          className="group flex h-11 items-center gap-2 rounded-full border border-warm-white/25 bg-charcoal-950/55 px-4 backdrop-blur-md transition-[transform,border-color,background-color] duration-200 hover:-translate-y-0.5 hover:border-gold-300/50 hover:bg-charcoal-900/80"
+          className="group flex h-11 items-center gap-2 rounded-full border border-warm-white/25 bg-charcoal-900/85 px-4 backdrop-blur-md transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-gold-300/50"
         >
           <Image
             src="/assets/images/floor-rescue-logo-transparent.png"

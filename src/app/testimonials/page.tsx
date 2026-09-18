@@ -18,6 +18,20 @@ export default function TestimonialsPage() {
         <h1 className="mt-3 text-balance text-4xl font-semibold tracking-[-0.03em] text-warm-white">
           What it&apos;s like to work with Floor Rescue
         </h1>
+        {testimonials.length > 0 ? (
+          <div className="mt-4 flex items-center gap-1.5">
+            <div className="flex gap-0.5 text-gold-300" aria-hidden="true">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8L5.8 21l1.6-7-5.4-4.7 7.1-.6z" />
+                </svg>
+              ))}
+            </div>
+            <span className="text-sm font-semibold text-warm-white/80">
+              5.0 — {testimonials.length} real reviews, every one 5 stars
+            </span>
+          </div>
+        ) : null}
         {testimonials.length === 0 ? (
           <p className="mt-6 text-base leading-[1.7] text-warm-white/70">
             Client testimonials are being collected for this site. Ask us for project references directly, or

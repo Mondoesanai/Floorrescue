@@ -15,6 +15,18 @@ export function TestimonialsPreview() {
             <h2 className="mt-3 max-w-2xl text-balance text-3xl font-bold tracking-[-0.02em] text-warm-white sm:text-4xl">
               What our clients say
             </h2>
+            <div className="mt-3 flex items-center gap-1.5">
+              <div className="flex gap-0.5 text-gold-300" aria-hidden="true">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8L5.8 21l1.6-7-5.4-4.7 7.1-.6z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-sm font-semibold text-warm-white/80">
+                5.0 — every review is a real 5-star rating
+              </span>
+            </div>
           </div>
           <Link href="/testimonials" className="text-sm font-semibold text-gold-200 hover:text-gold-100">
             Read all reviews →

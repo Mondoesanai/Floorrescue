@@ -94,14 +94,13 @@ h4 {
 .text-3d-white {
   color: var(--color-warm-white);
   text-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.35),
     0.5px 1px 0 var(--color-gold-300),
-    1px 2px 0 var(--color-gold-300),
-    1.5px 3px 0 var(--color-gold-500),
-    2px 4px 0 var(--color-gold-500),
-    2.5px 5px 0 var(--color-gold-700),
-    3px 6px 0 var(--color-gold-900),
-    3.5px 7px 0 rgba(20, 15, 5, 0.75),
-    4px 9px 14px rgba(0, 0, 0, 0.55);
+    1px 2px 0 var(--color-gold-500),
+    1.5px 3px 0 var(--color-gold-700),
+    2px 4px 0 var(--color-gold-900),
+    0 0 30px rgba(232, 207, 154, 0.25),
+    0 6px 18px rgba(0, 0, 0, 0.6);
 }
 
 @keyframes hero-fade-in {
