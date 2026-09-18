@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { RotatingBadge } from "@/components/ui/RotatingBadge";
 
 export function WhoWeAreSection() {
   return (
@@ -28,8 +29,11 @@ export function WhoWeAreSection() {
           </div>
 
           {/* Meet the Owner — real photo of Jeremy, supplied by the client. */}
-          <div className="overflow-hidden rounded-2xl border border-warm-white/10 bg-charcoal-950 shadow-elevated">
-            <div className="relative h-72 w-full sm:h-80">
+          <div className="relative overflow-visible rounded-2xl border border-warm-white/10 bg-charcoal-950 shadow-elevated">
+            <div className="pointer-events-none absolute -top-8 -right-8 z-10 hidden sm:block">
+              <RotatingBadge />
+            </div>
+            <div className="relative h-72 w-full overflow-hidden rounded-t-2xl sm:h-80">
               <Image
                 src="/assets/images/jeremy-owner.png"
                 alt="Jeremy, Founder of Floor Rescue"
@@ -39,7 +43,7 @@ export function WhoWeAreSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-transparent" />
             </div>
-            <div className="p-7">
+            <div className="rounded-b-2xl bg-charcoal-950 p-7">
               <p className="text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">Meet the Owner</p>
               <p className="mt-2 text-lg font-bold text-warm-white">Jeremy</p>
               <p className="text-sm text-warm-white/50">Founder, Floor Rescue</p>
