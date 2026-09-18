@@ -734,3 +734,7 @@ export function getProject(slug: string): Project | undefined {
 export function getProjectsBySector(sectorId: string, limit = 3): Project[] {
   return projects.filter((p) => p.sectors.includes(sectorId)).slice(0, limit);
 }
+
+export function getProjectsBySystem(systemId: string, limit = 3): Project[] {
+  return projects.filter((p) => p.systems.includes(systemId)).slice(0, limit);
+}
