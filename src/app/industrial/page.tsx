@@ -15,9 +15,9 @@ export default function IndustrialIndexPage() {
     <>
       <EnvironmentIndex environment="industrial" sectorIds={industrialSectorIds} />
       <PhotoBanner
-        src="/assets/images/team-photos/crew-jobsite-trailer.png"
-        alt="The Floor Rescue crew and jobsite trailer on an active installation"
-        caption="On site — the Floor Rescue crew"
+        src="/assets/images/team-photos/project-industrial-warehouse-polished.png"
+        alt="A large polished concrete warehouse floor, a real Floor Rescue industrial project"
+        caption="Real Floor Rescue work — industrial warehouse floor"
       />
       <FacilityConditions />
     </>

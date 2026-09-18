@@ -20,9 +20,9 @@ export default function CommercialIndexPage() {
     <>
       <EnvironmentIndex environment="commercial" sectorIds={commercialSectorIds} />
       <PhotoBanner
-        src="/assets/images/team-photos/project-mclaren-garage.png"
-        alt="A real Floor Rescue metallic epoxy commercial floor"
-        caption="Real Floor Rescue work — metallic epoxy"
+        src="/assets/images/team-photos/project-airport-terminal-scored-concrete.png"
+        alt="A large scored concrete floor in a commercial transit terminal, a real Floor Rescue project"
+        caption="Real Floor Rescue work — large-scale commercial concrete"
       />
       {faqs.length ? (
         <div className="py-16">
