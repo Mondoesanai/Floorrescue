@@ -2,6 +2,7 @@ import { ImmersiveJourney } from "@/components/immersive/ImmersiveJourney";
 import { WhoWeAreSection } from "@/components/home/WhoWeAreSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { FindYourSpaceSection } from "@/components/home/FindYourSpaceSection";
+import { TestimonialsPreview } from "@/components/home/TestimonialsPreview";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <WhoWeAreSection />
       <ServicesSection />
       <FindYourSpaceSection />
+      <TestimonialsPreview />
     </div>
   );
 }

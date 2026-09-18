@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 
 const families = [
@@ -8,6 +9,7 @@ const families = [
     description:
       "Polished, stained, and decorative concrete, overlays, micro cement, restoration, and moisture mitigation — working with the slab itself as the finished surface.",
     examples: ["Polished Concrete", "Stained Concrete", "Micro Cement", "Concrete Restoration"],
+    image: "/assets/images/04-commercial-ground-floor-lobby.jpg",
   },
   {
     id: "resinous",
@@ -15,6 +17,7 @@ const families = [
     description:
       "Metallic epoxy, urethane cement, polyaspartic, and broadcast systems — an engineered layer built for specific exposure: chemicals, washdown, or heavy traffic.",
     examples: ["Metallic Epoxy", "Urethane Cement", "Polyaspartic", "Flake & Broadcast"],
+    image: "/assets/images/team-photos/project-mclaren-garage.png",
   },
   {
     id: "service",
@@ -22,6 +25,7 @@ const families = [
     description:
       "Diamond grinding, media blasting, moisture testing, and structural repair — the unglamorous work every finish's performance actually depends on.",
     examples: ["Floor Preparation", "Moisture Mitigation", "Joint & Crack Repair", "New Construction Coordination"],
+    image: "/assets/images/team-photos/crew-troweling-floor.png",
   },
 ];
 
@@ -37,17 +41,23 @@ export function ServicesSection() {
           {families.map((family) => (
             <div
               key={family.id}
-              className="flex flex-col rounded-2xl border border-warm-white/10 bg-charcoal-900 p-7 shadow-elevated transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1"
+              className="flex flex-col overflow-hidden rounded-2xl border border-warm-white/10 bg-charcoal-900 shadow-elevated transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1"
             >
-              <h3 className="text-xl font-bold text-warm-white">{family.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-[1.7] text-warm-white/70">{family.description}</p>
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {family.examples.map((ex) => (
-                  <li key={ex} className="rounded-full border border-warm-white/15 px-3 py-1 text-xs font-medium text-warm-white/60">
-                    {ex}
-                  </li>
-                ))}
-              </ul>
+              <div className="relative h-44 w-full overflow-hidden">
+                <Image src={family.image} alt="" fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-transparent to-transparent" />
+              </div>
+              <div className="flex flex-1 flex-col p-7">
+                <h3 className="text-xl font-bold text-warm-white">{family.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-[1.7] text-warm-white/70">{family.description}</p>
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {family.examples.map((ex) => (
+                    <li key={ex} className="rounded-full border border-warm-white/15 px-3 py-1 text-xs font-medium text-warm-white/60">
+                      {ex}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
@@ -60,6 +70,12 @@ export function ServicesSection() {
             <path d="M9 6l6 6-6 6" />
           </svg>
         </Link>
+
+        <div className="mt-16 border-t border-warm-white/10 pt-12 text-center">
+          <p className="mx-auto max-w-2xl text-balance text-2xl font-semibold tracking-[-0.01em] text-warm-white sm:text-3xl">
+            &ldquo;The power is in the install. And no one installs like Floor Rescue.&rdquo;
+          </p>
+        </div>
       </Container>
     </section>
   );
