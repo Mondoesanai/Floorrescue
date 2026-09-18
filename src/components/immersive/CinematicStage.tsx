@@ -139,8 +139,21 @@ export function CinematicStage({
     return (e: React.SyntheticEvent<HTMLVideoElement>) => {
       if (slot !== active) return;
       const video = e.currentTarget;
-      if (!video.duration || firedNearEnd.current) return;
-      if (video.currentTime / video.duration >= nearEndThreshold) {
+      if (!video.duration) return;
+      const progress = video.currentTime / video.duration;
+
+      // Ease the clip to a stop instead of ending at full speed and cutting —
+      // the last 18% of playback smoothly decelerates toward the freeze frame.
+      const decelStart = 0.82;
+      if (progress >= decelStart) {
+        const base = PLAYBACK_RATE_BY_SCENE[sceneKey] ?? DEFAULT_PLAYBACK_RATE;
+        const t = Math.min(1, (progress - decelStart) / (1 - decelStart));
+        const eased = 1 - Math.pow(1 - t, 2); // ease-out
+        const rate = base - (base - 0.3) * eased;
+        if (Math.abs(video.playbackRate - rate) > 0.02) video.playbackRate = rate;
+      }
+
+      if (!firedNearEnd.current && progress >= nearEndThreshold) {
         firedNearEnd.current = true;
         onNearEnd?.();
       }
