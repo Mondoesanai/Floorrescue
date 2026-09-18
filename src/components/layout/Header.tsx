@@ -16,9 +16,12 @@ export function Header() {
   const { dispatch } = useJourney();
 
   function goHome() {
-    if (pathname === "/") return;
+    // The whole cinematic journey (space -> project -> deep dive) lives on
+    // "/" the entire time — pathname alone can't tell "already home" apart
+    // from "mid-journey", so always reset the journey state. Only skip the
+    // navigation call itself when we're already on "/" (nothing to route to).
     dispatch({ type: "RESET" });
-    router.push("/");
+    if (pathname !== "/") router.push("/");
   }
 
   return (
