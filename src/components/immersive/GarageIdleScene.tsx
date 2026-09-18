@@ -15,7 +15,7 @@ import { trackEvent } from "@/lib/analytics";
 // Industrial sit slightly behind them (smaller, higher), so the row reads as
 // a genuine 3D space rather than four flat cards in a line.
 const commercialTilt =
-  "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)_translateY(10px)_scale(1.04)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(4px)_scale(1.04)]";
+  "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)_translateY(10px)_scale(1.1)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(4px)_scale(1.1)]";
 const residentialTilt =
   "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)_translateY(-10px)_scale(0.95)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(-16px)_scale(0.95)]";
 const industrialTilt =
