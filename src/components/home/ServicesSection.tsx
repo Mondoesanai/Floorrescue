@@ -10,6 +10,7 @@ const families = [
       "Polished, stained, and decorative concrete, overlays, micro cement, restoration, and moisture mitigation — working with the slab itself as the finished surface.",
     examples: ["Polished Concrete", "Stained Concrete", "Micro Cement", "Concrete Restoration"],
     image: "/assets/images/04-commercial-ground-floor-lobby.jpg",
+    href: "/systems#concrete",
   },
   {
     id: "resinous",
@@ -18,6 +19,7 @@ const families = [
       "Metallic epoxy, urethane cement, polyaspartic, and broadcast systems — an engineered layer built for specific exposure: chemicals, washdown, or heavy traffic.",
     examples: ["Metallic Epoxy", "Urethane Cement", "Polyaspartic", "Flake & Broadcast"],
     image: "/assets/images/team-photos/project-mclaren-garage.png",
+    href: "/systems#resinous",
   },
   {
     id: "service",
@@ -26,6 +28,7 @@ const families = [
       "Diamond grinding, media blasting, moisture testing, and structural repair — the unglamorous work every finish's performance actually depends on.",
     examples: ["Floor Preparation", "Moisture Mitigation", "Joint & Crack Repair", "New Construction Coordination"],
     image: "/assets/images/team-photos/crew-troweling-floor.png",
+    href: "/systems/floor-preparation",
   },
 ];
 
@@ -39,12 +42,19 @@ export function ServicesSection() {
         </h2>
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {families.map((family) => (
-            <div
+            <Link
               key={family.id}
-              className="flex flex-col overflow-hidden rounded-2xl border border-warm-white/10 bg-charcoal-900 shadow-elevated transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1"
+              href={family.href}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-warm-white/10 bg-charcoal-900 shadow-elevated transition-[transform,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-gold-300/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300"
             >
               <div className="relative h-44 w-full overflow-hidden">
-                <Image src={family.image} alt="" fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+                <Image
+                  src={family.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-transparent to-transparent" />
               </div>
               <div className="flex flex-1 flex-col p-7">
@@ -57,8 +67,14 @@ export function ServicesSection() {
                     </li>
                   ))}
                 </ul>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.1em] text-gold-300 uppercase">
+                  More Information
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5">
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <Link

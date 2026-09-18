@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 import { HamburgerMenu } from "./HamburgerMenu";
-import { SearchDrawer } from "@/components/browse/SearchDrawer";
+import { InlineSearch } from "./InlineSearch";
 import { useJourney } from "@/lib/journey/context";
 
 /**
@@ -16,7 +15,6 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const { dispatch } = useJourney();
-  const [searchOpen, setSearchOpen] = useState(false);
 
   function goHome() {
     // The whole cinematic journey (space -> project -> deep dive) lives on
@@ -33,38 +31,28 @@ export function Header() {
         <button
           type="button"
           onClick={goHome}
-          className="flex h-11 items-center rounded-full border border-warm-white/25 bg-charcoal-950/55 px-4 backdrop-blur-md transition-transform duration-200 hover:-translate-y-0.5"
+          aria-label="Floor Rescue — back to home"
+          className="group flex h-11 items-center gap-2 rounded-full border border-warm-white/25 bg-charcoal-950/55 px-4 backdrop-blur-md transition-[transform,border-color,background-color] duration-200 hover:-translate-y-0.5 hover:border-gold-300/50 hover:bg-charcoal-900/80"
         >
           <Image
             src="/assets/images/floor-rescue-logo-transparent.png"
-            alt="Floor Rescue — back to home"
+            alt=""
             width={140}
             height={14}
             className="h-4 w-auto object-contain"
             priority
           />
+          <span className="max-w-0 overflow-hidden text-xs font-semibold whitespace-nowrap text-gold-200 opacity-0 transition-[max-width,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:max-w-[4rem] group-hover:opacity-100">
+            Home
+          </span>
         </button>
       </div>
 
       {/* Search lives on its own, outside the hamburger — it needs to be
           reachable in one press, not buried a menu-open away. */}
-      <div className="fixed top-5 right-[4.75rem] z-40">
-        <button
-          type="button"
-          onClick={() => setSearchOpen(true)}
-          aria-label="Search Floor Rescue"
-          className="flex h-11 items-center gap-2 rounded-full border border-warm-white/25 bg-charcoal-950/55 px-4 text-sm text-warm-white/60 backdrop-blur-md transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-gold-300/50 hover:text-warm-white/80"
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="flex-none text-gold-300">
-            <circle cx="11" cy="11" r="7" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
-          <span className="hidden sm:inline">Search anything…</span>
-        </button>
-      </div>
+      <InlineSearch />
 
       <HamburgerMenu dark />
-      <SearchDrawer open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

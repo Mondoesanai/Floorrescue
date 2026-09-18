@@ -29,7 +29,7 @@ export default function SystemsIndexPage() {
       <Container>
         <SectionHeading eyebrow="Floor Systems" title="Every system Floor Rescue installs, by family" />
         {families.map((family) => (
-          <div key={family} className="mt-12">
+          <div key={family} id={family} className="mt-12 scroll-mt-24">
             <h2 className="text-sm font-semibold tracking-[0.2em] text-gold-300 uppercase">{familyLabel[family]}</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {floorSystems
