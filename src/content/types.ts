@@ -99,6 +99,19 @@ export interface CTA {
   href: string;
 }
 
+/** How an FAQ entry is scoped for display: sitewide, one floor system, or one environment (e.g. the commercial index). */
+export type FAQScope =
+  | { kind: "general" }
+  | { kind: "system"; systemId: string }
+  | { kind: "environment"; environment: Environment };
+
+export interface FAQ {
+  id: string;
+  question: string;
+  answer: string;
+  scope: FAQScope;
+}
+
 export interface NeedsReviewItem {
   id: string;
   topic: string;

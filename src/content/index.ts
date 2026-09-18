@@ -8,4 +8,5 @@ export * from "./audiences";
 export * from "./resources";
 export * from "./testimonials";
 export * from "./heroCopy";
+export * from "./faqs";
 export * from "./needsReview";

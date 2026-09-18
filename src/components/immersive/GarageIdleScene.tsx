@@ -10,35 +10,40 @@ import { preloadVideo } from "@/lib/video/preload";
 import { resolveSceneAsset } from "@/lib/video/registry";
 import { trackEvent } from "@/lib/analytics";
 
-// A fanned showcase, not a flat grid — each card tilts on a different
-// diagonal so the row reads as a spread of physical cards facing the
-// visitor from slightly different angles, left to right.
+// A showcase in two facing pairs — Commercial + Residential tilt toward the
+// visitor on the same axis (the "left half" of the row), Industrial + Request
+// a Quote tilt the mirrored opposite way (the "right half"), so the row reads
+// as two matched panels rather than one continuous fan.
+const leftPairTilt =
+  "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(-6px)]";
+const rightPairTilt =
+  "sm:[transform:perspective(1800px)_rotate3d(1,1,0,13deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,4deg)_translateY(-6px)]";
+
 const cards = [
   {
     id: "commercial",
     eyebrow: "My Business",
     title: "Commercial",
     image: "/assets/images/card-commercial.jpg",
-    tilt: "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,14deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,5deg)_translateY(-6px)]",
+    tilt: leftPairTilt,
   },
   {
     id: "residential",
     eyebrow: "My Home",
     title: "Residential",
     image: "/assets/images/card-residential.jpg",
-    tilt: "sm:[transform:perspective(1800px)_rotate3d(1,0,0,7deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,0,0,2deg)_translateY(-6px)]",
+    tilt: leftPairTilt,
   },
   {
     id: "industrial",
     eyebrow: "My Facility",
     title: "Industrial",
     image: "/assets/images/card-industrial.jpg",
-    tilt: "sm:[transform:perspective(1800px)_rotate3d(1,1,0,14deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,5deg)_translateY(-6px)]",
+    tilt: rightPairTilt,
   },
 ] as const;
 
-const quoteTilt =
-  "sm:[transform:perspective(1800px)_rotate3d(1,0.6,0,10deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,0.6,0,3deg)_translateY(-6px)]";
+const quoteTilt = rightPairTilt;
 
 /**
  * "You can click this" affordance — a persistent bottom bar baked into the
@@ -106,7 +111,7 @@ export function GarageIdleScene() {
         <p className="hidden text-xs font-semibold tracking-[0.3em] text-gold-300 uppercase sm:block">
           Concrete Floors + Resinous Systems
         </p>
-        <h1 className="text-3d-gold mx-auto mt-1 text-balance text-3xl font-black tracking-[-0.02em] sm:mt-3 sm:text-6xl lg:text-7xl">
+        <h1 className="text-3d-white mx-auto mt-1 text-balance text-3xl font-black tracking-[-0.02em] sm:mt-3 sm:text-6xl lg:text-7xl">
           Take Pride in Your Floors.
         </h1>
 
@@ -134,7 +139,7 @@ export function GarageIdleScene() {
               type="button"
               onClick={() => choose(card.id)}
               className={clsx(
-                "group flex flex-col overflow-hidden rounded-xl border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-64 lg:w-72",
+                "group flex flex-col overflow-hidden rounded-xl border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-72 lg:w-80",
                 card.tilt,
               )}
             >
@@ -149,7 +154,7 @@ export function GarageIdleScene() {
                   src={card.image}
                   alt=""
                   fill
-                  sizes="(min-width: 640px) 18rem, 45vw"
+                  sizes="(min-width: 640px) 20rem, 45vw"
                   className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
@@ -162,7 +167,7 @@ export function GarageIdleScene() {
             type="button"
             onClick={goToQuote}
             className={clsx(
-              "group flex flex-col overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/70 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-64 lg:w-72",
+              "group flex flex-col overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/70 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-72 lg:w-80",
               quoteTilt,
             )}
           >
@@ -177,7 +182,7 @@ export function GarageIdleScene() {
                 src="/assets/images/card-install.jpg"
                 alt=""
                 fill
-                sizes="(min-width: 640px) 18rem, 45vw"
+                sizes="(min-width: 640px) 20rem, 45vw"
                 className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />

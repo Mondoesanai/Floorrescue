@@ -88,11 +88,11 @@ h4 {
   color: transparent;
 }
 
-/* Bold extruded 3D headline — a stepped stack of gold-to-charcoal offsets
-   behind a bright gold face reads as a physical, pressed-metal letterform
-   rather than a flat CSS trick. */
-.text-3d-gold {
-  color: var(--color-gold-100);
+/* Bold extruded 3D headline — a stepped stack of offsets behind a bright
+   face reads as a physical, pressed letterform rather than a flat CSS trick.
+   White face + gold-toned depth keeps the extrusion legible and on-brand. */
+.text-3d-white {
+  color: var(--color-warm-white);
   text-shadow:
     0.5px 1px 0 var(--color-gold-300),
     1px 2px 0 var(--color-gold-300),

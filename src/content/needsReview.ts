@@ -74,7 +74,15 @@ export const needsReview: NeedsReviewItem[] = [
   {
     id: "testimonial-authenticity",
     topic: "Testimonials",
-    detail: "No testimonials were published — authenticity/wording was flagged as unconfirmed. testimonials.ts is intentionally empty pending real, attributable quotes from Jeremy.",
+    detail:
+      "Resolved: 16 verbatim testimonials were supplied directly by the project's client contact (copied from Floor Rescue's own live site) and added to testimonials.ts with verified: true. Two quotes (Carolyn Anderson / 'Canton Lofts', Allen Kagan / 'Kagan Dwellings') reference specific past projects — the Testimonial type has no linking field, so no cross-reference was added; Kagan Dwellings does match an existing entry in projects.ts (kagan-dwellings-polished-concrete) if a future linking field is added. One quote (artemis21) says 'Texas Rescue' instead of 'Floor Rescue' verbatim in the source — kept as-is rather than corrected, flagging here in case Jeremy wants it corrected or removed.",
+    status: "needs-review",
+  },
+  {
+    id: "faq-moisture-testing-standards",
+    topic: "FAQ moisture-testing figures (ASTM F1869/F2170, 3 lbs/1,000 SF/24 hrs)",
+    detail:
+      "faqs.ts now states moisture-testing standards (ASTM F1869 calcium chloride test, 72-hour read, for slabs 6+ months old; ASTM F2170 relative-humidity probe for newer slabs; a 3 lbs/1,000 SF/24 hrs MVT threshold above which a barrier/moisture-tolerant primer is required) as public copy across the general, polished-concrete, metallic-epoxy, polyaspartic, and urethane-cement FAQ entries. These figures were already present internally (floorSystems.ts's polyaspartic technicalNotes cites the same ASTM F1869/3 lbs threshold, and resources.ts's moisture-testing-step-skipped article cites the 72-hour figure) and were cross-checked against the client's raw Base44 source corpus for exact wording, but this is the first time they're surfaced as public-facing copy rather than an internal note. Reconfirm with Jeremy that these are still the current standards/thresholds his crews test to before treating this FAQ copy as permanent.",
     status: "needs-review",
   },
   {

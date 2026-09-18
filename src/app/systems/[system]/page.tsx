@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { floorSystems, getFloorSystem } from "@/content/floorSystems";
+import { getFAQsForSystem } from "@/content/faqs";
 
 export function generateStaticParams() {
   return floorSystems.map((s) => ({ system: s.id }));
@@ -19,6 +22,8 @@ export default async function SystemPage({ params }: { params: Promise<{ system:
   const { system: id } = await params;
   const system = getFloorSystem(id);
   if (!system) notFound();
+
+  const faqs = getFAQsForSystem(system.id);
 
   return (
     <div className="py-16">
@@ -52,6 +57,15 @@ export default async function SystemPage({ params }: { params: Promise<{ system:
         <Button href={`/quote?system=${system.id}`} className="mt-8">
           Request a Quote
         </Button>
+
+        {faqs.length ? (
+          <div className="mt-16">
+            <SectionHeading eyebrow="Common Questions" title={`Questions about ${system.name}`} />
+            <div className="mt-6">
+              <FAQAccordion faqs={faqs} />
+            </div>
+          </div>
+        ) : null}
       </Container>
     </div>
   );
