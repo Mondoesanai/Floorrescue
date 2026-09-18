@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { audiences } from "@/content/audiences";
+import { PhotoBanner } from "@/components/ui/PhotoBanner";
 
 export const metadata: Metadata = {
   title: "For the Trade",
@@ -19,7 +20,13 @@ const slugs: Record<string, string> = {
 
 export default function ForTheTradeIndexPage() {
   return (
-    <div className="py-16">
+    <div>
+      <PhotoBanner
+        src="/assets/images/team-photos/crew-jobsite-trailer.png"
+        alt="Floor Rescue on an active jobsite"
+        caption="On site, on schedule"
+      />
+      <div className="py-16">
       <Container>
         <SectionHeading eyebrow="For the Trade" title="Built for how you actually work" />
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -36,6 +43,7 @@ export default function ForTheTradeIndexPage() {
           ))}
         </div>
       </Container>
+      </div>
     </div>
   );
 }

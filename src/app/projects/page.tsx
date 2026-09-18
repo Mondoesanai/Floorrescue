@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { MatchingProjects } from "@/components/landing/MatchingProjects";
+import { PhotoBanner } from "@/components/ui/PhotoBanner";
 import { projects } from "@/content/projects";
 
 export const metadata: Metadata = {
@@ -12,11 +13,18 @@ export const metadata: Metadata = {
 
 export default function ProjectsIndexPage() {
   return (
-    <div className="py-16">
-      <Container>
-        <SectionHeading eyebrow="Project Library" title="Floor Rescue project history" />
-      </Container>
-      <MatchingProjects projects={projects} />
+    <div>
+      <PhotoBanner
+        src="/assets/images/team-photos/project-mclaren-garage.png"
+        alt="Real Floor Rescue project work"
+        caption={`${projects.length}+ real projects across residential, commercial, and industrial`}
+      />
+      <div className="py-16">
+        <Container>
+          <SectionHeading eyebrow="Project Library" title="Floor Rescue project history" />
+        </Container>
+        <MatchingProjects projects={projects} />
+      </div>
     </div>
   );
 }

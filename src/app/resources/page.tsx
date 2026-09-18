@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { resourceCategories, resources } from "@/content/resources";
+import { PhotoBanner } from "@/components/ui/PhotoBanner";
 
 export const metadata: Metadata = {
   title: "Education & Resources",
@@ -12,7 +13,13 @@ export const metadata: Metadata = {
 
 export default function ResourcesIndexPage() {
   return (
-    <div className="py-16">
+    <div>
+      <PhotoBanner
+        src="/assets/images/team-photos/crew-metallic-blue-application.png"
+        alt="A Floor Rescue crew member applying a metallic epoxy system"
+        caption="The knowledge behind the install"
+      />
+      <div className="py-16">
       <Container>
         <SectionHeading eyebrow="Education / Resources" title="Learn how the trade actually works" />
         {resourceCategories.map((category) => {
@@ -37,6 +44,7 @@ export default function ResourcesIndexPage() {
           );
         })}
       </Container>
+      </div>
     </div>
   );
 }

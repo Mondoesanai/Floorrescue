@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { floorSystems } from "@/content/floorSystems";
+import { PhotoBanner } from "@/components/ui/PhotoBanner";
 
 export const metadata: Metadata = {
   title: "Floor Systems",
@@ -18,7 +19,13 @@ const familyLabel: Record<(typeof families)[number], string> = {
 
 export default function SystemsIndexPage() {
   return (
-    <div className="py-16">
+    <div>
+      <PhotoBanner
+        src="/assets/images/team-photos/project-metallic-white-garage.png"
+        alt="A real Floor Rescue metallic epoxy floor system"
+        caption="A real Floor Rescue metallic epoxy system"
+      />
+      <div className="py-16">
       <Container>
         <SectionHeading eyebrow="Floor Systems" title="Every system Floor Rescue installs, by family" />
         {families.map((family) => (
@@ -43,6 +50,7 @@ export default function SystemsIndexPage() {
           </div>
         ))}
       </Container>
+      </div>
     </div>
   );
 }
