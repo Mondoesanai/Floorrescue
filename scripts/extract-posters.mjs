@@ -15,6 +15,9 @@ const jobs = [
   ["intro to commercial video.mp4", "03-commercial-building-in-garage.jpg", "end"],
   ["commercial from skyscraper into lobby.mp4", "04-commercial-ground-floor-lobby.jpg", "end"],
   ["commercial from lobby to entrance.mp4", "05-commercial-final-hero.jpg", "end"],
+  ["idle loop to residential house.mp4", "06-residential-house-arrival.jpg", "end"],
+  ["residential house to inside of lobby.mp4", "07-residential-lobby-entry.jpg", "end"],
+  ["inside of lobby to end room.mp4", "08-residential-final-hero.jpg", "end"],
 ];
 
 function getDuration(file) {

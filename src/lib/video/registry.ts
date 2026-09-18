@@ -16,7 +16,10 @@ export type SceneKey =
   | "garageIdle"
   | "commercialBuild"
   | "commercialDoorEntry"
-  | "commercialDeepDive";
+  | "commercialDeepDive"
+  | "residentialBuild"
+  | "residentialDoorEntry"
+  | "residentialDeepDive";
 
 /** Canonical filenames straight from the build package — do not rename without updating this file. */
 function video(name: string) {
@@ -47,6 +50,18 @@ export const videoRegistry: Record<SceneKey, SceneAssetFamily> = {
   commercialDeepDive: {
     desktop: { video: video("commercial from lobby to entrance.mp4"), poster: image("05-commercial-final-hero.jpg") },
   },
+  residentialBuild: {
+    desktop: { video: video("idle loop to residential house.mp4"), poster: image("06-residential-house-arrival.jpg") },
+  },
+  residentialDoorEntry: {
+    desktop: {
+      video: video("residential house to inside of lobby.mp4"),
+      poster: image("07-residential-lobby-entry.jpg"),
+    },
+  },
+  residentialDeepDive: {
+    desktop: { video: video("inside of lobby to end room.mp4"), poster: image("08-residential-final-hero.jpg") },
+  },
 };
 
 /**
@@ -71,7 +86,7 @@ export function getEnvironmentPoster(environment: "residential" | "commercial" |
       return image("hero-industrial.jpg");
     case "residential":
     default:
-      return image("hero-residential.jpg");
+      return image("08-residential-final-hero.jpg");
   }
 }
 

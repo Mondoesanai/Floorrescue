@@ -11,10 +11,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/systems" },
 };
 
-const families = ["concrete", "resinous"] as const;
+const families = ["concrete", "resinous", "decorative"] as const;
 const familyLabel: Record<(typeof families)[number], string> = {
   concrete: "Concrete / Cementitious",
   resinous: "Resinous / Coatings",
+  decorative: "Decorative Artistry",
 };
 
 export default function SystemsIndexPage() {

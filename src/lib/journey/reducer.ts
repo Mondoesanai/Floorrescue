@@ -5,6 +5,7 @@ export type JourneyAction =
   | { type: "INTRO_FINISHED" }
   | { type: "CHOOSE_ENVIRONMENT"; environment: Environment }
   | { type: "COMMERCIAL_BUILD_SETTLED" }
+  | { type: "RESIDENTIAL_BUILD_SETTLED" }
   | { type: "CHOOSE_SECTOR"; sectorId: string; otherText?: string | null }
   | { type: "DOOR_ENTRY_SETTLED" }
   | { type: "CHOOSE_PROJECT_STATE"; projectState: ProjectState; otherText?: string | null }
@@ -35,6 +36,9 @@ const backMap: Partial<Record<JourneyStage, JourneyStage>> = {
   "commercial-landing": "commercial-project-state",
   "commercial-project-state": "commercial-sector",
   "commercial-sector": "garage-idle",
+  "residential-landing": "residential-project-state",
+  "residential-project-state": "residential-sector",
+  "residential-sector": "garage-idle",
   quote: "commercial-landing",
 };
 
@@ -51,31 +55,45 @@ export function journeyReducer(state: JourneyState, action: JourneyAction): Jour
       return pushHistory({ ...state, introSeen: true }, "garage-idle");
 
     case "CHOOSE_ENVIRONMENT":
-      if (action.environment !== "commercial") {
-        return { ...state, environment: action.environment };
+      if (action.environment === "commercial") {
+        return pushHistory({ ...state, environment: "commercial" }, "commercial-build");
       }
-      return pushHistory({ ...state, environment: "commercial" }, "commercial-build");
+      if (action.environment === "residential") {
+        return pushHistory({ ...state, environment: "residential" }, "residential-build");
+      }
+      return { ...state, environment: action.environment };
 
     case "COMMERCIAL_BUILD_SETTLED":
       return pushHistory(state, "commercial-sector");
 
-    case "CHOOSE_SECTOR":
+    case "RESIDENTIAL_BUILD_SETTLED":
+      return pushHistory(state, "residential-sector");
+
+    case "CHOOSE_SECTOR": {
+      const nextStage: JourneyStage = state.environment === "residential" ? "residential-door-entry" : "commercial-door-entry";
       return pushHistory(
         { ...state, sectorId: action.sectorId, otherSectorText: action.otherText ?? null },
-        "commercial-door-entry",
+        nextStage,
       );
+    }
 
-    case "DOOR_ENTRY_SETTLED":
-      return pushHistory(state, "commercial-project-state");
+    case "DOOR_ENTRY_SETTLED": {
+      const nextStage: JourneyStage = state.environment === "residential" ? "residential-project-state" : "commercial-project-state";
+      return pushHistory(state, nextStage);
+    }
 
-    case "CHOOSE_PROJECT_STATE":
+    case "CHOOSE_PROJECT_STATE": {
+      const nextStage: JourneyStage = state.environment === "residential" ? "residential-deep-dive" : "commercial-deep-dive";
       return pushHistory(
         { ...state, projectState: action.projectState, otherProjectText: action.otherText ?? null },
-        "commercial-deep-dive",
+        nextStage,
       );
+    }
 
-    case "DEEP_DIVE_SETTLED":
-      return pushHistory(state, "commercial-landing");
+    case "DEEP_DIVE_SETTLED": {
+      const nextStage: JourneyStage = state.environment === "residential" ? "residential-landing" : "commercial-landing";
+      return pushHistory(state, nextStage);
+    }
 
     case "TOGGLE_CONCERN": {
       const has = state.concerns.includes(action.concernId);

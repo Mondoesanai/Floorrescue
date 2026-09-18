@@ -6,6 +6,14 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { floorSystems, getFloorSystem } from "@/content/floorSystems";
 import { getFAQsForSystem } from "@/content/faqs";
+import type { SystemFamily } from "@/content/types";
+
+const familyLabel: Record<SystemFamily, string> = {
+  concrete: "Concrete / Cementitious",
+  resinous: "Resinous / Coatings",
+  decorative: "Decorative Artistry",
+  service: "Preparation & Restoration",
+};
 
 export function generateStaticParams() {
   return floorSystems.map((s) => ({ system: s.id }));
@@ -28,9 +36,7 @@ export default async function SystemPage({ params }: { params: Promise<{ system:
   return (
     <div className="py-16">
       <Container className="max-w-3xl">
-        <p className="text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">
-          {system.family === "concrete" ? "Concrete / Cementitious" : "Resinous / Coatings"}
-        </p>
+        <p className="text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">{familyLabel[system.family]}</p>
         <h1 className="mt-3 text-balance text-4xl font-semibold tracking-[-0.03em] text-warm-white">{system.name}</h1>
 
         <div className="mt-8 space-y-4">

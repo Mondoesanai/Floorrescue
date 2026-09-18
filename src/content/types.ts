@@ -6,7 +6,7 @@ export type ProjectState =
   | "failed-floor"
   | "other";
 
-export type SystemFamily = "concrete" | "resinous" | "service";
+export type SystemFamily = "concrete" | "resinous" | "service" | "decorative";
 
 export interface HeroCopyVariant {
   projectState: ProjectState;
@@ -128,6 +128,12 @@ export type JourneyStage =
   | "commercial-project-state"
   | "commercial-deep-dive"
   | "commercial-landing"
+  | "residential-build"
+  | "residential-sector"
+  | "residential-door-entry"
+  | "residential-project-state"
+  | "residential-deep-dive"
+  | "residential-landing"
   | "quote";
 
 export interface JourneyState {

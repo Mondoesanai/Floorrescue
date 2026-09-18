@@ -48,7 +48,7 @@ export const needsReview: NeedsReviewItem[] = [
     id: "contact-phone-conflict",
     topic: "Contact phone number",
     detail:
-      "Current site displays 972-293-4343; other source materials reference different numbers, including (214) 222-3977 / info@floorrescue.com in the Base44 homepage source. No phone number or alternate email is hard-coded in the site chrome — confirm the current, correct number and inbox before adding one.",
+      "Current site displays 972-293-4343 / vip@floorrescue.com; other source materials reference different numbers, including (214) 222-3977 / info@floorrescue.com in the Base44 homepage source. A third pair — 972-294-9808 / jeremy@floorrescue.com — appears elsewhere on the current live site (per the client-supplied current-site content inventory) as what reads like Jeremy's direct line/inbox rather than the main office number. No phone number or alternate email is hard-coded in the site chrome — confirm which number(s)/inbox(es) are current and correct, and whether the direct line should be surfaced anywhere, before adding any of them.",
     status: "needs-review",
   },
   {
@@ -89,7 +89,14 @@ export const needsReview: NeedsReviewItem[] = [
     id: "project-stats-verification",
     topic: "Project statistics / valuations",
     detail:
-      "Named real projects (e.g. the 80,000 SF warehouse/showroom) are included with verified: false and no square-footage or dollar figures published, pending Jeremy's confirmation and real project photos.",
+      "Named real projects (e.g. the 80,000 SF warehouse/showroom) are included with verified: false and no square-footage or dollar figures published, pending Jeremy's confirmation and real project photos. This includes three new client entries added from the current live site's 'SOME OF OUR CLIENTS' section (commercial-floors page client-logo captions): Amazon (three floors of polished concrete overlays for call centers, Dallas Galleria), KIA dealerships (automotive epoxy resin floors for service bays), and Luminant Power Plants (construction across multiple locations — locker rooms, conference rooms, offices). The source captions give scope but not dates, square footage, or — for Luminant specifically — which floor system was used, so luminant-power-plants in projects.ts is published with an empty systems array rather than a guessed one. TD Industries' existing project entry was broadened (not duplicated) with the fuller scope the same client-logo caption gives: offices, warehouse, will call, mail room, striping, and exterior entryway alongside the previously listed warehouse work.",
+    status: "needs-review",
+  },
+  {
+    id: "service-area-scope",
+    topic: "Service area — city/state list breadth",
+    detail:
+      "Source materials disagree on how broad Floor Rescue's service area is. The Base44 source corpus consistently lists only five Texas cities in its site footer (Dallas, Fort Worth, Houston, Austin, San Antonio) across every page sampled. The current live site (per the client-supplied current-site content inventory, and confirmed directly against floorrescue.com) states a broader area: Dallas, Fort Worth, Houston, Austin, Waco, San Antonio, Odessa, Midland, Louisiana, and Oklahoma. No dedicated service-area/city-list content exists yet anywhere in this content graph (environments.ts holds only environment-type copy, not a city list) — nothing broader has been published pending Jeremy's confirmation of which list is current. Publishing a 10-location, multi-state (TX + LA + OK) claim is a bigger claim than the 5-city version already implied elsewhere in this graph (e.g. audiences.ts's general-contractors copy, project locations mostly clustered in DFW with one Louisiana project) and should get his explicit sign-off before it's added as site copy.",
     status: "needs-review",
   },
 ];

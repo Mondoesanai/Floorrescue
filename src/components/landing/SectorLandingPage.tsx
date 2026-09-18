@@ -19,7 +19,8 @@ import { QuoteCTA } from "./QuoteCTA";
 
 export function SectorLandingPage({ sector }: { sector: Sector }) {
   const { state, dispatch } = useJourney();
-  const personalized = state.stage === "commercial-landing" && state.sectorId === sector.id;
+  const personalized =
+    (state.stage === "commercial-landing" || state.stage === "residential-landing") && state.sectorId === sector.id;
   const [localConcerns, setLocalConcerns] = useState<string[]>([]);
 
   const activeConcerns = personalized ? state.concerns : localConcerns;

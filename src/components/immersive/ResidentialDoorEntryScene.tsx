@@ -9,16 +9,17 @@ import { preloadVideo } from "@/lib/video/preload";
 import { resolveSceneAsset } from "@/lib/video/registry";
 import { getSector } from "@/content/sectors";
 
-/** Pure UI overlay for the commercial-door-entry / commercial-project-state
- *  phase — video lives in ImmersiveJourney's single CinematicStage. */
-export function CommercialDoorEntryScene() {
+/** Pure UI overlay for the residential-door-entry / residential-project-state
+ *  phase — video lives in ImmersiveJourney's single CinematicStage. Mirrors
+ *  CommercialDoorEntryScene exactly. */
+export function ResidentialDoorEntryScene() {
   const { state } = useJourney();
   const { leaving, transition } = useSceneTransition();
   const router = useRouter();
-  const showChoice = state.stage === "commercial-project-state";
+  const showChoice = state.stage === "residential-project-state";
 
   useEffect(() => {
-    preloadVideo(resolveSceneAsset("commercialDeepDive", "desktop").video);
+    preloadVideo(resolveSceneAsset("residentialDeepDive", "desktop").video);
     // The sector is already known here — prefetch the eventual landing page's
     // RSC payload now so the deep-dive -> landing jump doesn't have to wait
     // on it, which was the source of the rough/choppy final transition.

@@ -11,7 +11,7 @@ export const projects: Project[] = [
   {
     id: "td-industries-warehouse",
     slug: "td-industries-dallas-polished-concrete",
-    title: "TD Industries — Polished Concrete Warehouse Floor",
+    title: "TD Industries — Polished Concrete Across Offices, Warehouse & Exterior Entryway",
     environment: "industrial",
     sectors: ["warehouse-distribution"],
     systems: ["polished-concrete"],
@@ -20,7 +20,21 @@ export const projects: Project[] = [
     media: [],
     verified: false,
     summary:
-      "A professional polished concrete floor system providing a reflective, durable surface for manufacturing and distribution operations with enhanced visibility and safety.",
+      "A long-running client relationship spanning TD Industries' offices, warehouse, will call, mail room, striping, and exterior entryway — polished concrete providing a reflective, durable surface with enhanced visibility and safety across both office and distribution areas of the facility.",
+  },
+  {
+    id: "luminant-power-plants",
+    slug: "luminant-power-plants-multi-location",
+    title: "Luminant Power Plants — Multi-Location Construction",
+    environment: "industrial",
+    sectors: ["specialty-industrial"],
+    systems: [],
+    problems: [],
+    location: "TX",
+    media: [],
+    verified: false,
+    summary:
+      "Construction work across multiple Luminant power plant locations — locker rooms, conference rooms, and offices. Named as a client on Floor Rescue's own site; the specific floor systems used per space aren't detailed in available source material, so none are listed here pending confirmation from Jeremy.",
   },
   {
     id: "mckinney-airport-hangar",
@@ -136,6 +150,34 @@ export const projects: Project[] = [
   },
 
   // ---------------- Commercial ----------------
+  {
+    id: "amazon-call-centers",
+    slug: "amazon-call-centers-polished-concrete-overlays",
+    title: "Amazon — Polished Concrete Overlays for Call Centers",
+    environment: "commercial",
+    sectors: ["office-corporate"],
+    systems: ["concrete-overlays", "polished-concrete"],
+    problems: ["heavy-traffic", "appearance-design"],
+    location: "Dallas, TX",
+    media: [],
+    verified: false,
+    summary:
+      "Three floors of polished concrete overlays installed for Amazon call center space in the Dallas Galleria — a rapid-set polishable cement topping resetting the existing slab's appearance across all three levels.",
+  },
+  {
+    id: "kia-dealerships-service-bays",
+    slug: "kia-dealerships-epoxy-service-bays",
+    title: "KIA Dealerships — Automotive Epoxy Resin Floors for Service Bays",
+    environment: "commercial",
+    sectors: ["automotive-dealership"],
+    systems: ["epoxy-coatings"],
+    problems: ["chemical-exposure", "heavy-traffic"],
+    location: "TX",
+    media: [],
+    verified: false,
+    summary:
+      "Industrial epoxy floor coatings installed in KIA dealership service bays — a chemical- and abrasion-resistant resin floor built for oil, fluids, and lift traffic in an active automotive service environment.",
+  },
   {
     id: "uptown-dallas-commercial-kitchen",
     slug: "uptown-dallas-commercial-kitchen",

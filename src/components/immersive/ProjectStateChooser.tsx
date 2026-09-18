@@ -16,7 +16,9 @@ const options: { id: Exclude<ProjectState, "other">; label: string }[] = [
   { id: "failed-floor", label: "Failed or Damaged Floor" },
 ];
 
-export function CommercialProjectStateChooser({ visible, onSelect }: Props) {
+/** Shared project-state question UI — reused as-is by both the Commercial and
+ *  Residential cinematic journeys (the copy and options are environment-neutral). */
+export function ProjectStateChooser({ visible, onSelect }: Props) {
   const [showOther, setShowOther] = useState(false);
   const [otherText, setOtherText] = useState("");
 

@@ -10,6 +10,8 @@ import { CinematicStage } from "./CinematicStage";
 import { GarageIdleScene } from "./GarageIdleScene";
 import { CommercialBuildScene } from "./CommercialBuildScene";
 import { CommercialDoorEntryScene } from "./CommercialDoorEntryScene";
+import { ResidentialBuildScene } from "./ResidentialBuildScene";
+import { ResidentialDoorEntryScene } from "./ResidentialDoorEntryScene";
 import { JourneyProgress } from "./JourneyProgress";
 import { trackEvent } from "@/lib/analytics";
 
@@ -27,6 +29,14 @@ function sceneKeyForStage(stage: JourneyStage): SceneKey | null {
       return "commercialDoorEntry";
     case "commercial-deep-dive":
       return "commercialDeepDive";
+    case "residential-build":
+    case "residential-sector":
+      return "residentialBuild";
+    case "residential-door-entry":
+    case "residential-project-state":
+      return "residentialDoorEntry";
+    case "residential-deep-dive":
+      return "residentialDeepDive";
     default:
       return null;
   }
@@ -54,7 +64,11 @@ export function ImmersiveJourney() {
       // First time we've ever rendered this clip's key: if the journey is
       // already past it (hydrated mid-session), don't replay from scratch —
       // just hold the settled frame and show the relevant choice UI.
-      const alreadyPastVideo = state.stage === "commercial-sector" || state.stage === "commercial-project-state";
+      const alreadyPastVideo =
+        state.stage === "commercial-sector" ||
+        state.stage === "commercial-project-state" ||
+        state.stage === "residential-sector" ||
+        state.stage === "residential-project-state";
       staticResolved.current.set(sceneKey, alreadyPastVideo);
     }
     isStatic = staticResolved.current.get(sceneKey) ?? false;
@@ -64,7 +78,11 @@ export function ImmersiveJourney() {
     if (navigatedRef.current) return;
     navigatedRef.current = true;
     const sector = state.sectorId ? getSector(state.sectorId) : undefined;
-    const destination = sector ? `/${sector.environment}/${sector.id}` : "/commercial";
+    const destination = sector
+      ? `/${sector.environment}/${sector.id}`
+      : state.environment === "residential"
+        ? "/residential"
+        : "/commercial";
     trackEvent("personalized_page_viewed", { sectorId: state.sectorId, projectState: state.projectState });
     // Fade the frozen final frame to black before the route change instead of
     // cutting straight to it — the landing page's own hero-fade-in picks up
@@ -89,7 +107,7 @@ export function ImmersiveJourney() {
   // "/" (e.g. a stale session restored after closing the tab mid-transition).
   // The live transition is handled directly by handleDeepDiveEnded above.
   useEffect(() => {
-    if (state.stage === "commercial-landing") goToLanding();
+    if (state.stage === "commercial-landing" || state.stage === "residential-landing") goToLanding();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -110,10 +128,13 @@ export function ImmersiveJourney() {
           onNearEnd={() => {
             if (state.stage === "commercial-build") dispatch({ type: "COMMERCIAL_BUILD_SETTLED" });
             else if (state.stage === "commercial-door-entry") dispatch({ type: "DOOR_ENTRY_SETTLED" });
+            else if (state.stage === "residential-build") dispatch({ type: "RESIDENTIAL_BUILD_SETTLED" });
+            else if (state.stage === "residential-door-entry") dispatch({ type: "DOOR_ENTRY_SETTLED" });
           }}
           onEnded={() => {
             if (state.stage === "intro") dispatch({ type: "INTRO_FINISHED" });
             else if (state.stage === "commercial-deep-dive") handleDeepDiveEnded();
+            else if (state.stage === "residential-deep-dive") handleDeepDiveEnded();
           }}
           className="absolute inset-0 h-full w-full"
         />
@@ -124,6 +145,10 @@ export function ImmersiveJourney() {
       {state.stage === "garage-idle" ? <GarageIdleScene /> : null}
       {state.stage === "commercial-build" || state.stage === "commercial-sector" ? <CommercialBuildScene /> : null}
       {state.stage === "commercial-door-entry" || state.stage === "commercial-project-state" ? <CommercialDoorEntryScene /> : null}
+      {state.stage === "residential-build" || state.stage === "residential-sector" ? <ResidentialBuildScene /> : null}
+      {state.stage === "residential-door-entry" || state.stage === "residential-project-state" ? (
+        <ResidentialDoorEntryScene />
+      ) : null}
 
       <div
         className="pointer-events-none absolute inset-0 z-20 bg-charcoal-950 transition-opacity duration-[650ms] ease-[cubic-bezier(0.42,0,1,1)]"

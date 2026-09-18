@@ -4,14 +4,17 @@ import clsx from "clsx";
 import type { JourneyStage } from "@/content/types";
 
 const steps: { label: string; stages: JourneyStage[] }[] = [
-  { label: "Space", stages: ["commercial-build", "commercial-sector"] },
-  { label: "Project", stages: ["commercial-door-entry", "commercial-project-state"] },
-  { label: "Your Plan", stages: ["commercial-deep-dive", "commercial-landing"] },
+  { label: "Space", stages: ["commercial-build", "commercial-sector", "residential-build", "residential-sector"] },
+  {
+    label: "Project",
+    stages: ["commercial-door-entry", "commercial-project-state", "residential-door-entry", "residential-project-state"],
+  },
+  { label: "Your Plan", stages: ["commercial-deep-dive", "commercial-landing", "residential-deep-dive", "residential-landing"] },
 ];
 
 /**
  * A quiet step line, not a quiz counter — three segments that fill in as the
- * visitor moves through Commercial. Dots-only under the header on mobile
+ * visitor moves through Commercial or Residential. Dots-only under the header on mobile
  * (there isn't room between the logo and hamburger pills for labels without
  * overlapping them); full labeled line centered above everything from sm up.
  */

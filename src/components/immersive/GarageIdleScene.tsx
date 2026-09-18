@@ -79,11 +79,12 @@ export function GarageIdleScene() {
 
   useEffect(() => {
     preloadVideo(resolveSceneAsset("commercialBuild", "desktop").video);
+    preloadVideo(resolveSceneAsset("residentialBuild", "desktop").video);
   }, []);
 
   function choose(id: (typeof cards)[number]["id"]) {
     trackEvent("environment_selected", { environment: id });
-    if (id === "commercial") {
+    if (id === "commercial" || id === "residential") {
       transition({ type: "CHOOSE_ENVIRONMENT", environment: id });
       return;
     }
