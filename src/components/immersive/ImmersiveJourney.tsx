@@ -150,6 +150,24 @@ export function ImmersiveJourney() {
         <ResidentialDoorEntryScene />
       ) : null}
 
+      {[
+        "commercial-sector",
+        "commercial-project-state",
+        "residential-sector",
+        "residential-project-state",
+      ].includes(state.stage) ? (
+        <button
+          type="button"
+          onClick={() => dispatch({ type: "GO_BACK" })}
+          className="fixed bottom-6 left-6 z-30 flex items-center gap-1.5 rounded-full border border-warm-white/25 bg-charcoal-950/60 px-4 py-2.5 text-sm font-semibold text-warm-white/80 backdrop-blur-md transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-gold-300/50 hover:text-warm-white"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+          Go Back
+        </button>
+      ) : null}
+
       <div
         className="pointer-events-none absolute inset-0 z-20 bg-charcoal-950 transition-opacity duration-[650ms] ease-[cubic-bezier(0.42,0,1,1)]"
         style={{ opacity: fadingOut ? 1 : 0 }}

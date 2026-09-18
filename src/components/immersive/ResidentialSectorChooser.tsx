@@ -44,7 +44,7 @@ export function ResidentialSectorChooser({ visible, onSelect }: Props) {
   return (
     <div
       className={clsx(
-        "absolute inset-y-0 left-0 z-10 flex w-full max-w-2xl items-center px-6 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10",
+        "absolute inset-y-0 left-0 z-10 flex w-full max-w-2xl items-end justify-center px-6 pb-28 sm:left-[6vw] sm:items-center sm:justify-start sm:pb-0 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10",
         visible ? "translate-x-0 opacity-100" : "pointer-events-none -translate-x-3 opacity-0",
       )}
       aria-hidden={!visible}

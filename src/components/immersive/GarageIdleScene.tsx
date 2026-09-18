@@ -10,14 +10,18 @@ import { preloadVideo } from "@/lib/video/preload";
 import { resolveSceneAsset } from "@/lib/video/registry";
 import { trackEvent } from "@/lib/analytics";
 
-// A showcase in two facing pairs — Commercial + Residential tilt toward the
-// visitor on the same axis (the "left half" of the row), Industrial + Request
-// a Quote tilt the mirrored opposite way (the "right half"), so the row reads
-// as two matched panels rather than one continuous fan.
-const leftPairTilt =
-  "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(-6px)]";
-const rightPairTilt =
-  "sm:[transform:perspective(1800px)_rotate3d(1,1,0,13deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,4deg)_translateY(-6px)]";
+// A showcase in two facing pairs, staggered in depth — Commercial + Request a
+// Quote sit forward (larger, lower, closer to the visitor); Residential +
+// Industrial sit slightly behind them (smaller, higher), so the row reads as
+// a genuine 3D space rather than four flat cards in a line.
+const commercialTilt =
+  "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)_translateY(10px)_scale(1.04)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(4px)_scale(1.04)]";
+const residentialTilt =
+  "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,13deg)_translateY(-10px)_scale(0.95)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,4deg)_translateY(-16px)_scale(0.95)]";
+const industrialTilt =
+  "sm:[transform:perspective(1800px)_rotate3d(1,1,0,13deg)_translateY(-10px)_scale(0.95)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,4deg)_translateY(-16px)_scale(0.95)]";
+const quoteTilt =
+  "sm:[transform:perspective(1800px)_rotate3d(1,1,0,13deg)_translateY(10px)_scale(1.04)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,4deg)_translateY(4px)_scale(1.04)]";
 
 const cards = [
   {
@@ -25,25 +29,23 @@ const cards = [
     eyebrow: "My Business",
     title: "Commercial",
     image: "/assets/images/card-commercial.jpg",
-    tilt: leftPairTilt,
+    tilt: commercialTilt,
   },
   {
     id: "residential",
     eyebrow: "My Home",
     title: "Residential",
     image: "/assets/images/card-residential.jpg",
-    tilt: leftPairTilt,
+    tilt: residentialTilt,
   },
   {
     id: "industrial",
     eyebrow: "My Facility",
     title: "Industrial",
     image: "/assets/images/card-industrial.jpg",
-    tilt: rightPairTilt,
+    tilt: industrialTilt,
   },
 ] as const;
-
-const quoteTilt = rightPairTilt;
 
 /**
  * "You can click this" affordance — a persistent bottom bar baked into the
