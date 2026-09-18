@@ -10,26 +10,35 @@ import { preloadVideo } from "@/lib/video/preload";
 import { resolveSceneAsset } from "@/lib/video/registry";
 import { trackEvent } from "@/lib/analytics";
 
+// A fanned showcase, not a flat grid — each card tilts on a different
+// diagonal so the row reads as a spread of physical cards facing the
+// visitor from slightly different angles, left to right.
 const cards = [
   {
     id: "commercial",
     eyebrow: "My Business",
     title: "Commercial",
     image: "/assets/images/card-commercial.jpg",
+    tilt: "sm:[transform:perspective(1800px)_rotate3d(1,-1,0,14deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,-1,0,5deg)_translateY(-6px)]",
   },
   {
     id: "residential",
     eyebrow: "My Home",
     title: "Residential",
     image: "/assets/images/card-residential.jpg",
+    tilt: "sm:[transform:perspective(1800px)_rotate3d(1,0,0,7deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,0,0,2deg)_translateY(-6px)]",
   },
   {
     id: "industrial",
     eyebrow: "My Facility",
     title: "Industrial",
     image: "/assets/images/card-industrial.jpg",
+    tilt: "sm:[transform:perspective(1800px)_rotate3d(1,1,0,14deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,1,0,5deg)_translateY(-6px)]",
   },
 ] as const;
+
+const quoteTilt =
+  "sm:[transform:perspective(1800px)_rotate3d(1,0.6,0,10deg)] sm:hover:[transform:perspective(1800px)_rotate3d(1,0.6,0,3deg)_translateY(-6px)]";
 
 /**
  * "You can click this" affordance — a persistent bottom bar baked into the
@@ -38,16 +47,19 @@ const cards = [
  */
 function SelectHint() {
   return (
-    <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-charcoal-950/90 to-transparent px-2 pt-4 pb-1.5 sm:px-3 sm:pb-2.5">
-      <span className="text-[9px] font-bold tracking-[0.12em] text-gold-200 uppercase sm:text-[11px]">Select</span>
+    <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-charcoal-950/95 via-charcoal-950/50 to-transparent px-2.5 pt-6 pb-2 sm:px-3.5 sm:pb-3">
+      <span className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.14em] text-gold-200 uppercase sm:text-xs">
+        <span className="h-1.5 w-1.5 flex-none animate-pulse rounded-full bg-gold-300" />
+        Select
+      </span>
       <svg
-        width="11"
-        height="11"
+        width="13"
+        height="13"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         strokeWidth="3"
-        className="text-gold-200 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5 sm:h-3.5 sm:w-3.5"
+        className="text-gold-200 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5 sm:h-4 sm:w-4"
       >
         <path d="M9 5l7 7-7 7" />
       </svg>
@@ -115,26 +127,29 @@ export function GarageIdleScene() {
           </svg>
         </div>
 
-        <div className="mx-auto mt-2.5 grid max-w-4xl grid-cols-2 gap-2 sm:mt-5 sm:gap-4 sm:[perspective:1600px] sm:grid-cols-4">
+        <div className="mx-auto mt-2.5 grid max-w-[92rem] grid-cols-2 gap-3 sm:mt-6 sm:flex sm:flex-row sm:items-start sm:justify-center sm:gap-7 sm:[perspective:1800px] sm:px-4">
           {cards.map((card) => (
             <button
               key={card.id}
               type="button"
               onClick={() => choose(card.id)}
-              className="group flex h-28 flex-col overflow-hidden rounded-lg border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:h-64 sm:rounded-xl sm:[transform:perspective(1600px)_rotateY(-7deg)] sm:hover:[transform:perspective(1600px)_rotateY(-1deg)_translateY(-4px)]"
+              className={clsx(
+                "group flex flex-col overflow-hidden rounded-xl border border-warm-white/10 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/50 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-64 lg:w-72",
+                card.tilt,
+              )}
             >
-              <div className="flex-none px-2.5 pt-2 pb-1 sm:px-3.5 sm:pt-3.5 sm:pb-2">
-                <span className="block truncate text-[8px] font-semibold tracking-[0.1em] text-gold-300 uppercase sm:text-[10px] sm:tracking-[0.15em]">
+              <div className="flex-none px-3 pt-2.5 pb-1.5 sm:px-4 sm:pt-4 sm:pb-2">
+                <span className="block truncate text-[9px] font-semibold tracking-[0.1em] text-gold-300 uppercase sm:text-[11px] sm:tracking-[0.15em]">
                   {card.eyebrow}
                 </span>
-                <span className="mt-0.5 block text-sm font-extrabold text-warm-white sm:text-xl lg:text-2xl">{card.title}</span>
+                <span className="mt-0.5 block text-base font-extrabold text-warm-white sm:text-2xl">{card.title}</span>
               </div>
-              <div className="relative flex-1 overflow-hidden">
+              <div className="relative aspect-video w-full overflow-hidden">
                 <Image
                   src={card.image}
                   alt=""
                   fill
-                  sizes="(min-width: 640px) 22vw, 45vw"
+                  sizes="(min-width: 640px) 18rem, 45vw"
                   className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
@@ -146,20 +161,23 @@ export function GarageIdleScene() {
           <button
             type="button"
             onClick={goToQuote}
-            className="group flex h-28 flex-col overflow-hidden rounded-lg border border-gold-500/30 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/70 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:h-64 sm:rounded-xl sm:[transform:perspective(1600px)_rotateY(-7deg)] sm:hover:[transform:perspective(1600px)_rotateY(-1deg)_translateY(-4px)]"
+            className={clsx(
+              "group flex flex-col overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-900 text-left shadow-elevated transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-gold-300/70 hover:shadow-floating focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-300 sm:w-64 lg:w-72",
+              quoteTilt,
+            )}
           >
-            <div className="flex-none px-2.5 pt-2 pb-1 sm:px-3.5 sm:pt-3.5 sm:pb-2">
-              <span className="block truncate text-[8px] font-semibold tracking-[0.1em] text-gold-300 uppercase sm:text-[10px] sm:tracking-[0.15em]">
+            <div className="flex-none px-3 pt-2.5 pb-1.5 sm:px-4 sm:pt-4 sm:pb-2">
+              <span className="block truncate text-[9px] font-semibold tracking-[0.1em] text-gold-300 uppercase sm:text-[11px] sm:tracking-[0.15em]">
                 I Already Know
               </span>
-              <span className="mt-0.5 block text-sm font-extrabold text-warm-white sm:text-xl lg:text-2xl">Request a Quote</span>
+              <span className="mt-0.5 block text-base font-extrabold text-warm-white sm:text-2xl">Request a Quote</span>
             </div>
-            <div className="relative flex-1 overflow-hidden">
+            <div className="relative aspect-video w-full overflow-hidden">
               <Image
                 src="/assets/images/card-install.jpg"
                 alt=""
                 fill
-                sizes="(min-width: 640px) 22vw, 45vw"
+                sizes="(min-width: 640px) 18rem, 45vw"
                 className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />

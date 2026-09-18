@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { EnvironmentIndex } from "@/components/browse/EnvironmentIndex";
 import { industrialSectorIds } from "@/content/sectors";
+import { FacilityConditions } from "@/components/industrial/FacilityConditions";
+import { PhotoBanner } from "@/components/ui/PhotoBanner";
 
 export const metadata: Metadata = {
   title: "Industrial Flooring",
@@ -9,5 +11,15 @@ export const metadata: Metadata = {
 };
 
 export default function IndustrialIndexPage() {
-  return <EnvironmentIndex environment="industrial" sectorIds={industrialSectorIds} />;
+  return (
+    <>
+      <EnvironmentIndex environment="industrial" sectorIds={industrialSectorIds} />
+      <PhotoBanner
+        src="/assets/images/team-photos/crew-jobsite-trailer.png"
+        alt="The Floor Rescue crew and jobsite trailer on an active installation"
+        caption="On site — the Floor Rescue crew"
+      />
+      <FacilityConditions />
+    </>
+  );
 }

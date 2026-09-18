@@ -1,0 +1,45 @@
+// Real builder and architect names Floor Rescue has worked alongside on
+// residential projects, carried over directly from the client's own prior
+// site content — not invented, not a generic "trusted by" list.
+export const residentialBuilders: string[] = [
+  "S.H. McCombs Co.",
+  "Martinek Custom Homes",
+  "Durham Builders",
+  "Alair Homes",
+  "Barringer Custom Homes",
+  "Bailey Family Builders",
+  "Biggerstaff Construction",
+  "C Bowen Custom Homes",
+  "Ferrier Custom Homes",
+  "Coats Homes",
+  "Ellen Grasso & Sons",
+  "Gardner Adams Homes",
+  "Haynsworth Custom Homes",
+  "Joe Kain Homes",
+  "Kienast Homes",
+  "Richard Dietrichson Fine Homes",
+  "Richard Miller Custom Homes",
+  "Tatum Brown Custom Homes",
+  "The Hill Group",
+  "English Heritage Homes",
+];
+
+export const residentialArchitects: string[] = [
+  "Wernerfield Architecture",
+  "Ghost Architects",
+  "JRAF Studio",
+  "HKS Architects",
+  "Dwellings — A Kagan Company",
+  "Douglas Newby",
+  "Charles Bobo",
+  "SHM Architects",
+  "NIMMO Architecture",
+  "A. Gruppo Architects",
+  "W2 Studio",
+  "Bentley Tibbs",
+  "Cliff Welch",
+  "Dan Shipley",
+  "FAR + DANG",
+  "Russell Buchanan",
+  "Smith Arc",
+];
