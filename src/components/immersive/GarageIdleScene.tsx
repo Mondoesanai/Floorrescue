@@ -21,7 +21,7 @@ const cards = [
     id: "commercial",
     eyebrow: "My Business",
     title: "Commercial",
-    image: "/assets/images/card-commercial.jpg",
+    image: "/assets/images/card-commercial-hero.jpg",
   },
   {
     id: "residential",

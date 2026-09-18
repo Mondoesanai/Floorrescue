@@ -14,7 +14,14 @@ export function TestimonialsModule({ testimonials }: { testimonials: Testimonial
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           {testimonials.map((t) => (
             <blockquote key={t.id} className="rounded-md border border-warm-white/10 bg-charcoal-950/60 p-6">
-              <p className="text-base leading-[1.7] text-warm-white/80">&ldquo;{t.quote}&rdquo;</p>
+              <div className="flex gap-0.5 text-gold-300" aria-hidden="true">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8L5.8 21l1.6-7-5.4-4.7 7.1-.6z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="mt-3 text-base leading-[1.7] text-warm-white/80">&ldquo;{t.quote}&rdquo;</p>
               <footer className="mt-3 text-sm text-gold-300">{t.attribution}</footer>
             </blockquote>
           ))}

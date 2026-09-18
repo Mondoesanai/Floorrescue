@@ -4,6 +4,7 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { FindYourSpaceSection } from "@/components/home/FindYourSpaceSection";
 import { TestimonialsPreview } from "@/components/home/TestimonialsPreview";
 import { ClientMarquee } from "@/components/home/ClientMarquee";
+import { ExploreEverything } from "@/components/home/ExploreEverything";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <ServicesSection />
       <FindYourSpaceSection />
       <TestimonialsPreview />
+      <ExploreEverything />
     </div>
   );
 }

@@ -18,6 +18,13 @@ const slugs: Record<string, string> = {
   "developers-owners": "developers",
 };
 
+const provides = [
+  { title: "Technical Documentation", body: "Spec sheets, technical data sheets, and system comparisons for every floor family we install." },
+  { title: "Samples & Mockups", body: "Physical samples and on-site mockups under your actual lighting before full production begins — especially for metallic and decorative systems." },
+  { title: "Pre-Pour & Substrate Coordination", body: "Slab flatness, joint layout, moisture strategy, and finish expectations set before the concrete ever goes down." },
+  { title: "Scheduling & RFIs", body: "Fast-cure system options for tight timelines, direct coordination with other trades, and a dedicated project superintendent on every job." },
+];
+
 export default function ForTheTradeIndexPage() {
   return (
     <div>
@@ -29,7 +36,17 @@ export default function ForTheTradeIndexPage() {
       <div className="py-16">
       <Container>
         <SectionHeading eyebrow="For the Trade" title="Built for how you actually work" />
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <p className="mt-4 max-w-2xl text-base leading-[1.7] text-warm-white/70">
+          Architects, builders, developers, and general contractors don&apos;t need homeowner language — they need
+          slabs, specs, samples, and a schedule that holds. Floor Rescue works directly with your project team from
+          specification through installation, on twelve floor system families across residential, commercial, and
+          industrial work.
+        </p>
+        <p className="mt-8 max-w-2xl text-balance text-2xl font-semibold tracking-[-0.01em] text-warm-white">
+          &ldquo;We Show Up. We Hit Our Numbers. We Don&apos;t Create Problems.&rdquo;
+        </p>
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {audiences.map((audience) => (
             <Link
               key={audience.id}
@@ -41,6 +58,18 @@ export default function ForTheTradeIndexPage() {
               <p className="mt-3 text-sm leading-[1.7] text-warm-white/65">{audience.description}</p>
             </Link>
           ))}
+        </div>
+
+        <div className="mt-16 border-t border-warm-white/10 pt-12">
+          <h2 className="text-sm font-semibold tracking-[0.15em] text-gold-300 uppercase">What We Provide</h2>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            {provides.map((p) => (
+              <div key={p.title} className="rounded-md border border-warm-white/10 bg-charcoal-900 p-5">
+                <h3 className="text-base font-bold text-warm-white">{p.title}</h3>
+                <p className="mt-2 text-sm leading-[1.7] text-warm-white/65">{p.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
       </div>
