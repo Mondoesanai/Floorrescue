@@ -9,6 +9,7 @@ const typeLabel: Record<string, string> = {
   system: "Floor System",
   problem: "Problem",
   resource: "Resource",
+  project: "Project",
 };
 
 export function SearchDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {

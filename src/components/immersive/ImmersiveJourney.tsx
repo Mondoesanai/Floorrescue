@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useJourney } from "@/lib/journey/context";
 import { getSector } from "@/content/sectors";
@@ -44,6 +44,7 @@ export function ImmersiveJourney() {
   const router = useRouter();
   const navigatedRef = useRef(false);
   const staticResolved = useRef<Map<SceneKey, boolean>>(new Map());
+  const [fadingOut, setFadingOut] = useState(false);
 
   const sceneKey = sceneKeyForStage(state.stage);
 
@@ -65,9 +66,15 @@ export function ImmersiveJourney() {
     const sector = state.sectorId ? getSector(state.sectorId) : undefined;
     const destination = sector ? `/${sector.environment}/${sector.id}` : "/commercial";
     trackEvent("personalized_page_viewed", { sectorId: state.sectorId, projectState: state.projectState });
-    // push (not replace): keeps "/" in history underneath the landing page so
-    // browser Back returns there instead of leaving the site entirely.
-    router.push(`${destination}?via=journey`);
+    // Fade the frozen final frame to black before the route change instead of
+    // cutting straight to it — the landing page's own hero-fade-in picks up
+    // from black, so together they read as one continuous dissolve.
+    setFadingOut(true);
+    window.setTimeout(() => {
+      // push (not replace): keeps "/" in history underneath the landing page
+      // so browser Back returns there instead of leaving the site entirely.
+      router.push(`${destination}?via=journey`);
+    }, 420);
   }
 
   function handleDeepDiveEnded() {
@@ -109,6 +116,12 @@ export function ImmersiveJourney() {
       {state.stage === "garage-idle" ? <GarageIdleScene /> : null}
       {state.stage === "commercial-build" || state.stage === "commercial-sector" ? <CommercialBuildScene /> : null}
       {state.stage === "commercial-door-entry" || state.stage === "commercial-project-state" ? <CommercialDoorEntryScene /> : null}
+
+      <div
+        className="pointer-events-none absolute inset-0 z-20 bg-charcoal-950 transition-opacity duration-[420ms] ease-linear"
+        style={{ opacity: fadingOut ? 1 : 0 }}
+        aria-hidden="true"
+      />
     </div>
   );
 }

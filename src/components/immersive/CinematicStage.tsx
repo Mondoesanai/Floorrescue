@@ -8,9 +8,11 @@ import { usePrefersReducedMotion } from "@/lib/motion/useReducedMotion";
 
 const CROSSFADE_MS = 420;
 const DEFAULT_PLAYBACK_RATE = 1.15;
-// The building build-up reads slow at normal speed with this much room to move —
-// speed it up more aggressively than the rest of the journey.
+// The building build-up and the opening intro both read slow at normal speed —
+// speed them up more aggressively than the rest of the journey. First
+// impression has to be fast; nobody should be waiting on the intro.
 const PLAYBACK_RATE_BY_SCENE: Partial<Record<SceneKey, number>> = {
+  introRestoration: 1.65,
   commercialBuild: 1.35,
 };
 

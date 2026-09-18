@@ -2,9 +2,10 @@ import { sectors } from "@/content/sectors";
 import { floorSystems } from "@/content/floorSystems";
 import { problems } from "@/content/problems";
 import { resources } from "@/content/resources";
+import { projects } from "@/content/projects";
 
 export interface SearchEntry {
-  type: "sector" | "system" | "problem" | "resource";
+  type: "sector" | "system" | "problem" | "resource" | "project";
   label: string;
   description: string;
   href: string;
@@ -36,7 +37,14 @@ export function buildSearchIndex(): SearchEntry[] {
     href: `/resources/${r.slug}`,
   }));
 
-  return [...sectorEntries, ...systemEntries, ...problemEntries, ...resourceEntries];
+  const projectEntries: SearchEntry[] = projects.map((p) => ({
+    type: "project",
+    label: p.title,
+    description: `${p.location} — ${p.summary}`,
+    href: `/projects/${p.slug}`,
+  }));
+
+  return [...sectorEntries, ...systemEntries, ...problemEntries, ...resourceEntries, ...projectEntries];
 }
 
 export function searchIndex(entries: SearchEntry[], query: string): SearchEntry[] {

@@ -109,11 +109,18 @@ export const floorSystems: FloorSystem[] = [
     id: "seal-systems",
     name: "Seal Systems",
     family: "concrete",
-    environments: ["residential", "commercial"],
-    applications: ["maintenance", "exterior"],
+    environments: ["residential", "commercial", "industrial"],
+    applications: ["maintenance", "exterior", "restoration"],
     summaryByAudience: {
-      residential: "Penetrating or film-forming sealers that protect stained or decorative concrete long-term.",
+      residential:
+        "Penetrating or film-forming sealers that protect stained, stamped, or exposed-aggregate concrete long-term — the finishing step that keeps a decorative floor or patio looking like the day it was installed.",
+      commercial: "A maintenance-cycle sealer program keeps polished, stained, or coated floors performing between full refinishes, protecting the investment in the original system.",
+      trade:
+        "Penetrating (silane/siloxane, densifying) sealers soak into the slab and don't change the surface look or add sheen; film-forming (acrylic, urethane, epoxy) sealers sit on top and add gloss and a sacrificial wear layer. Choice depends on the substrate, the traffic it takes, and whether the client wants a sheen change. Reapplication interval depends on traffic and exposure, not a fixed calendar date.",
     },
+    technicalNotes: [
+      "Sealer selection is substrate- and traffic-dependent — reconfirm with Jeremy before quoting a specific product line or reapplication schedule.",
+    ],
     claimsStatus: "approved",
   },
   {

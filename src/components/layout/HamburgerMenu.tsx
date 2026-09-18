@@ -85,9 +85,13 @@ export function HamburgerMenu({ dark }: { dark?: boolean }) {
                 setOpen(false);
                 setSearchOpen(true);
               }}
-              className="block w-full rounded-md px-4 py-3 text-left text-sm font-medium text-warm-white/85 hover:bg-warm-white/5 hover:text-gold-100"
+              className="flex w-full items-center gap-2.5 rounded-md border border-warm-white/10 bg-warm-white/[0.04] px-4 py-3 text-left text-sm font-medium text-warm-white/50 transition-colors hover:border-gold-300/40 hover:bg-warm-white/[0.07] hover:text-warm-white/70"
             >
-              I know what I need
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="flex-none text-gold-300">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+              Search anything…
             </button>
             <button
               type="button"

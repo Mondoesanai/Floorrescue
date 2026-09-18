@@ -31,13 +31,25 @@ const cards = [
   },
 ] as const;
 
-/** Small "you can click this" affordance badge for the bottom-right of each card. */
-function ClickBadge() {
+/**
+ * "You can click this" affordance — a persistent bottom bar baked into the
+ * card, not a hover-only or corner-badge cue. It has to read as clickable
+ * before anyone interacts with it, on touch devices too.
+ */
+function SelectHint() {
   return (
-    <div className="absolute right-1.5 bottom-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-gold-300/60 bg-gradient-to-b from-gold-300 to-gold-700 shadow-elevated transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 sm:right-2 sm:bottom-2 sm:h-7 sm:w-7">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-charcoal-950 sm:h-[13px] sm:w-[13px]">
-        <path d="M9 3v10.5M9 3 6 6M9 3l3 3" />
-        <path d="M6.5 12.5 5 20a1 1 0 0 0 1.4 1.1L9 20l1 2.5a1 1 0 0 0 1.9-.2l1.6-6.8 3-1a1 1 0 0 0 .1-1.9L7 8.5" />
+    <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-charcoal-950/90 to-transparent px-2 pt-4 pb-1.5 sm:px-3 sm:pb-2.5">
+      <span className="text-[9px] font-bold tracking-[0.12em] text-gold-200 uppercase sm:text-[11px]">Select</span>
+      <svg
+        width="11"
+        height="11"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        className="text-gold-200 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5 sm:h-3.5 sm:w-3.5"
+      >
+        <path d="M9 5l7 7-7 7" />
       </svg>
     </div>
   );
@@ -83,7 +95,7 @@ export function GarageIdleScene() {
           Concrete Floors + Resinous Systems
         </p>
         <h1 className="mx-auto mt-1 text-balance text-3xl font-bold tracking-[-0.02em] text-warm-white sm:mt-3 sm:text-6xl lg:text-7xl">
-          The Power Is in the Install.
+          Take Pride in Your Floors.
         </h1>
 
         <div className="mx-auto mt-3 flex flex-col items-center gap-1 sm:mt-6 sm:gap-1.5">
@@ -126,7 +138,7 @@ export function GarageIdleScene() {
                   className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
-                <ClickBadge />
+                <SelectHint />
               </div>
             </button>
           ))}
@@ -151,7 +163,7 @@ export function GarageIdleScene() {
                 className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
-              <ClickBadge />
+              <SelectHint />
             </div>
           </button>
         </div>
@@ -160,7 +172,7 @@ export function GarageIdleScene() {
           href="#learn-more"
           className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-warm-white/60 transition-colors hover:text-gold-200 sm:mt-7 sm:text-sm"
         >
-          Learn more about Floor Rescue
+          Who We Are
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M6 9l6 6 6-6" />
           </svg>

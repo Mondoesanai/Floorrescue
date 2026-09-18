@@ -28,12 +28,12 @@ export function CommercialProjectStateChooser({ visible, onSelect }: Props) {
   return (
     <div
       className={clsx(
-        "absolute inset-y-0 left-0 z-10 flex w-full max-w-xl items-center px-6 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10",
+        "absolute inset-y-0 left-0 z-10 flex w-full max-w-2xl items-center px-6 transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10",
         visible ? "translate-x-0 opacity-100" : "pointer-events-none -translate-x-3 opacity-0",
       )}
       aria-hidden={!visible}
     >
-      <div className="w-full">
+      <div className="w-full rounded-2xl border border-warm-white/10 bg-charcoal-950/75 p-6 shadow-floating backdrop-blur-md sm:p-8">
         <p className="text-2xl font-bold tracking-[-0.02em] text-warm-white sm:text-3xl">
           What do you need done to your floor?
         </p>
@@ -46,7 +46,7 @@ export function CommercialProjectStateChooser({ visible, onSelect }: Props) {
                 type="button"
                 tabIndex={visible ? 0 : -1}
                 onClick={() => choose(opt.id)}
-                className="rounded-lg border border-warm-white/15 bg-charcoal-950/60 px-5 py-4 text-left text-base font-semibold text-warm-white backdrop-blur-sm transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-900/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
+                className="rounded-lg border border-warm-white/15 bg-charcoal-900/80 px-5 py-5 text-left text-base font-semibold text-warm-white transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
               >
                 {opt.label}
               </button>
@@ -55,7 +55,7 @@ export function CommercialProjectStateChooser({ visible, onSelect }: Props) {
               type="button"
               tabIndex={visible ? 0 : -1}
               onClick={() => setShowOther(true)}
-              className="rounded-lg border border-gold-500/30 bg-charcoal-950/60 px-5 py-4 text-left text-base font-semibold text-gold-200 backdrop-blur-sm transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-900/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
+              className="rounded-lg border border-gold-500/30 bg-charcoal-900/80 px-5 py-5 text-left text-base font-semibold text-gold-200 transition-[transform,border-color,background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-gold-300 hover:bg-charcoal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
             >
               Other — describe it
             </button>
