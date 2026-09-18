@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --color-charcoal-950: #0c0d0e;
+  --color-charcoal-900: #131416;
+  --color-charcoal-800: #1c1e21;
+  --color-charcoal-700: #2a2c30;
+  --color-concrete-500: #8b8d90;
+  --color-concrete-300: #c7c8ca;
+  --color-warm-white: #f6f2e9;
+  --color-navy-900: #0a1220;
+  --color-navy-700: #101d33;
+  --color-gold-900: #6f5322;
+  --color-gold-700: #a9803c;
+  --color-gold-500: #cba456;
+  --color-gold-300: #e8cf9a;
+  --color-gold-100: #f4e8c9;
+
+  --background: var(--color-charcoal-950);
+  --foreground: var(--color-warm-white);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-charcoal-950: var(--color-charcoal-950);
+  --color-charcoal-900: var(--color-charcoal-900);
+  --color-charcoal-800: var(--color-charcoal-800);
+  --color-charcoal-700: var(--color-charcoal-700);
+  --color-concrete-500: var(--color-concrete-500);
+  --color-concrete-300: var(--color-concrete-300);
+  --color-warm-white: var(--color-warm-white);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-700: var(--color-navy-700);
+  --color-gold-900: var(--color-gold-900);
+  --color-gold-700: var(--color-gold-700);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-100: var(--color-gold-100);
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Layered, color-tinted shadow tokens (never flat shadow-md) */
+.shadow-elevated {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 8px 24px -8px rgba(0, 0, 0, 0.55),
+    0 24px 48px -20px rgba(203, 164, 86, 0.12);
+}
+
+.shadow-floating {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.45),
+    0 16px 40px -12px rgba(0, 0, 0, 0.6),
+    0 32px 64px -24px rgba(203, 164, 86, 0.18);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--color-gold-700) 0%,
+    var(--color-gold-300) 45%,
+    var(--color-gold-500) 70%,
+    var(--color-gold-700) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

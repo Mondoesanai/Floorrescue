@@ -1,0 +1,357 @@
+<title>Floor Rescue Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --black:#0B0C0D; --charcoal:#131417; --paper:#F7F3E8; --ink:#1B1712; --ink-soft:#5B5546;
+    --gold:#C9A24B; --gold-d:#8B6B2E; --gold-l:#E8CD8A; --line:#E4DCC5;
+    --neg:#9E4E33; --neg-hot:#C16238; --mute:#8B8F8A; --warmwhite:#F3EEDF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:"Inter",system-ui,sans-serif;font-size:clamp(15px,1.6vh,19px);line-height:1.5;overflow:hidden;background:var(--black);color:var(--warmwhite)}
+  .deck{position:fixed;inset:0;display:grid;place-items:center;background:var(--black)}
+  .slide{position:absolute;inset:0;opacity:0;visibility:hidden;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(2rem,5vh,4rem) clamp(1.5rem,7vw,7rem) clamp(3.4rem,7vh,4.6rem);
+    background:var(--paper);color:var(--ink);transition:opacity .4s ease,visibility .4s}
+  .slide.active{opacity:1;visibility:visible}
+  .slide.dark{background:var(--black);color:var(--warmwhite)}
+  .slide.dark h1,.slide.dark h2{color:#fff}
+  h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(2.1rem,5.8vh,3.7rem);line-height:1.06;letter-spacing:-.02em;text-wrap:balance}
+  h2{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(1.7rem,4.2vh,2.6rem);line-height:1.12;letter-spacing:-.015em;margin-bottom:.5em;text-wrap:balance}
+  .kick{align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);margin-bottom:1rem}
+  .slide.dark .kick{color:var(--gold-l)}
+  .kick::before{content:"";width:1.6rem;height:2px;background:currentColor;border-radius:2px}
+  .tag{align-self:flex-start;display:inline-block;font-weight:800;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.32rem .8rem;border-radius:999px;background:var(--neg);color:#fff;margin-bottom:.9rem}
+  .tag.g{background:var(--gold);color:var(--ink)}
+  .lead{font-size:clamp(1rem,2.2vh,1.35rem);color:var(--ink-soft);max-width:48ch}
+  .slide.dark .lead{color:#C9C3B2}
+  ul.pts{list-style:none;margin-top:1.1rem;display:grid;gap:.6rem;max-width:56ch}
+  ul.pts li{position:relative;padding-left:1.7rem;font-size:clamp(.95rem,2.05vh,1.18rem);font-weight:500}
+  ul.pts li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;background:var(--neg);transform:rotate(45deg)}
+  .slide.dark ul.pts li::before{background:var(--neg-hot)}
+  ul.pts.good li::before{content:"";background:none;left:.1rem;top:.32em;width:11px;height:6px;border-left:3px solid var(--gold);border-bottom:3px solid var(--gold);transform:rotate(-45deg)}
+  .quote{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:clamp(1.3rem,3.6vh,2.15rem);line-height:1.25;letter-spacing:-.01em;max-width:34ch}
+  .quote::before{content:"\201C"} .quote::after{content:"\201D"}
+  cite{display:block;margin-top:.9rem;font-style:normal;font-size:.85rem;color:var(--ink-soft);font-weight:600}
+  .slide.dark cite{color:#B7AE93}
+  .big{font-family:"Space Grotesk",sans-serif;font-weight:700;color:var(--gold);font-size:clamp(3.4rem,13vh,7.8rem);line-height:.92;letter-spacing:-.03em}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,4vw,3rem);align-items:center}
+  .row.wide-l{grid-template-columns:1.2fr 1fr}
+  .shot{border-radius:12px;overflow:hidden;box-shadow:0 26px 60px -24px rgba(0,0,0,.55),0 4px 14px -6px rgba(0,0,0,.35);border:1px solid rgba(0,0,0,.08);background:#0B0C0D}
+  .shot .bar{display:flex;align-items:center;gap:6px;padding:.55rem .7rem;background:#17181B}
+  .shot .bar span{width:9px;height:9px;border-radius:50%;background:#3A3B3F}
+  .shot .bar .url{margin-left:.5rem;font-size:.68rem;color:#8A8D93;font-family:monospace;letter-spacing:.02em}
+  .shot img{width:100%;display:block;max-height:58vh;object-fit:cover;object-position:top}
+  .diagram{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem;max-width:56rem}
+  .dcol{border:1px solid var(--line);border-radius:10px;padding:1rem;background:#fff}
+  .dcol h4{font-size:.85rem;font-weight:700;margin-bottom:.4rem}
+  .dcol p{font-size:.78rem;color:var(--ink-soft)}
+  .dcol .res{margin-top:.6rem;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .6rem;border-radius:999px;display:inline-block}
+  .dcol.bad .res{background:rgba(158,78,51,.12);color:var(--neg)}
+  .dcol.good .res{background:rgba(201,162,75,.16);color:var(--gold-d)}
+  .funnel-arrow{grid-column:1/-1;text-align:center;font-size:1.4rem;color:var(--mute)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem 2.1rem;margin-top:1.2rem;max-width:66ch}
+  .grid2 h3{font-size:1rem;color:var(--gold-d);margin-bottom:.2rem;font-family:"Space Grotesk",sans-serif}
+  .slide.dark .grid2 h3{color:var(--gold-l)}
+  .grid2 p{font-size:.88rem;color:var(--ink-soft)}
+  .slide.dark .grid2 p{color:#C9C3B2}
+  .pricebar{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.6rem;max-width:44rem}
+  .pcard{border:1px solid var(--line);border-radius:12px;padding:1.4rem;background:#fff;position:relative}
+  .pcard.hi{border:2px solid var(--gold);box-shadow:0 20px 44px -20px rgba(201,162,75,.35)}
+  .pcard .ptag{position:absolute;top:-.7rem;left:1.2rem;background:var(--gold);color:var(--ink);font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .6rem;border-radius:999px}
+  .pcard h4{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
+  .pcard .amt{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(2rem,5vh,2.8rem);letter-spacing:-.02em;margin-top:.3rem}
+  .pcard .was{font-size:.85rem;color:var(--mute);text-decoration:line-through;margin-left:.5rem}
+  .pcard ul{list-style:none;margin-top:.9rem;display:grid;gap:.4rem}
+  .pcard li{font-size:.82rem;color:var(--ink-soft);padding-left:1.1rem;position:relative}
+  .pcard li::before{content:"\2713";position:absolute;left:0;color:var(--gold-d);font-weight:700}
+  .savebar{margin-top:1rem;font-size:.82rem;color:var(--gold-d);font-weight:700}
+  .foot{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:.7rem clamp(1.5rem,4vw,3rem);font-size:.74rem;color:var(--mute);z-index:5;pointer-events:none}
+  .foot .bl{font-weight:700;color:#9a9488}
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);transition:width .35s ease;z-index:6}
+  .navhint{position:fixed;bottom:.6rem;left:50%;transform:translateX(-50%);font-size:.7rem;color:#5c5f5a;z-index:5}
+  .partmark{position:fixed;top:.7rem;right:clamp(1.5rem,4vw,3rem);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#6a6d67;z-index:5}
+  .cta-row{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+  .cta-row a{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--ink);font-weight:700;font-size:.9rem;padding:.85rem 1.5rem;border-radius:999px;text-decoration:none}
+  .cta-row .ghost{background:none;border:1px solid rgba(255,255,255,.25);color:#fff}
+  @media (max-width:900px){.row,.row.wide-l,.grid2,.diagram,.pricebar{grid-template-columns:1fr}.slide{padding:2.2rem 1.25rem 3.2rem}body{overflow:auto}.shot img{max-height:44vh}}
+  @media print{body{overflow:visible}.slide{position:relative;opacity:1;visibility:visible;page-break-after:always;min-height:100vh}.foot,.progress,.navhint,.partmark{display:none}}
+</style>
+
+<div class="progress" id="progress"></div>
+<div class="partmark" id="partmark">Part 1 &mdash; the problem</div>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide dark active">
+    <div class="kick">Inspiring Websites &nbsp;&middot;&nbsp; for Floor Rescue</div>
+    <h1>Twenty-two years in the trade.<br>A five-year-old GoDaddy template doing the talking.</h1>
+    <p class="lead" style="margin-top:1rem">Ten minutes: what the current site is costing you, why &mdash; and the site we actually built while we were talking.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide dark">
+    <div class="tag">In his own words</div>
+    <p class="quote">It is a crummy, just GoDaddy template&#8230; The design is horrible.</p>
+    <cite>&mdash; Jeremy, describing floorrescue.com on our first call</cite>
+    <ul class="pts" style="margin-top:2rem">
+      <li>Built years ago and never revisited</li>
+      <li>No real separation between residential, commercial, and industrial visitors</li>
+      <li>Doesn&rsquo;t read like 22 years of trade authority &mdash; reads like every other contractor site</li>
+    </ul>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide dark">
+    <div class="kick">The risk he named himself</div>
+    <p class="quote">If I have an industrial multi-million or billion dollar company come to my website wanting to do a $300,000 floor, they won&rsquo;t want to come to my website and see that I do garages. Which I don&rsquo;t do anymore.</p>
+    <div class="diagram" style="max-width:100%">
+      <div class="dcol bad">
+        <h4>Homeowner</h4>
+        <p>Small residential job</p>
+        <span class="res">Sees garages &mdash; fine</span>
+      </div>
+      <div class="dcol bad">
+        <h4>Business Owner</h4>
+        <p>New restaurant build-out</p>
+        <span class="res">Sees garages &mdash; unsure</span>
+      </div>
+      <div class="dcol bad">
+        <h4>Industrial Buyer</h4>
+        <p>$300,000 facility floor</p>
+        <span class="res">Sees garages &mdash; gone</span>
+      </div>
+      <div class="funnel-arrow">&darr; all three land on the same undifferentiated homepage &darr;</div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide dark">
+    <div class="tag">His own estimate &mdash; not ours</div>
+    <div class="big">$100K+</div>
+    <p class="lead" style="margin-top:1rem">What Jeremy said an unclear, incomplete web presence has already cost him in missed opportunities.</p>
+    <p class="quote" style="margin-top:1.4rem;font-size:clamp(1.05rem,2.6vh,1.4rem)">I&rsquo;ve already known it&rsquo;s cost me&#8230; probably hundreds of thousands of all types of opportunities, I&rsquo;m sure.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide dark">
+    <div class="kick">The Base44 concept looked better. It had the same problem.</div>
+    <p class="quote">It&rsquo;s not all complete inside there&#8230; every page doesn&rsquo;t have a landing spot&#8230; I have to work on that some more.</p>
+    <cite>&mdash; Jeremy, on the unfinished Base44 rebuild</cite>
+    <ul class="pts" style="margin-top:1.6rem">
+      <li>Pages with no real destination behind them</li>
+      <li>&ldquo;I don&rsquo;t know how well this reads on Google&rdquo; &mdash; his words, on SEO</li>
+      <li>Nothing stable enough to text a client a direct link</li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide dark">
+    <div class="kick">The complexity risk</div>
+    <p class="quote">It&rsquo;s not complicated but it is layers&#8230; people who get this work done all the time butcher it every day. They don&rsquo;t even know the right terms.</p>
+    <cite>&mdash; Jeremy</cite>
+    <p class="lead" style="margin-top:1.4rem">Twelve floor systems. Three environments. Residential, commercial, and industrial audiences who each need to see themselves immediately. Most agencies flatten that into one generic contractor template. That was the actual job &mdash; not a redesign.</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide dark" style="align-items:center;text-align:center">
+    <h1 style="max-width:20ch">So we stopped treating your website like a form to fill out.</h1>
+    <p class="lead" style="margin-top:1rem;max-width:40ch">And started building it the way you actually think about the trade &mdash; by space, by system, by who&rsquo;s asking.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="row wide-l">
+      <div>
+        <div class="kick">What he actually asked for</div>
+        <h2>One question. Not a quiz.</h2>
+        <p class="lead">&ldquo;Where does your project live?&rdquo; The whole homepage is built to answer that in one screen &mdash; a real concrete-restoration film, the gold Floor Rescue sign, then three doors: Residential, Commercial, Industrial.</p>
+        <p class="quote" style="margin-top:1.2rem;font-size:1.05rem">Boom, they see their problem. Boom, they see that we can solve it. Boom, they put their information in.</p>
+        <cite>&mdash; Jeremy, describing what he wanted</cite>
+      </div>
+      <div class="shot">
+        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com</span></div>
+        <img src="{{IMG_HERO}}" alt="Floor Rescue homepage &mdash; the gold sign and three environment choices">
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="row wide-l">
+      <div>
+        <div class="kick">Three very different buyers, three real paths</div>
+        <h2>The $300K industrial buyer never sees a garage.</h2>
+        <p class="lead">Choosing &ldquo;My Business&rdquo; doesn&rsquo;t swap a headline &mdash; the camera moves, a full commercial building rises out of the same floor, and the site keeps going: sector, project type, then a page built for that exact space. This is the premium feel a $300K buyer expects to see before they&rsquo;ll trust you with the floor.</p>
+      </div>
+      <div class="shot">
+        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com/commercial</span></div>
+        <img src="{{IMG_BUILD}}" alt="Commercial building rising from the garage floor, sector choices appearing">
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="row wide-l">
+      <div>
+        <div class="kick">Two decisions. The right answer.</div>
+        <h2>&ldquo;A kitchen floor that can handle the part of the business that never stops.&rdquo;</h2>
+        <p class="lead">Restaurant, then Failed Floor &mdash; two clicks &mdash; and this is the real headline it generates, live, in the running build. Not a mockup for this deck. Built from your approved language, never an invented technical claim.</p>
+      </div>
+      <div class="shot">
+        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com/commercial/restaurant-food-service</span></div>
+        <img src="{{IMG_LANDING}}" alt="Personalized commercial landing page for Restaurant / Food Service, Failed Floor">
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="row wide-l">
+      <div>
+        <div class="kick">His own wish, built</div>
+        <h2>Nothing gets asked twice.</h2>
+        <p class="lead">Environment, space, and project state carry straight into the quote form and into the email that lands in your inbox. The prospect only fills in what we don&rsquo;t already know &mdash; name, contact, photos.</p>
+        <p class="quote" style="margin-top:1.2rem;font-size:1.05rem">I don&rsquo;t want to ask the same questions over and over again.</p>
+        <cite>&mdash; Jeremy</cite>
+      </div>
+      <div class="shot">
+        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com/quote</span></div>
+        <img src="{{IMG_QUOTE}}" alt="Request a Quote form, prefilled from the guided journey">
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide dark">
+    <div class="kick">The backbone he said was missing</div>
+    <h2>Every page has a landing spot. Every link goes somewhere real.</h2>
+    <div class="grid2">
+      <div>
+        <h3>One content system</h3>
+        <p>Residential, commercial, industrial, systems, projects, resources &mdash; every page pulls from the same real data, not disconnected one-offs.</p>
+      </div>
+      <div>
+        <h3>A stable link for every page</h3>
+        <p>/commercial/restaurants, /systems/polished-concrete &mdash; a real address you can text a client, exactly like you asked for.</p>
+      </div>
+      <div>
+        <h3>Built to be found</h3>
+        <p>Real titles, descriptions, and a sitemap from day one &mdash; not something bolted on after launch.</p>
+      </div>
+      <div>
+        <h3>Never guesses at your trade</h3>
+        <p>Garages stay off the main site until you say otherwise. Nothing invented about specs, certifications, or compliance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide dark">
+    <div class="kick">Built to be a partner, not a one-time job</div>
+    <p class="quote">I&rsquo;m not looking for a one-time thing. I&rsquo;m looking for someone to partner with and work with long term&#8230; my website needs to continue to evolve.</p>
+    <cite>&mdash; Jeremy</cite>
+    <ul class="pts good" style="margin-top:1.6rem">
+      <li>Residential and Industrial plug into the same system whenever you&rsquo;re ready &mdash; no rebuild</li>
+      <li>Room for the YouTube embeds you mentioned, next to each major system</li>
+      <li>Room for AI-assisted quoting and a client portal down the line</li>
+    </ul>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="kick">Two ways to move forward</div>
+    <h2>You mentioned there&rsquo;s more than one site to build.</h2>
+    <p class="lead">Floor Rescue on its own, or bundle it with your second site now and lock in the combined rate &mdash; final scope confirmed together either way.</p>
+    <div class="pricebar">
+      <div class="pcard">
+        <h4>Floor Rescue Only</h4>
+        <div class="amt">$4,000</div>
+        <ul>
+          <li>Full cinematic Commercial build</li>
+          <li>Residential &amp; Industrial browse, same system</li>
+          <li>Request-a-Quote lead pipeline</li>
+        </ul>
+      </div>
+      <div class="pcard hi">
+        <span class="ptag">Two-site rate</span>
+        <h4>Floor Rescue + Second Site</h4>
+        <div class="amt">$6,000 <span class="was">~$8,000</span></div>
+        <ul>
+          <li>Everything in Floor Rescue Only</li>
+          <li>Your second site built on the same partnership</li>
+          <li>One relationship, one invoice, one roadmap</li>
+        </ul>
+      </div>
+    </div>
+    <p class="savebar">Bundling now saves real money over building the two sites separately &mdash; and keeps both evolving together.</p>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide dark" style="align-items:center;text-align:center">
+    <h1>Let&rsquo;s build both.</h1>
+    <p class="lead" style="margin-top:1rem;max-width:40ch">The Floor Rescue build you just walked through is running today. Let&rsquo;s lock in the two-site rate and get your second site started on the same foundation.</p>
+    <div class="cta-row">
+      <a href="#" onclick="return false">Lock in the $6,000 two-site rate</a>
+      <a href="#" class="ghost" onclick="return false">Let&rsquo;s get on a call</a>
+    </div>
+  </section>
+
+</div>
+
+<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 15</span></div>
+<div class="navhint">&larr; &rarr; or click to move &middot; Esc for overview</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+  var progress = document.getElementById('progress');
+  var partmark = document.getElementById('partmark');
+  var slidenum = document.getElementById('slidenum');
+  var parts = [
+    {at:0, label:'Part 1 — the problem'},
+    {at:6, label:'Part 2 — what we built'},
+    {at:13, label:'Part 3 — the investment'}
+  ];
+  function partFor(i){
+    var label = parts[0].label;
+    for (var p = 0; p < parts.length; p++) if (i >= parts[p].at) label = parts[p].label;
+    return label;
+  }
+  function render(){
+    slides.forEach(function(s, i){ s.classList.toggle('active', i === idx); });
+    progress.style.width = ((idx + 1) / total * 100) + '%';
+    partmark.textContent = partFor(idx);
+    slidenum.textContent = (idx + 1) + ' / ' + total;
+  }
+  function go(delta){
+    idx = Math.min(total - 1, Math.max(0, idx + delta));
+    render();
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { go(1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { go(-1); e.preventDefault(); }
+    else if (e.key === 'Home') { idx = 0; render(); }
+    else if (e.key === 'End') { idx = total - 1; render(); }
+  });
+  document.getElementById('deck').addEventListener('click', function(e){
+    var rect = document.body.getBoundingClientRect();
+    var x = e.clientX;
+    if (x > rect.width * 0.5) go(1); else go(-1);
+  });
+  var touchStartX = null;
+  document.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', function(e){
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    touchStartX = null;
+  });
+  render();
+})();
+</script>
