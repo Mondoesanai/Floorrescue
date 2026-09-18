@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
@@ -26,25 +27,28 @@ export function WhoWeAreSection() {
             </Button>
           </div>
 
-          {/* Meet the Owner — a real photo is pending from the client; this is an
-              honest placeholder, never a generated stand-in for a real person. */}
-          <div className="rounded-2xl border border-warm-white/10 bg-charcoal-950 p-7 shadow-elevated">
-            <p className="text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">Meet the Owner</p>
-            <div className="mt-5 flex items-center gap-5">
-              <div className="flex h-20 w-20 flex-none items-center justify-center rounded-full border border-gold-500/30 bg-gradient-to-br from-charcoal-800 to-charcoal-900 text-xl font-bold tracking-wide text-gold-300">
-                J
-              </div>
-              <div>
-                <p className="text-lg font-bold text-warm-white">Jeremy</p>
-                <p className="text-sm text-warm-white/50">Founder, Floor Rescue</p>
-              </div>
+          {/* Meet the Owner — real photo of Jeremy, supplied by the client. */}
+          <div className="overflow-hidden rounded-2xl border border-warm-white/10 bg-charcoal-950 shadow-elevated">
+            <div className="relative h-72 w-full sm:h-80">
+              <Image
+                src="/assets/images/jeremy-owner.png"
+                alt="Jeremy, Founder of Floor Rescue"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-transparent" />
             </div>
-            <p className="mt-5 text-sm leading-[1.7] text-warm-white/70">
-              Two decades in the trade, across concrete and resinous systems, residential, commercial, and
-              industrial work. Every project starts with the same question: what does the slab and the space
-              actually need to survive?
-            </p>
-            <p className="mt-3 text-xs text-warm-white/35">Photo coming soon.</p>
+            <div className="p-7">
+              <p className="text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">Meet the Owner</p>
+              <p className="mt-2 text-lg font-bold text-warm-white">Jeremy</p>
+              <p className="text-sm text-warm-white/50">Founder, Floor Rescue</p>
+              <p className="mt-5 text-sm leading-[1.7] text-warm-white/70">
+                Two decades in the trade, across concrete and resinous systems, residential, commercial, and
+                industrial work. Every project starts with the same question: what does the slab and the space
+                actually need to survive?
+              </p>
+            </div>
           </div>
         </div>
       </Container>
