@@ -738,3 +738,7 @@ export function getProjectsBySector(sectorId: string, limit = 3): Project[] {
 export function getProjectsBySystem(systemId: string, limit = 3): Project[] {
   return projects.filter((p) => p.systems.includes(systemId)).slice(0, limit);
 }
+
+export function getProjectsByProblem(problemId: string, limit = 3): Project[] {
+  return projects.filter((p) => p.problems.includes(problemId)).slice(0, limit);
+}
