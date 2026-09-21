@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
@@ -16,7 +19,10 @@ export interface ExplorerFamily {
  * a visitor who doesn't know the terms can just read down the column that
  * sounds like what they want.
  */
+const PREVIEW = 4;
+
 export function SystemExplorer({ families }: { families: ExplorerFamily[] }) {
+  const [openIds, setOpenIds] = useState<string[]>([]);
   return (
     <section className="border-t border-warm-white/10 bg-charcoal-950 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-6">
@@ -47,16 +53,16 @@ export function SystemExplorer({ families }: { families: ExplorerFamily[] }) {
                   </h3>
                 </div>
                 <p className="px-5 pt-4 text-sm leading-[1.65] text-warm-white/70">{f.blurb}</p>
-                <ul className="mt-3 flex-1 divide-y divide-warm-white/10 px-2 pb-3">
-                  {f.systems.map((s) => (
-                    <li key={s.id}>
+                <ul className="mt-3 flex-1 divide-y divide-warm-white/10 px-2">
+                  {f.systems.map((s, idx) => (
+                    <li key={s.id} className={idx >= PREVIEW && !openIds.includes(f.id) ? "hidden" : undefined}>
                       <Link
                         href={`/systems/${s.id}`}
                         className="group flex items-start justify-between gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-charcoal-950"
                       >
                         <span>
                           <span className="block text-sm font-semibold text-warm-white group-hover:text-gold-100">{s.name}</span>
-                          <span className="mt-0.5 line-clamp-2 text-xs leading-[1.55] text-warm-white/50">{s.summary}</span>
+                          <span className="mt-0.5 line-clamp-1 text-xs leading-[1.55] text-warm-white/50">{s.summary}</span>
                         </span>
                         <svg
                           width="12"
@@ -74,6 +80,21 @@ export function SystemExplorer({ families }: { families: ExplorerFamily[] }) {
                     </li>
                   ))}
                 </ul>
+                {f.systems.length > PREVIEW ? (
+                  <button
+                    type="button"
+                    aria-expanded={openIds.includes(f.id)}
+                    onClick={() => setOpenIds((o) => (o.includes(f.id) ? o.filter((x) => x !== f.id) : [...o, f.id]))}
+                    className="m-3 flex items-center justify-center gap-2 rounded-xl border border-gold-300/40 px-4 py-2.5 text-sm font-semibold text-gold-100 transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-gold-300/10"
+                  >
+                    {openIds.includes(f.id) ? "Show fewer" : `View all ${f.systems.length}`}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className={"transition-transform duration-300 " + (openIds.includes(f.id) ? "rotate-180" : "")} aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                ) : (
+                  <div className="pb-3" />
+                )}
               </div>
             </Reveal>
           ))}

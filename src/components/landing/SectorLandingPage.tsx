@@ -26,6 +26,8 @@ import { ConcernCards } from "./ConcernCards";
 import { BeforeYouCall } from "./BeforeYouCall";
 import { RelatedSpaces } from "./RelatedSpaces";
 import { SectorFAQ } from "./SectorFAQ";
+import { SpaceWalkthrough } from "./SpaceWalkthrough";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 export function SectorLandingPage({ sector }: { sector: Sector }) {
   const { state, dispatch } = useJourney();
@@ -78,6 +80,7 @@ export function SectorLandingPage({ sector }: { sector: Sector }) {
 
   return (
     <div>
+      <ScrollProgress />
       <Hero copy={heroCopy} posterSrc={getEnvironmentPoster(sector.environment)} quoteHref={quoteHref} />
       {marqueeItems.length > 0 ? <Marquee items={marqueeItems} seconds={45} /> : null}
       <PrioritySummary concernIds={sector.commonConcerns} activeConcernIds={activeConcerns} onToggle={toggleConcern} />
@@ -89,6 +92,7 @@ export function SectorLandingPage({ sector }: { sector: Sector }) {
           { value: siteStats[3].value, label: "Five-star reviews" },
         ]}
       />
+      <SpaceWalkthrough sectorId={sector.id} quoteHref={quoteHref} />
       <ConcernCards concernIds={sector.commonConcerns} sectorName={sector.shortLabel} />
       <RelevantSystems systemIds={sector.relevantSystemIds} environment={sector.environment} />
       <WorkRail />

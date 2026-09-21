@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { buildSearchIndex, searchIndex } from "@/lib/search";
+import { findFloorHelp, getFinderTarget } from "@/lib/floorFinder";
 
 const typeLabel: Record<string, string> = {
   sector: "Space",
@@ -22,12 +23,16 @@ export function InlineSearch() {
   const [query, setQuery] = useState("");
   const index = useMemo(() => buildSearchIndex(), []);
   const results = useMemo(() => searchIndex(index, query), [index, query]);
+  const help = useMemo(() => findFloorHelp(query), [query]);
+  const [picked, setPicked] = useState<string | null>(null);
+  const pickedTarget = picked ? getFinderTarget(picked) : undefined;
   const wrapRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function close() {
     setOpen(false);
     setQuery("");
+    setPicked(null);
   }
 
   useEffect(() => {
@@ -65,23 +70,66 @@ export function InlineSearch() {
           <input
             ref={inputRef}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search anything…"
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setPicked(null);
+            }}
+            placeholder="Search or describe a problem…"
             className="min-w-0 flex-1 bg-transparent text-sm text-warm-white placeholder:text-warm-white/40 focus:outline-none"
           />
         ) : (
           <button type="button" onClick={() => setOpen(true)} className="hidden sm:inline">
-            Search anything…
+            Search or describe a problem…
           </button>
         )}
       </div>
 
       {open && query.trim() ? (
         <div className="absolute top-13 right-0 max-h-96 w-72 overflow-y-auto rounded-lg border border-warm-white/10 bg-charcoal-900/95 p-2 shadow-floating backdrop-blur-md sm:w-80">
+          {help && (help.question || help.targets.length > 0) ? (
+            <div className="mb-2 rounded-md border border-gold-300/30 bg-charcoal-950/70 p-3">
+              <p className="text-[10px] font-semibold tracking-wide text-gold-300 uppercase">What are you dealing with?</p>
+              {help.question && !pickedTarget ? (
+                <>
+                  <p className="mt-1.5 text-sm font-semibold text-warm-white">{help.question.question}</p>
+                  <div className="mt-2 grid gap-1.5">
+                    {help.question.options.map((o) => (
+                      <button
+                        key={o.label}
+                        type="button"
+                        onClick={() => setPicked(o.targetId)}
+                        className="rounded-md border border-warm-white/15 px-3 py-2 text-left text-xs text-warm-white/85 transition-colors hover:border-gold-300/60 hover:text-warm-white"
+                      >
+                        {o.label}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="mt-1.5 grid gap-1">
+                  {(pickedTarget ? [pickedTarget] : help.targets.slice(0, 2)).map((t) => (
+                    <Link
+                      key={t.id}
+                      href={t.href}
+                      onClick={close}
+                      className="block rounded-md px-2 py-2 transition-colors hover:bg-warm-white/5"
+                    >
+                      <p className="text-sm font-bold text-warm-white">{t.title}</p>
+                      <p className="mt-0.5 line-clamp-2 text-xs text-warm-white/55">{t.blurb}</p>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : null}
           {results.length === 0 ? (
-            <p className="px-3 py-4 text-sm text-warm-white/50">Nothing matched — try a system, space, or problem.</p>
+            help && (help.question || help.targets.length > 0) ? null : (
+              <p className="px-3 py-4 text-sm text-warm-white/50">
+                Nothing matched — try a system, a space, or describe what you&apos;re dealing with.
+              </p>
+            )
           ) : (
-            results.map((result) => (
+            results.slice(0, 8).map((result) => (
               <Link
                 key={`${result.type}-${result.href}`}
                 href={result.href}

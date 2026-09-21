@@ -69,9 +69,9 @@ export default function Home() {
       <WhoWeAreSection />
       <ClientMarquee />
       <StatsStrip stats={getSiteStats()} />
+      <ProblemFinder />
       <ServicesSection />
       <SystemExplorer families={buildFamilies()} />
-      <ProblemFinder />
       <FindYourSpaceSection />
       <WorkRail />
       <WhyFloorRescue />

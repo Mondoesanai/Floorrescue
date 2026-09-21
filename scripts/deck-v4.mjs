@@ -167,7 +167,7 @@ slides.push(S.hero.replace(/<p class="quote"[\s\S]*?<\/cite>/, "").replace("What
 slides.push(S.paths);
 
 slides.push(shotSlide("Every system, side by side", "Three families, always open. Read down the one that sounds like you.",
-  "Not everyone arrives knowing the difference between polished concrete and a resinous coating. So nothing is hidden behind tabs: Concrete, Resinous Coatings and Decorative Artistry sit next to each other, each with a photo and its full list underneath.",
+  "Not everyone arrives knowing the difference between polished concrete and a resinous coating. So nothing is hidden behind tabs: Concrete, Resinous Coatings and Decorative Artistry sit next to each other, each with a photo and its list underneath &mdash; the first few showing, with a View all button so nothing overwhelms a first-time visitor.",
   "floorrescue.com &middot; Floor Systems", "{{IMG_SYSTEMS}}", "Three side-by-side columns: Concrete, Resinous Coatings, Decorative Artistry",
   "Fixes: a wall of technical terms that only a trade insider can read"));
 

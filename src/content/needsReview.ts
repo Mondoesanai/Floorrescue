@@ -99,4 +99,11 @@ export const needsReview: NeedsReviewItem[] = [
       "Source materials disagree on how broad Floor Rescue's service area is. The Base44 source corpus consistently lists only five Texas cities in its site footer (Dallas, Fort Worth, Houston, Austin, San Antonio) across every page sampled. The current live site (per the client-supplied current-site content inventory, and confirmed directly against floorrescue.com) states a broader area: Dallas, Fort Worth, Houston, Austin, Waco, San Antonio, Odessa, Midland, Louisiana, and Oklahoma. No dedicated service-area/city-list content exists yet anywhere in this content graph (environments.ts holds only environment-type copy, not a city list) — nothing broader has been published pending Jeremy's confirmation of which list is current. Publishing a 10-location, multi-state (TX + LA + OK) claim is a bigger claim than the 5-city version already implied elsewhere in this graph (e.g. audiences.ts's general-contractors copy, project locations mostly clustered in DFW with one Louisiana project) and should get his explicit sign-off before it's added as site copy.",
     status: "needs-review",
   },
+  {
+    id: "problem-articles-and-space-plans",
+    topic: "Problem-page articles and Walk Your Space plans (new written copy)",
+    detail:
+      "problemArticles.ts (12 problem pages) and sectorPlans.ts (17 space pages) are new long-form and interactive copy written from general, widely accepted concrete-and-coatings practice and the systems already described in this content graph. No product performance figures, certifications or guarantees are stated; the only named standards are ASTM F1869 / F2170 (already in the FAQs) and ANSI A326.3 for wet slip testing. Jeremy should read every problem article and every zone note for voice and accuracy before launch — especially system-to-zone pairings (e.g. urethane cement for cold storage, esd-static-systems for imaging rooms), which are starting-point suggestions, not specifications. Also: 14 previously held-back real projects (mostly garage and metallic showpieces) were added to projects.ts from the Base44 dump so the documented-project count is 65; they stay out of primary navigation.",
+    status: "needs-review",
+  },
 ];
