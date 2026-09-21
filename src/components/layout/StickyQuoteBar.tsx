@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ConcreteToggle } from "./ConcreteToggle";
 
 /** A slim always-in-reach quote prompt that appears once a visitor has scrolled into a page. */
 export function StickyQuoteBar() {
@@ -34,6 +35,7 @@ export function StickyQuoteBar() {
       >
         Request a Quote
       </Link>
+      <ConcreteToggle />
       <button
         type="button"
         aria-label="Dismiss"

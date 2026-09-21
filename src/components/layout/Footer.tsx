@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ConcreteToggle } from "./ConcreteToggle";
 import { Container } from "@/components/ui/Container";
 
 const columns = [
@@ -58,9 +59,12 @@ export function Footer() {
           </div>
         ))}
       </Container>
-      <div className="border-t border-warm-white/10 py-6">
+      <div className="border-t border-warm-white/10 pt-6 pb-24 sm:pb-6">
         <Container className="flex flex-col items-center justify-between gap-2 text-xs text-warm-white/40 sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} Floor Rescue. All rights reserved.</p>
+          <div className="flex items-center gap-2">
+            <p>&copy; {new Date().getFullYear()} Floor Rescue. All rights reserved.</p>
+            <ConcreteToggle />
+          </div>
           <Link href="/quote" className="hover:text-gold-200">
             Request a Quote
           </Link>

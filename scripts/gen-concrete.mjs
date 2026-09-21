@@ -1,6 +1,6 @@
 // Generates src/app/concrete.css — the concrete "levels" theme for the HOMEPAGE only.
-// Applies only inside <Level> wrappers (see src/components/home/Level.tsx) and only when
-// CONCRETE_THEME is true in src/lib/theme.ts. Nothing here touches any other page.
+// Applies only inside <Level> wrappers (see src/components/home/Level.tsx) and only while the
+// visitor has the concrete switch on (body.concrete-on). Nothing here touches any other page.
 import fs from "node:fs";
 
 const svg = (w, h, filter) =>
@@ -229,5 +229,6 @@ ${pocketSel()} :is(h1, h2, h3, h4, p, li, span) {
     0 -1px 0 rgba(0, 0, 0, 0.85);
 }
 `;
-fs.writeFileSync("src/app/concrete.css", css);
+// everything is inert until the switch adds body.concrete-on
+fs.writeFileSync("src/app/concrete.css", css.replaceAll(".cn-level", "body.concrete-on .cn-level"));
 console.log("concrete.css", (css.length / 1024).toFixed(1) + " KB");

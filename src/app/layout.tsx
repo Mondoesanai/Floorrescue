@@ -30,7 +30,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-charcoal-950 text-warm-white">
+      <body suppressHydrationWarning className="flex min-h-full flex-col bg-charcoal-950 text-warm-white">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("fr-concrete")==="1")document.body.classList.add("concrete-on")}catch(e){}`,
+          }}
+        />
         <JourneyProvider>
           <Header />
           <main className="flex-1">{children}</main>
