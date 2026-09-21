@@ -22,7 +22,9 @@ html = html
   .replaceAll("{{IMG_SYSTEMS}}", dataUri("v6-systems.jpg"))
   .replaceAll("{{IMG_FINDER}}", dataUri("v6-finder.jpg"))
   .replaceAll("{{IMG_LAYERS}}", dataUri("v5-layers.jpg"))
-  .replaceAll("{{IMG_WALK}}", dataUri("v6-walk.jpg"));
+  .replaceAll("{{IMG_WALK}}", dataUri("v6-walk.jpg"))
+  .replaceAll("{{IMG_CN0}}", dataUri("levels/lvl00.jpg"))
+  .replaceAll("{{IMG_CN7}}", dataUri("levels/lvl07.jpg"));
 
 const outPath = path.join(root, "pitch-deck-final.html");
 fs.writeFileSync(outPath, html, "utf8");

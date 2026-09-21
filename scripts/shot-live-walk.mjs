@@ -1,0 +1,10 @@
+import puppeteer from "puppeteer";
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const b = await puppeteer.launch({ headless: true, args: ["--no-sandbox"] });
+const p = await b.newPage();
+await p.setViewport({ width: 1440, height: 900 });
+await p.goto("https://floorrescue.vercel.app/commercial/restaurant-food-service", { waitUntil: "networkidle2", timeout: 60000 });
+await p.evaluate(() => [...document.querySelectorAll("section")].find((s) => /Walk Your/i.test(s.textContent.slice(0, 40)))?.scrollIntoView({ block: "start" }));
+await sleep(2500);
+await p.screenshot({ path: "temporary-screenshots/v6-walk.jpg", type: "jpeg", quality: 78 });
+await b.close();

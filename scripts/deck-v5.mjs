@@ -183,6 +183,18 @@ slides.push(shotSlide("Built to move &mdash; and to teach", "A floor is layers. 
 
 slides.push(`
   <section class="slide">
+    <div class="kick">One more thing &mdash; a bolder version</div>
+    <h2>Same site. Two looks. You choose.</h2>
+    <div class="three-shots">
+      <figure><div class="shot"><img src="{{IMG_HERO}}" alt="Standard Floor Rescue homepage"></div><figcaption><b>The standard site</b> &mdash; clean, dark, fast. What we&rsquo;d launch.</figcaption></figure>
+      <figure><div class="shot"><img src="{{IMG_CN0}}" alt="Concrete concept: smooth concrete with the text cut into it"></div><figcaption><b>Concrete concept</b> &mdash; smooth slab under the hero, text cut into the surface.</figcaption></figure>
+      <figure><div class="shot"><img src="{{IMG_CN7}}" alt="Concrete concept: deeper board-formed slab with pressed-in photos"></div><figcaption><b>&hellip;and deeper</b> &mdash; each section a different concrete, as if you&rsquo;re descending beneath the floor.</figcaption></figure>
+    </div>
+    <p class="lead" style="margin-top:1.1rem;max-width:74ch">Same content, same pages, same speed. The concept is the homepage only &mdash; photos and the search box pressed into the concrete, buttons raised on top. Love it and we switch it on; don&rsquo;t, and nothing is lost.</p>
+  </section>`);
+
+slides.push(`
+  <section class="slide">
     <div class="kick" style="color:var(--neg)">The science behind it</div>
     <h2>Every choice has a reason.</h2>
     <table class="cmp sci">
@@ -211,7 +223,7 @@ slides.push(`
         <tr><td>Finding help</td><td>No way to describe a problem</td><td class="hi">&ldquo;What are you dealing with?&rdquo; &mdash; typo-proof, with a follow-up question</td></tr>
         <tr><td>Your systems</td><td>A long list of terms only insiders know</td><td class="hi">Three side-by-side families with a View all button</td></tr>
         <tr><td>Problem pages</td><td>Little to read</td><td class="hi">12 in-depth guides: signs, causes, mistakes, the fix, FAQs</td></tr>
-        <tr><td>Each space</td><td>One page for every kind of buyer</td><td class="hi">17 space pages, each with its own interactive floor plan</td></tr>
+        <tr><td>Each space</td><td>One page for every kind of buyer</td><td class="hi">17 space pages, each with its own interactive, photo-led floor plan</td></tr>
         <tr><td>Proof</td><td>Projects hard to find</td><td class="hi">65 documented projects, 16 five-star reviews, a photo rail that opens full size</td></tr>
         <tr><td>Next step</td><td>A gray-on-gray button</td><td class="hi">One gold Request a Quote, always in reach &mdash; and nothing asked twice</td></tr>
         <tr><td>Behind the scenes</td><td>An unfinished backbone</td><td class="hi">140+ pages Google can read, fast on phones, hosted and watched</td></tr>
@@ -333,6 +345,11 @@ const css = `
   .cmp.sci td,.cmp.sci th{vertical-align:top}
   .cmp.tight td,.cmp.tight th{padding:.42rem .8rem;font-size:clamp(.74rem,1.65vh,.92rem)}
   /* green circles: we are improving our own work, not marking it wrong */
+  .three-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1rem}
+  .three-shots figure{margin:0}
+  .three-shots .shot img{max-height:30vh}
+  .three-shots figcaption{margin-top:.6rem;font-size:.8rem;color:var(--ink-soft)}
+  @media (max-width:900px){.three-shots{grid-template-columns:1fr}}
   .hot{border-color:#2FA36B;box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 18px rgba(47,163,107,.55)}
   .hot b{background:#2FA36B}
   ol.leg li::before{background:#2FA36B}
