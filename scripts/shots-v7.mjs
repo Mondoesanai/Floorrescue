@@ -1,0 +1,30 @@
+import puppeteer from "puppeteer";
+const BASE = "http://localhost:3100";
+const OUT = "temporary-screenshots/concrete";
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const b = await puppeteer.launch({ headless: true, args: ["--no-sandbox"] });
+const p = await b.newPage();
+await p.setViewport({ width: 1366, height: 900 });
+await p.goto(BASE + "/", { waitUntil: "networkidle2" });
+await p.evaluate(() => sessionStorage.clear());
+await p.evaluate(() => document.getElementById("problem-finder")?.scrollIntoView({ block: "center" }));
+await sleep(900);
+await p.screenshot({ path: `${OUT}/d-finder.jpg`, type: "jpeg", quality: 75 });
+await p.evaluate(() => document.getElementById("learn-more")?.scrollIntoView({ block: "start" }));
+await sleep(800);
+await p.screenshot({ path: `${OUT}/d-who.jpg`, type: "jpeg", quality: 75 });
+await p.goto(BASE + "/commercial/restaurant-food-service", { waitUntil: "networkidle2" });
+await p.evaluate(() => window.scrollTo(0, 900));
+await sleep(1200);
+await p.screenshot({ path: `${OUT}/d-sector.jpg`, type: "jpeg", quality: 75 });
+// journey line
+await p.goto(BASE + "/", { waitUntil: "networkidle2" });
+await p.evaluate(() => sessionStorage.clear());
+await p.reload({ waitUntil: "networkidle2" });
+await sleep(1500);
+// skip intro if present
+const skip = await p.$("button ::-p-text(Skip)");
+if (skip) await skip.click();
+await sleep(1500);
+await p.screenshot({ path: `${OUT}/d-hero.jpg`, type: "jpeg", quality: 70 });
+await b.close();

@@ -102,13 +102,13 @@ export function ScrollProgress() {
         (visible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0")
       }
     >
-      <div className="mb-2 ml-3 flex w-fit items-center gap-2 rounded-full border border-gold-300/30 bg-charcoal-950/85 px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.14em] text-warm-white/85 uppercase shadow-floating backdrop-blur-md sm:ml-5">
+      <div className="mb-1.5 ml-3 flex w-fit items-center gap-2 rounded-full border border-gold-300/20 bg-charcoal-950/70 px-3 py-1 text-[10px] font-semibold tracking-[0.14em] text-warm-white/85 uppercase shadow-floating backdrop-blur-md sm:ml-5">
         <span className="tabular-nums text-gold-300">
           {String(active + 1).padStart(2, "0")}/{String(total).padStart(2, "0")}
         </span>
         <span className="max-w-[46vw] truncate sm:max-w-none">{segs[active]?.label}</span>
       </div>
-      <div className="flex h-3.5 gap-[3px] bg-charcoal-950/80 px-0 backdrop-blur-sm">
+      <div className="flex h-1.5 gap-[3px] bg-charcoal-950/80 px-0 backdrop-blur-sm">
         {segs.map((s, i) => (
           <div
             key={i}

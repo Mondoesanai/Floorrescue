@@ -1,7 +1,7 @@
 export function RotatingBadge({ text = "20+ YEARS IN THE TRADE • CONCRETE • COATINGS • " }: { text?: string }) {
   const id = "rotating-badge-path";
   return (
-    <div className="relative flex h-24 w-24 items-center justify-center">
+    <div className="badge-wheel relative flex h-24 w-24 items-center justify-center">
       <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full animate-[spin_18s_linear_infinite]">
         <defs>
           <path id={id} d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />

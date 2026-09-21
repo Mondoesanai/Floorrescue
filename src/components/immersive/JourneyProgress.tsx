@@ -13,10 +13,10 @@ const steps: { label: string; stages: JourneyStage[] }[] = [
 ];
 
 /**
- * A quiet step line, not a quiz counter — three segments that fill in as the
- * visitor moves through Commercial or Residential. Dots-only under the header on mobile
- * (there isn't room between the logo and hamburger pills for labels without
- * overlapping them); full labeled line centered above everything from sm up.
+ * A quiet line along the bottom edge: three small points joined by a hairline
+ * that fills from one to the next as the visitor moves through Commercial or
+ * Residential. Deliberately understated — it orients, it doesn't announce.
+ * Sits bottom-center, clear of the Go Back (left) and Skip (right) buttons.
  */
 export function JourneyProgress({ stage }: { stage: JourneyStage }) {
   const currentIndex = steps.findIndex((s) => s.stages.includes(stage));
@@ -24,28 +24,38 @@ export function JourneyProgress({ stage }: { stage: JourneyStage }) {
 
   return (
     <div
-      className="pointer-events-none fixed top-[4.75rem] left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 sm:top-6 sm:gap-2.5"
+      className="pointer-events-none fixed bottom-[4.75rem] left-1/2 z-20 sm:bottom-7 flex -translate-x-1/2 items-start opacity-70"
       aria-hidden="true"
     >
       {steps.map((step, i) => {
         const state = i < currentIndex ? "done" : i === currentIndex ? "active" : "upcoming";
         return (
-          <div key={step.label} className="flex flex-col items-center gap-1.5">
-            <div
-              className={clsx(
-                "h-1 rounded-full transition-[width,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                state === "upcoming" ? "w-4 bg-warm-white/20 sm:w-6" : "w-6 bg-gold-500 sm:w-10",
-              )}
-              style={state === "active" ? { background: "linear-gradient(90deg, var(--color-gold-500), var(--color-gold-300))" } : undefined}
-            />
-            <span
-              className={clsx(
-                "hidden text-[10px] font-semibold tracking-[0.12em] uppercase transition-colors duration-300 sm:block",
-                state === "upcoming" ? "text-warm-white/35" : "text-gold-200",
-              )}
-            >
-              {step.label}
-            </span>
+          <div key={step.label} className="flex items-start">
+            <div className="flex w-14 flex-col items-center gap-1.5 sm:w-20">
+              <span
+                className={clsx(
+                  "block rounded-full transition-[background-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                  state === "upcoming" ? "h-1.5 w-1.5 bg-warm-white/30" : "h-1.5 w-1.5 bg-gold-300",
+                  state === "active" && "scale-125 shadow-[0_0_8px_2px_rgba(232,205,138,0.55)]",
+                )}
+              />
+              <span
+                className={clsx(
+                  "text-[9px] font-medium tracking-[0.14em] whitespace-nowrap uppercase transition-colors duration-300",
+                  state === "upcoming" ? "text-warm-white/30" : "text-gold-200/80",
+                )}
+              >
+                {step.label}
+              </span>
+            </div>
+            {i < steps.length - 1 ? (
+              <div className="relative mt-[3px] -mx-3 h-px w-8 self-start overflow-hidden bg-warm-white/15 sm:w-14">
+                <div
+                  className="absolute inset-0 origin-left bg-gold-300/80 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{ transform: `scaleX(${i < currentIndex ? 1 : 0})` }}
+                />
+              </div>
+            ) : null}
           </div>
         );
       })}
