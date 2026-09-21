@@ -124,16 +124,15 @@
   .cmp td{color:var(--ink)} .cmp tr td:first-child{color:var(--ink-soft)}
   .cmp.sci td,.cmp.sci th{vertical-align:top}
   .cmp.tight td,.cmp.tight th{padding:.42rem .8rem;font-size:clamp(.74rem,1.65vh,.92rem)}
-  /* green circles: we are improving our own work, not marking it wrong */
   .three-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1rem}
   .three-shots figure{margin:0}
   .three-shots .shot img{max-height:30vh}
   .three-shots figcaption{margin-top:.6rem;font-size:.8rem;color:var(--ink-soft)}
-  @media (max-width:900px){.three-shots{grid-template-columns:1fr}}
-  .hot{border-color:#2FA36B;box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 18px rgba(47,163,107,.55)}
-  .hot b{background:#2FA36B}
-  ol.leg li::before{background:#2FA36B}
-  @media (max-width:900px){.cards3,.stats4{grid-template-columns:1fr 1fr}}
+  /* GREEN circles = what we built and how it works; red circles (default) = what's wrong on the current site */
+  .annot.green .hot{border-color:#2FA36B;box-shadow:0 0 0 2px rgba(255,255,255,.92),0 0 18px rgba(47,163,107,.6)}
+  .annot.green .hot b{background:#2FA36B}
+  ol.leg.green li::before{background:#2FA36B}
+  @media (max-width:900px){.cards3,.stats4,.three-shots{grid-template-columns:1fr 1fr}}
 </style>
 
 <div class="progress" id="progress"></div>
@@ -282,8 +281,8 @@
 
   <!-- 10 -->
   <section class="slide">
-    <div class="kick" style="color:var(--neg)">What that traffic is worth</div>
-    <h2>Modeled value of a site that converts, per year.</h2>
+    <div class="kick" style="color:var(--neg)">What fixing it is worth</div>
+    <h2>What a site that converts is modeled to earn, per year.</h2>
     <table class="cmp" style="max-width:52rem">
       <thead><tr><th>Monthly visitors</th><th>Reach out (2%)</th><th>Become jobs (10%)</th><th class="hi">Modeled revenue / year</th></tr></thead>
       <tbody>
@@ -293,7 +292,7 @@
         <tr><td>4,000</td><td>80 / month</td><td>8 / month</td><td class="hi">$576,000</td></tr>
       </tbody>
     </table>
-    <p class="lead" style="margin-top:1.1rem;max-width:62ch">And that&rsquo;s at an average job of just $6,000. A single facility floor can run to $300,000 &mdash; one bid that lands differently changes the year.</p>
+    <p class="lead" style="margin-top:1.1rem;max-width:62ch">That&rsquo;s what sites that get these gaps fixed can convert &mdash; at an average job of just $6,000. A single facility floor can run to $300,000; one bid that lands differently changes the year.</p>
     <p class="srcnote">Illustrative model, not a forecast: visitors &times; 2% reach out &times; 10% become jobs &times; $6,000 average job &times; 12 months. Every input is an assumption we refine together with your real numbers.</p>
   </section>
 
@@ -306,6 +305,35 @@
   </section>
 
   <!-- 12 -->
+  <section class="slide">
+    <div class="kick" style="color:var(--neg)">So, in summary</div>
+    <h2>Everything we found on the current site.</h2>
+    <div class="grid2" style="max-width:none;margin-top:1rem;grid-template-columns:1fr 1fr;gap:1.2rem 3rem">
+      <div>
+        <h3 style="color:var(--neg)">What a visitor sees</h3>
+        <ul class="pts">
+          <li>A retail-store carousel where a floor should be</li>
+          <li>Two menus and five dropdowns before any project</li>
+          <li>A banner covering the first screen &mdash; and a third of a phone</li>
+          <li>A gray-on-gray main button that gets overlooked</li>
+          <li>Three plain links, with no path for each kind of buyer</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color:var(--neg)">What a visitor can&rsquo;t do</h3>
+        <ul class="pts">
+          <li>Describe a problem in their own words</li>
+          <li>Tell the technical terms from the plain ones</li>
+          <li>Find your 65 projects quickly</li>
+          <li>Tap once to call or request a quote on a phone</li>
+          <li>Get technical answers without picking up the phone</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:1.3rem;max-width:64ch">Each one costs a little on its own. Together, they are the modeled $6,000&ndash;$24,000 a month on the last slide.</p>
+  </section>
+
+  <!-- 13 -->
   <section class="slide dark">
     <div class="kick">Now, what about you?</div>
     <h2 style="max-width:22ch">On a scale of 1 to 10, how important is fixing this?</h2>
@@ -316,7 +344,7 @@
     </div>
   </section>
 
-  <!-- 13 -->
+  <!-- 14 -->
   <section class="slide dark" style="align-items:center;text-align:center">
     <p class="kick" style="align-self:center">What we built for you</p>
     <h1 style="max-width:20ch">Go through it yourself.</h1>
@@ -327,96 +355,89 @@
     <p class="forward" style="margin-top:1.8rem">&rarr; Part 2 &mdash; why every one of those decisions was made</p>
   </section>
 
-  <!-- 14 -->
-  <section class="slide">
-    <div class="row wide-l">
-      <div>
-        <div class="kick">The first screen</div>
-        <h2>One question. Three doors. Nothing in the way.</h2>
-        <p class="lead">&ldquo;Where does your project live?&rdquo; A real concrete-restoration film, the gold Floor Rescue sign, then three doors: My Home, My Business, My Facility. Pick one and the camera moves &mdash; a full commercial building rises out of the floor, then sector, project type, and a page built for that exact space. The industrial buyer never has to sit through a garage.</p>
-        <p class="fixtag">Fixes: the wrong first impression &mdash; and a Skip button lets anyone move past the film</p>
-      </div>
-      <div class="shot">
-        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com</span></div>
-        <img src="{{IMG_HERO}}" alt="Floor Rescue homepage &mdash; the gold sign and three environment choices">
-      </div>
-    </div>
-  </section>
-
   <!-- 15 -->
   <section class="slide">
-    <div class="row wide-l">
+    <div class="row ann">
       <div>
-        <div class="kick">Every system, side by side</div>
-        <h2>Three families, always open. Read down the one that sounds like you.</h2>
-        <p class="lead">Not everyone arrives knowing the difference between polished concrete and a resinous coating. So nothing is hidden behind tabs: Concrete, Resinous Coatings and Decorative Artistry sit next to each other, each with a photo and its first few systems &mdash; and a View all button so nothing overwhelms a first-time visitor.</p>
-        <p class="fixtag">Fixes: a wall of technical terms that only a trade insider can read</p>
+        <div class="kick">Breaking it down &mdash; the first screen</div>
+        <h2>One question. Three doors. Nothing in the way.</h2>
+        <p class="lead">A real concrete-restoration film, the gold Floor Rescue sign, then three doors. Pick one and the camera moves &mdash; a commercial building rises out of the floor, then sector, project, and a page built for that exact space.</p>
+        <ol class="leg green"><li><strong>The gold sign, on a real floor.</strong> The first thing anyone sees says who you are and what you do.</li><li><strong>One question:</strong> &ldquo;Select your space.&rdquo; No menus, no banner.</li><li><strong>Three doors</strong> &mdash; My Business, My Home, My Facility. The industrial buyer never sits through a garage.</li><li><strong>One gold Request a Quote,</strong> always in reach &mdash; and a Skip button for anyone in a hurry.</li></ol>
+        
       </div>
-      <div class="shot">
-        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com &middot; Floor Systems</span></div>
-        <img src="{{IMG_SYSTEMS}}" alt="Three side-by-side columns: Concrete, Resinous Coatings, Decorative Artistry">
+      <div class="annot green" style="--ar:1.6">
+        <img src="{{IMG_HERO}}" alt="Floor Rescue homepage with four parts circled in green">
+        <div class="hot r" style="left:22%;top:11%;width:56%;height:17%"><b>1</b></div><div class="hot r" style="left:27%;top:42%;width:46%;height:12%"><b>2</b></div><div class="hot r" style="left:19%;top:58%;width:62.5%;height:28%"><b>3</b></div><div class="hot r" style="left:38.5%;top:86.5%;width:23%;height:6.5%"><b>4</b></div>
       </div>
     </div>
   </section>
 
   <!-- 16 -->
   <section class="slide">
-    <div class="row wide-l">
+    <div class="row ann">
       <div>
-        <div class="kick">&ldquo;What are you dealing with?&rdquo;</div>
-        <h2>Say it your way. Spelling doesn&rsquo;t matter.</h2>
-        <p class="lead">A visitor types &ldquo;my floor is breaking&rdquo; &mdash; misspelled, non-technical, whatever &mdash; and the site asks one follow-up question, then sends them to a real guide that explains it. The same box lives in the header on every page. Twelve in-depth problem guides sit behind it, and they help you get found on Google too.</p>
-        <p class="fixtag">Fixes: urgent problems that can&rsquo;t get a fast answer</p>
+        <div class="kick">Breaking it down &mdash; your services</div>
+        <h2>Three families, side by side. Read down the one that sounds like you.</h2>
+        <p class="lead">Not everyone arrives knowing polished concrete from a resinous coating, so nothing hides behind tabs.</p>
+        <ol class="leg green"><li><strong>Concrete, Resinous Coatings, Decorative Artistry</strong> &mdash; each with a real photo and a one-line plain-English blurb.</li><li><strong>Your systems, in your words,</strong> listed right under the family they belong to.</li><li><strong>&ldquo;View all&rdquo;</strong> keeps it short at first &mdash; the whole list is one tap away.</li></ol>
+        
       </div>
-      <div class="shot">
-        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com &middot; What are you dealing with?</span></div>
-        <img src="{{IMG_FINDER}}" alt="Plain-language problem finder asking a follow-up question">
+      <div class="annot green" style="--ar:1.6">
+        <img src="{{IMG_SYSTEMS}}" alt="Systems section with three parts circled in green">
+        <div class="hot r" style="left:11.4%;top:15%;width:77.2%;height:38%"><b>1</b></div><div class="hot r" style="left:12.3%;top:53.3%;width:23.2%;height:27.4%"><b>2</b></div><div class="hot r" style="left:12.3%;top:84%;width:23.4%;height:5.2%"><b>3</b></div><div class="hot r" style="left:38.5%;top:84%;width:23.4%;height:5.2%"></div>
       </div>
     </div>
   </section>
 
   <!-- 17 -->
   <section class="slide">
-    <div class="row wide-l">
+    <div class="row ann">
       <div>
-        <div class="kick">A page built for their exact space</div>
-        <h2>Seventeen spaces. Seventeen different pages.</h2>
-        <p class="lead">Every space &mdash; a restaurant, a warehouse, a hotel, a cold-storage facility &mdash; gets its own page with its own interactive floor plan: tap the kitchen line, the dish pit, the walk-in cooler and see what each floor faces. Then matching projects, straight answers, four reviews, and a quote form that already knows the space.</p>
-        <p class="fixtag">Fixes: every trade getting flattened into generic contractor copy</p>
+        <div class="kick">Breaking it down &mdash; find help fast</div>
+        <h2>Say it your way. Spelling doesn&rsquo;t matter.</h2>
+        <p class="lead">Someone types &ldquo;my floor is breaking&rdquo; &mdash; misspelled, non-technical, whatever &mdash; and the site helps them find the answer. The same box lives in the header of every page.</p>
+        <ol class="leg green"><li><strong>&ldquo;What are you dealing with?&rdquo;</strong> &mdash; the question a worried owner is already asking.</li><li><strong>A plain-language search box</strong> that forgives typos and everyday wording.</li><li><strong>One follow-up question,</strong> then straight to a real guide &mdash; twelve in-depth pages that also help you get found on Google.</li></ol>
+        
       </div>
-      <div class="shot">
-        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com/commercial/restaurant-food-service</span></div>
-        <img src="{{IMG_WALK}}" alt="Interactive Walk Your Restaurant floor plan on the restaurant page">
+      <div class="annot green" style="--ar:1.6">
+        <img src="{{IMG_FINDER}}" alt="Problem finder with three parts circled in green">
+        <div class="hot r" style="left:24.5%;top:30.8%;width:40%;height:7%"><b>1</b></div><div class="hot r" style="left:24.7%;top:45.8%;width:50.6%;height:8.2%"><b>2</b></div><div class="hot r" style="left:24.7%;top:55.5%;width:50.6%;height:30.2%"><b>3</b></div>
       </div>
     </div>
   </section>
 
   <!-- 18 -->
   <section class="slide">
-    <div class="row wide-l">
+    <div class="row ann">
       <div>
-        <div class="kick">Built to move &mdash; and to teach</div>
-        <h2>A floor is layers. Watch it build from the slab up.</h2>
-        <p class="lead">A cross-section that builds itself layer by layer, process steps that light up in turn, a photo rail you can pause, drag and open full size, and a progress bar that shows where you are on the page. Motion here explains the trade &mdash; it never gets in the way.</p>
-        <p class="fixtag">Fixes: a site that reads like every other contractor brochure</p>
+        <div class="kick">Breaking it down &mdash; a page for every space</div>
+        <h2>Seventeen spaces. Seventeen different pages.</h2>
+        <p class="lead">A restaurant, a warehouse, a hotel, a cold-storage facility &mdash; each gets its own page and its own interactive floor plan.</p>
+        <ol class="leg green"><li><strong>A floor plan of their space.</strong> Tap the kitchen line, the dish pit, the walk-in cooler.</li><li><strong>A real Floor Rescue photo</strong> for every zone, so it&rsquo;s never abstract.</li><li><strong>What that floor faces,</strong> and which of your systems is where the conversation starts.</li><li><strong>&ldquo;Ask about this zone&rdquo;</strong> &mdash; a quote form that already knows the space.</li></ol>
+        
       </div>
-      <div class="shot">
-        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com &middot; Anatomy of a Floor</span></div>
-        <img src="{{IMG_LAYERS}}" alt="Animated floor layer cross-section from the slab up to the topcoat">
+      <div class="annot green" style="--ar:1.6">
+        <img src="{{IMG_WALK}}" alt="Restaurant space page with four parts circled in green">
+        <div class="hot r" style="left:11.5%;top:29.2%;width:45.2%;height:44%"><b>1</b></div><div class="hot r" style="left:58.3%;top:29.2%;width:30.3%;height:19.6%"><b>2</b></div><div class="hot r" style="left:58.3%;top:50.6%;width:30.3%;height:25.4%"><b>3</b></div><div class="hot r" style="left:59.6%;top:77.8%;width:12.8%;height:5.4%"><b>4</b></div>
       </div>
     </div>
   </section>
 
   <!-- 19 -->
   <section class="slide">
-    <div class="kick">One more thing &mdash; a bolder version</div>
-    <h2>Same site. Two looks. You choose.</h2>
-    <div class="three-shots">
-      <figure><div class="shot"><img src="{{IMG_HERO}}" alt="Standard Floor Rescue homepage"></div><figcaption><b>The standard site</b> &mdash; clean, dark, fast. What we&rsquo;d launch.</figcaption></figure>
-      <figure><div class="shot"><img src="{{IMG_CN0}}" alt="Concrete concept: smooth concrete with the text cut into it"></div><figcaption><b>Concrete concept</b> &mdash; smooth slab under the hero, text cut into the surface.</figcaption></figure>
-      <figure><div class="shot"><img src="{{IMG_CN7}}" alt="Concrete concept: deeper board-formed slab with pressed-in photos"></div><figcaption><b>&hellip;and deeper</b> &mdash; each section a different concrete, as if you&rsquo;re descending beneath the floor.</figcaption></figure>
+    <div class="row ann">
+      <div>
+        <div class="kick">Breaking it down &mdash; built to teach</div>
+        <h2>A floor is layers. Watch it build from the slab up.</h2>
+        <p class="lead">Small moving pieces do real work &mdash; and they explain the trade instead of getting in the way.</p>
+        <ol class="leg green"><li><strong>A cross-section that builds itself,</strong> layer by layer, slab to topcoat.</li><li><strong>Each layer explained</strong> in one plain sentence &mdash; and why the ones nobody sees matter most.</li><li><strong>Tap any layer</strong> to see its job. Same idea powers the process steps and the photo rail.</li></ol>
+        
+      </div>
+      <div class="annot green" style="--ar:1.518">
+        <img src="{{IMG_LAYERS}}" alt="Floor layers section with three parts circled in green">
+        <div class="hot r" style="left:9.4%;top:16%;width:49.4%;height:45.4%"><b>1</b></div><div class="hot r" style="left:60.8%;top:15.3%;width:29.8%;height:47%"><b>2</b></div><div class="hot r" style="left:62.6%;top:42.3%;width:24.8%;height:12.8%"><b>3</b></div>
+      </div>
     </div>
-    <p class="lead" style="margin-top:1.1rem;max-width:74ch">Same content, same pages, same speed. The concept is the homepage only &mdash; photos and the search box pressed into the concrete, buttons raised on top. Love it and we switch it on; don&rsquo;t, and nothing is lost.</p>
   </section>
 
   <!-- 20 -->
@@ -439,7 +460,7 @@
 
   <!-- 21 -->
   <section class="slide">
-    <div class="kick" style="color:var(--gold-d)">Every improvement, at a glance</div>
+    <div class="kick" style="color:var(--gold-d)">The summary of what we fixed</div>
     <h2>What we&rsquo;re actually fixing.</h2>
     <table class="cmp sci tight" style="max-width:none">
       <thead><tr><th style="width:17%"></th><th style="width:33%">Before</th><th class="hi">Now</th></tr></thead>
@@ -458,6 +479,18 @@
   </section>
 
   <!-- 22 -->
+  <section class="slide">
+    <div class="kick">One more thing &mdash; a bolder version</div>
+    <h2>Same site. Two looks. You choose.</h2>
+    <div class="three-shots">
+      <figure><div class="shot"><img src="{{IMG_HERO}}" alt="Standard Floor Rescue homepage"></div><figcaption><b>The standard site</b> &mdash; clean, dark, fast. What we&rsquo;d launch.</figcaption></figure>
+      <figure><div class="shot"><img src="{{IMG_CN0}}" alt="Concrete look: smooth concrete with the text cut into it"></div><figcaption><b>The concrete look</b> &mdash; smooth slab under the hero, text cut into the surface.</figcaption></figure>
+      <figure><div class="shot"><img src="{{IMG_CN7}}" alt="Concrete look: deeper slabs with pressed-in photos"></div><figcaption><b>&hellip;and deeper</b> &mdash; every section a different material, as if you&rsquo;re descending beneath the floor.</figcaption></figure>
+    </div>
+    <p class="lead" style="margin-top:1.1rem;max-width:74ch">Same content, same pages, same speed. It&rsquo;s a switch on the homepage &mdash; tap the small square beside Request a Quote. Love it and we make it the default; don&rsquo;t, and nothing is lost.</p>
+  </section>
+
+  <!-- 23 -->
   <section class="slide dark">
     <div class="kick">Before we talk price</div>
     <h2>Here&rsquo;s exactly what happens after you say yes.</h2>
@@ -471,7 +504,7 @@
     <p class="forward">&rarr; as simple as we can make it, so this gets live and working for you</p>
   </section>
 
-  <!-- 23 -->
+  <!-- 24 -->
   <section class="slide">
     <div class="kick" style="color:var(--gold-d)">So, to recap</div>
     <h2>Keep losing it every month &mdash; or fix it once.</h2>
@@ -488,7 +521,7 @@
     <p class="lead" style="margin-top:1.1rem;max-width:66ch">And whatever you decide, you now have the list of what to fix &mdash; so it gets fixed, fast.</p>
   </section>
 
-  <!-- 24 -->
+  <!-- 25 -->
   <section class="slide">
     <div class="kick">The investment &mdash; three ways to start</div>
     <h2>Same build. Different ways to pay for it.</h2>
@@ -530,7 +563,7 @@
     </div>
   </section>
 
-  <!-- 25 -->
+  <!-- 26 -->
   <section class="slide dark" style="align-items:center;text-align:center">
     <p class="kick" style="align-self:center">So &mdash; where do we go from here?</p>
     <h1 style="max-width:20ch">Which option makes the most sense for you?</h1>
@@ -543,7 +576,7 @@
 
 </div>
 
-<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 25</span></div>
+<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 26</span></div>
 <div class="navhint">&larr; &rarr; or click to move &middot; Esc for overview</div>
 
 <script>
@@ -557,8 +590,8 @@
   var parts = [
     {at:0, label:'Part 1 \u2014 where you are'},
     {at:8, label:'Part 2 \u2014 what it\u2019s costing'},
-    {at:12, label:'Part 3 \u2014 the site we built'},
-    {at:21, label:'Part 4 \u2014 the investment'}
+    {at:13, label:'Part 3 \u2014 the site we built'},
+    {at:22, label:'Part 4 \u2014 the investment'}
   ];
   function partFor(i){
     var label = parts[0].label;
