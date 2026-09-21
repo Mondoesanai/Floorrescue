@@ -165,7 +165,7 @@ export function WorkRail() {
               setOpen(i % photos.length);
             }}
             aria-label={`Open photo: ${label}`}
-            className="deboss group relative h-56 w-80 flex-none cursor-pointer overflow-hidden rounded-xl border border-warm-white/10 text-left transition-[transform,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:border-gold-300 hover:shadow-[0_18px_40px_-16px_rgba(201,162,75,0.5)] focus-visible:outline-2 focus-visible:outline-gold-300 sm:h-64 sm:w-96"
+            className="group relative h-56 w-80 flex-none cursor-pointer overflow-hidden rounded-xl border border-warm-white/10 text-left transition-[transform,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:border-gold-300 hover:shadow-[0_18px_40px_-16px_rgba(201,162,75,0.5)] focus-visible:outline-2 focus-visible:outline-gold-300 sm:h-64 sm:w-96"
           >
             <Image
               src={`/assets/images/team-photos/${file}.png`}

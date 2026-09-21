@@ -29,7 +29,7 @@ export function WhoWeAreSection() {
           </div>
 
           {/* Meet the Owner — real photo of Jeremy, supplied by the client. */}
-          <div className="deboss relative overflow-visible rounded-2xl border border-warm-white/10 bg-charcoal-950 shadow-elevated">
+          <div className="relative overflow-visible rounded-2xl border border-warm-white/10 bg-charcoal-950 shadow-elevated">
             <div className="pointer-events-none absolute -top-8 right-2 z-10 hidden sm:block lg:-right-8">
               <RotatingBadge />
             </div>

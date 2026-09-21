@@ -124,6 +124,10 @@
   .cmp td{color:var(--ink)} .cmp tr td:first-child{color:var(--ink-soft)}
   .cmp.sci td,.cmp.sci th{vertical-align:top}
   .cmp.tight td,.cmp.tight th{padding:.42rem .8rem;font-size:clamp(.74rem,1.65vh,.92rem)}
+  .jstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1rem}
+  .jstrip figure{margin:0}
+  .jstrip .annot{max-width:100%}
+  .jstrip figcaption{margin-top:.55rem;font-size:.82rem;color:var(--ink-soft)}
   .three-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1rem}
   .three-shots figure{margin:0}
   .three-shots .shot img{max-height:30vh}
@@ -132,7 +136,7 @@
   .annot.green .hot{border-color:#2FA36B;box-shadow:0 0 0 2px rgba(255,255,255,.92),0 0 18px rgba(47,163,107,.6)}
   .annot.green .hot b{background:#2FA36B}
   ol.leg.green li::before{background:#2FA36B}
-  @media (max-width:900px){.cards3,.stats4,.three-shots{grid-template-columns:1fr 1fr}}
+  @media (max-width:900px){.cards3,.stats4,.three-shots,.jstrip{grid-template-columns:1fr 1fr}}
 </style>
 
 <div class="progress" id="progress"></div>
@@ -374,6 +378,48 @@
 
   <!-- 16 -->
   <section class="slide">
+    <div class="kick">Breaking it down &mdash; the guided experience</div>
+    <h2>A quiz that doesn&rsquo;t feel like one. Two questions, and everyone finds what they need.</h2>
+    <p class="lead" style="max-width:74ch">This is what the whole site is built around: your knowledge is organized so a visitor never has to hunt for it. Each answer moves the camera deeper into the building &mdash; and then they land on a page written for their exact situation.</p>
+    <div class="jstrip">
+      
+      <figure>
+        <div class="annot green" style="--ar:1.6"><img src="{{IMG_J1}}" alt="Step 1: What's your space?"><div class="hot r" style="left:11%;top:32.5%;width:39.5%;height:44.5%"><b>1</b></div><div class="hot r" style="left:40%;top:92.3%;width:21%;height:4.6%"><b>2</b></div></div>
+        <figcaption><b>Step 1 &mdash; what&rsquo;s your space?</b><br>Retail, restaurant, office, hotel, healthcare&hellip; one tap.</figcaption>
+      </figure>
+      
+      <figure>
+        <div class="annot green" style="--ar:1.6"><img src="{{IMG_J2}}" alt="Step 2: What do you need done to your floor?"><div class="hot r" style="left:11%;top:37.5%;width:39.5%;height:35.5%"><b>1</b></div><div class="hot r" style="left:40%;top:92.3%;width:21%;height:4.6%"><b>2</b></div></div>
+        <figcaption><b>Step 2 &mdash; what do you need done?</b><br>New build, renovation, or a failed floor.</figcaption>
+      </figure>
+      
+      <figure>
+        <div class="annot green" style="--ar:1.6"><img src="{{IMG_J3}}" alt="Step 3: A page built from the answers"><div class="hot r" style="left:2.5%;top:22.5%;width:42%;height:27%"><b>1</b></div><div class="hot r" style="left:2.5%;top:67.5%;width:27%;height:6.5%"><b>2</b></div></div>
+        <figcaption><b>Step 3 &mdash; your page</b><br>A headline written from their two answers.</figcaption>
+      </figure>
+    </div>
+    <p class="forward" style="color:var(--gold-d);margin-top:1rem">&rarr; the faint line at the bottom of every step shows how close they are: Space &middot; Project &middot; Your Plan</p>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="row ann">
+      <div>
+        <div class="kick">Breaking it down &mdash; where every path lands</div>
+        <h2>A page written for their exact situation.</h2>
+        <p class="lead">This is the restaurant &rarr; failed-floor page. A different pair of answers builds a different page &mdash; different headline, different priorities, different projects and systems.</p>
+        <ol class="leg green"><li><strong>A headline built from their answers</strong> &mdash; in your approved language, never an invented claim.</li><li><strong>Plain support copy</strong> that says what Floor Rescue actually does about this exact problem.</li><li><strong>The next step, immediately:</strong> Request a Quote (already knows the space) or See Floor Systems.</li><li><strong>What matters in a space like theirs</strong> &mdash; washdown, shutdown windows, sanitation &mdash; scrolling past here, tappable just below to personalize the page further.</li></ol>
+        <p class="fixtag">Below it: a floor plan of their space, matching projects, straight answers, four reviews &mdash; and a quote form that already knows everything they told us.</p>
+      </div>
+      <div class="annot green" style="--ar:1.6">
+        <img src="{{IMG_J3}}" alt="Personalized landing page with four parts circled in green">
+        <div class="hot r" style="left:2.5%;top:22.5%;width:42%;height:27%"><b>1</b></div><div class="hot r" style="left:2.5%;top:51.5%;width:42.5%;height:13%"><b>2</b></div><div class="hot r" style="left:2.5%;top:67.5%;width:27%;height:6.5%"><b>3</b></div><div class="hot r" style="left:0%;top:85.6%;width:100%;height:5.4%"><b>4</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
     <div class="row ann">
       <div>
         <div class="kick">Breaking it down &mdash; your services</div>
@@ -389,7 +435,7 @@
     </div>
   </section>
 
-  <!-- 17 -->
+  <!-- 19 -->
   <section class="slide">
     <div class="row ann">
       <div>
@@ -406,7 +452,7 @@
     </div>
   </section>
 
-  <!-- 18 -->
+  <!-- 20 -->
   <section class="slide">
     <div class="row ann">
       <div>
@@ -423,7 +469,7 @@
     </div>
   </section>
 
-  <!-- 19 -->
+  <!-- 21 -->
   <section class="slide">
     <div class="row ann">
       <div>
@@ -440,7 +486,7 @@
     </div>
   </section>
 
-  <!-- 20 -->
+  <!-- 22 -->
   <section class="slide">
     <div class="kick" style="color:var(--neg)">The science behind it</div>
     <h2>Every choice has a reason.</h2>
@@ -458,7 +504,7 @@
     <p class="srcnote">Sources: Laws of UX; Whitehat; Stanford Web Credibility Project; HubSpot 2024; Google / SOASTA. Single-CTA and form-field figures are typical benchmarks that vary by study &mdash; not promises.</p>
   </section>
 
-  <!-- 21 -->
+  <!-- 23 -->
   <section class="slide">
     <div class="kick" style="color:var(--gold-d)">The summary of what we fixed</div>
     <h2>What we&rsquo;re actually fixing.</h2>
@@ -466,7 +512,7 @@
       <thead><tr><th style="width:17%"></th><th style="width:33%">Before</th><th class="hi">Now</th></tr></thead>
       <tbody>
         <tr><td>First screen</td><td>A retail-store carousel and a banner over the top</td><td class="hi">A real floor being restored under the gold sign &mdash; nothing in the way</td></tr>
-        <tr><td>Getting around</td><td>Two menus, five dropdowns</td><td class="hi">Three doors, plus one search that understands plain language</td></tr>
+        <tr><td>Finding what they need</td><td>Two menus, five dropdowns, one page for everyone</td><td class="hi">A two-question guided experience that lands each visitor on a page built for them &mdash; plus plain-language search</td></tr>
         <tr><td>Finding help</td><td>No way to describe a problem</td><td class="hi">&ldquo;What are you dealing with?&rdquo; &mdash; typo-proof, with a follow-up question</td></tr>
         <tr><td>Your systems</td><td>A long list of terms only insiders know</td><td class="hi">Three side-by-side families with a View all button</td></tr>
         <tr><td>Problem pages</td><td>Little to read</td><td class="hi">12 in-depth guides: signs, causes, mistakes, the fix, FAQs</td></tr>
@@ -478,19 +524,7 @@
     </table>
   </section>
 
-  <!-- 22 -->
-  <section class="slide">
-    <div class="kick">One more thing &mdash; a bolder version</div>
-    <h2>Same site. Two looks. You choose.</h2>
-    <div class="three-shots">
-      <figure><div class="shot"><img src="{{IMG_HERO}}" alt="Standard Floor Rescue homepage"></div><figcaption><b>The standard site</b> &mdash; clean, dark, fast. What we&rsquo;d launch.</figcaption></figure>
-      <figure><div class="shot"><img src="{{IMG_CN0}}" alt="Concrete look: smooth concrete with the text cut into it"></div><figcaption><b>The concrete look</b> &mdash; smooth slab under the hero, text cut into the surface.</figcaption></figure>
-      <figure><div class="shot"><img src="{{IMG_CN7}}" alt="Concrete look: deeper slabs with pressed-in photos"></div><figcaption><b>&hellip;and deeper</b> &mdash; every section a different material, as if you&rsquo;re descending beneath the floor.</figcaption></figure>
-    </div>
-    <p class="lead" style="margin-top:1.1rem;max-width:74ch">Same content, same pages, same speed. It&rsquo;s a switch on the homepage &mdash; tap the small square beside Request a Quote. Love it and we make it the default; don&rsquo;t, and nothing is lost.</p>
-  </section>
-
-  <!-- 23 -->
+  <!-- 24 -->
   <section class="slide dark">
     <div class="kick">Before we talk price</div>
     <h2>Here&rsquo;s exactly what happens after you say yes.</h2>
@@ -504,7 +538,7 @@
     <p class="forward">&rarr; as simple as we can make it, so this gets live and working for you</p>
   </section>
 
-  <!-- 24 -->
+  <!-- 25 -->
   <section class="slide">
     <div class="kick" style="color:var(--gold-d)">So, to recap</div>
     <h2>Keep losing it every month &mdash; or fix it once.</h2>
@@ -521,7 +555,7 @@
     <p class="lead" style="margin-top:1.1rem;max-width:66ch">And whatever you decide, you now have the list of what to fix &mdash; so it gets fixed, fast.</p>
   </section>
 
-  <!-- 25 -->
+  <!-- 26 -->
   <section class="slide">
     <div class="kick">The investment &mdash; three ways to start</div>
     <h2>Same build. Different ways to pay for it.</h2>
@@ -563,7 +597,7 @@
     </div>
   </section>
 
-  <!-- 26 -->
+  <!-- 27 -->
   <section class="slide dark" style="align-items:center;text-align:center">
     <p class="kick" style="align-self:center">So &mdash; where do we go from here?</p>
     <h1 style="max-width:20ch">Which option makes the most sense for you?</h1>
@@ -576,7 +610,7 @@
 
 </div>
 
-<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 26</span></div>
+<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 27</span></div>
 <div class="navhint">&larr; &rarr; or click to move &middot; Esc for overview</div>
 
 <script>
@@ -591,7 +625,7 @@
     {at:0, label:'Part 1 \u2014 where you are'},
     {at:8, label:'Part 2 \u2014 what it\u2019s costing'},
     {at:13, label:'Part 3 \u2014 the site we built'},
-    {at:22, label:'Part 4 \u2014 the investment'}
+    {at:23, label:'Part 4 \u2014 the investment'}
   ];
   function partFor(i){
     var label = parts[0].label;

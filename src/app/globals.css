@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "./concrete.css";
 
 :root {
   --color-charcoal-950: #0c0d0e;
@@ -42,6 +41,19 @@
 
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-inter);
+}
+
+/* Readability: everything scales up ~6%, muted text is lifted, and the tiniest sizes get a floor. */
+html {
+  font-size: 106.25%;
+}
+[class*="text-warm-white/"]:not(:hover) {
+  color: color-mix(in srgb, var(--color-warm-white) 86%, transparent);
+}
+[class*="text-[10px]"],
+[class*="text-[11px]"] {
+  font-size: 12.5px;
+  line-height: 1.5;
 }
 
 body {

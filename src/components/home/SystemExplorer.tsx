@@ -39,7 +39,7 @@ export function SystemExplorer({ families }: { families: ExplorerFamily[] }) {
           {families.map((f, i) => (
             <Reveal key={f.id} delay={i * 90} className="h-full">
               <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-warm-white/10 bg-charcoal-900 shadow-elevated">
-                <div className="deboss group/photo relative aspect-[4/3] overflow-hidden">
+                <div className="group/photo relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={f.image}
                     alt=""
