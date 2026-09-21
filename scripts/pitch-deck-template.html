@@ -107,6 +107,23 @@
   .row.ann{grid-template-columns:1fr 1.35fr}
   @media (max-width:900px){.row,.row.wide-l,.grid2,.diagram,.pricebar{grid-template-columns:1fr}.slide{padding:2.2rem 1.25rem 3.2rem}body{overflow:auto}.shot img{max-height:44vh}}
   @media print{body{overflow:visible}.slide{position:relative;opacity:1;visibility:visible;page-break-after:always;min-height:100vh}.foot,.progress,.navhint,.partmark{display:none}}
+
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.1rem}
+  .cards3>div{border:1px solid var(--line);border-radius:14px;padding:1.15rem 1.2rem;background:#fff}
+  .cards3 h4{font-family:"Space Grotesk",sans-serif;font-size:1.05rem;margin-bottom:.35rem}
+  .cards3 p{font-size:.85rem;color:var(--ink-soft)}
+  .stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1.4rem}
+  .stat{border-top:3px solid var(--gold);padding-top:1rem}
+  .stat .n{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(2.4rem,8vh,4.6rem);line-height:1;letter-spacing:-.03em;color:var(--gold)}
+  .stats4.light .stat .n{color:var(--neg)} .stats4.light .stat{border-top-color:var(--neg)}
+  .stat p{margin-top:.6rem;font-size:clamp(.85rem,1.9vh,1.05rem)}
+  .srcnote{margin-top:1rem;font-size:.72rem;color:var(--mute);max-width:90ch}
+  .scale{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+  .scale span{width:clamp(2.6rem,7vh,4rem);height:clamp(2.6rem,7vh,4rem);border-radius:50%;border:3px solid #F3EEDF;display:flex;align-items:center;justify-content:center;font-family:"Space Grotesk",sans-serif;font-size:clamp(1.1rem,3vh,1.7rem)}
+  .scale span.hi{border-color:var(--gold)} .scale span.ten{background:var(--gold);color:var(--ink)}
+  .cmp td{color:var(--ink)} .cmp tr td:first-child{color:var(--ink-soft)}
+  .cmp.sci td,.cmp.sci th{vertical-align:top}
+  @media (max-width:900px){.cards3,.stats4{grid-template-columns:1fr 1fr}}
 </style>
 
 <div class="progress" id="progress"></div>
@@ -114,107 +131,55 @@
 <div class="deck" id="deck">
 
   <!-- 1 -->
-  <section class="slide dark active">
-    <div class="kick">Inspiring Websites &nbsp;&middot;&nbsp; for Floor Rescue</div>
-    <h1>Twenty-two years in the trade.<br>A five-year-old GoDaddy template doing the talking.</h1>
-    <p class="lead" style="margin-top:1rem">Ten minutes: what the current site is costing you, why &mdash; and the site we actually built while we were talking.</p>
+  <section class="slide dark">
+    <div class="kick">Inspiring Websites &nbsp;&middot;&nbsp; prepared for Jeremy, Floor Rescue</div>
+    <h1>Twenty-two years of work that speaks for itself.<br>Your website should say it just as loudly.</h1>
+    <p class="lead" style="margin-top:1rem">What the current site is costing, what a stronger one is plausibly worth &mdash; and the site we built while we were talking.</p>
   </section>
 
   <!-- 2 -->
   <section class="slide dark">
-    <div class="tag">In his own words</div>
-    <p class="quote">It is a crummy, just GoDaddy template&#8230; The design is horrible.</p>
-    <cite>&mdash; Jeremy, describing floorrescue.com on our first call</cite>
-    <ul class="pts" style="margin-top:2rem">
-      <li>Built years ago and never revisited</li>
-      <li>No real separation between residential, commercial, and industrial visitors</li>
-      <li>Doesn&rsquo;t read like 22 years of trade authority &mdash; reads like every other contractor site</li>
-    </ul>
+    <div class="kick">One thing to know before we start</div>
+    <h2>What you&rsquo;re about to see is an example &mdash; not a final answer.</h2>
+    <p class="lead" style="max-width:60ch">We built it from what you gave us: your projects, your systems, your language. It&rsquo;s here to show what&rsquo;s possible &mdash; nothing more.</p>
+    <div class="grid2" style="max-width:74ch;margin-top:1.4rem">
+      <div><h3>Everything is editable</h3><p>Every word, photo, page, and the order things appear in. Nothing is locked, and you never need us to change a comma &mdash; though we will.</p></div>
+      <div><h3>Don&rsquo;t like it? We redo it</h3><p>If the direction isn&rsquo;t right, we start over. This is a starting point for the conversation, not a take-it-or-leave-it.</p></div>
+      <div><h3>The words matter most</h3><p>Your services and the way they&rsquo;re described are what a trade buyer judges you on. We refine every line with you before anything goes live.</p></div>
+      <div><h3>Built from your own material</h3><p>Real project names, your systems, your credentials &mdash; nothing invented about your work, and nothing published you haven&rsquo;t approved.</p></div>
+    </div>
   </section>
 
   <!-- 3 -->
-  <section class="slide dark">
-    <div class="tag">Not the first time, in his own words</div>
-    <p class="quote">That&rsquo;s the frustration I&rsquo;ve had in the past with different marketing companies. That&rsquo;s why I built my own site, even though I don&rsquo;t like it &mdash; I had someone else in the middle of building it, we hit a brick wall, and I decided to move on from that relationship.</p>
-    <cite>&mdash; Jeremy, on why he ended up building the Base44 concept himself</cite>
-    <ul class="pts" style="margin-top:1.6rem">
-      <li>Not his first agency relationship &mdash; and not the first one that stalled out</li>
-      <li>&ldquo;You can&rsquo;t bypass experience&rdquo; &mdash; his words, on why free AI tools and templates can&rsquo;t replace someone who actually knows the trade</li>
-      <li>Twenty-two years of boots-on-the-ground knowledge, and no one before us built a site that reflected it</li>
-    </ul>
+  <section class="slide">
+    <div class="kick" style="color:var(--neg)">Where you are</div>
+    <h2>You&rsquo;ve built something real.</h2>
+    <div class="cards3">
+      <div><h4>22+ years in the trade</h4><p>Hands-on with the grinders, coatings and slabs &mdash; not managed from a distance.</p></div>
+      <div><h4>65 documented projects</h4><p>From the 25,000 SF Comerica Bank headquarters to airport hangars, dental offices and a county sally port.</p></div>
+      <div><h4>22 floor systems</h4><p>Concrete, resinous and decorative &mdash; across residential, commercial and industrial.</p></div>
+      <div><h4>16 five-star reviews</h4><p>Every single one a five. Real clients, in their own words.</p></div>
+      <div><h4>Credentials that close deals</h4><p>USDA / FDA-compliant systems, Matrix-certified applicators, licensed, insured and bonded.</p></div>
+      <div><h4>A point of view</h4><p>The power is in the install &mdash; and the floor starts with the slab.</p></div>
+    </div>
+    <p class="quote" style="font-size:clamp(1.15rem,3vh,1.7rem);max-width:none;margin-top:1.4rem;color:var(--neg)">So why doesn&rsquo;t the first place buyers look show any of it?</p>
   </section>
 
   <!-- 4 -->
   <section class="slide dark">
-    <div class="kick">The risk he named himself</div>
-    <p class="quote">If I have an industrial multi-million or billion dollar company come to my website wanting to do a $300,000 floor, they won&rsquo;t want to come to my website and see that I do garages. Which I don&rsquo;t do anymore.</p>
-    <div class="diagram" style="max-width:100%">
-      <div class="dcol bad">
-        <h4>Homeowner</h4>
-        <p>Small residential job</p>
-        <span class="res">Sees garages &mdash; fine</span>
-      </div>
-      <div class="dcol bad">
-        <h4>Business Owner</h4>
-        <p>New restaurant build-out</p>
-        <span class="res">Sees garages &mdash; unsure</span>
-      </div>
-      <div class="dcol bad">
-        <h4>Industrial Buyer</h4>
-        <p>$300,000 facility floor</p>
-        <span class="res">Sees garages &mdash; gone</span>
-      </div>
-      <div class="funnel-arrow">&darr; all three land on the same undifferentiated homepage &darr;</div>
+    <div class="kick">How buyers decide</div>
+    <h2>They judge you before they read you.</h2>
+    <div class="stats4">
+      <div class="stat"><div class="n">94%</div><p>of first impressions are design-related</p></div>
+      <div class="stat"><div class="n">75%</div><p>of users judge a company&rsquo;s credibility by its website design</p></div>
+      <div class="stat"><div class="n">50 ms</div><p>for a visitor to form an opinion of a site</p></div>
+      <div class="stat"><div class="n">38%</div><p>stop engaging when a layout is unattractive</p></div>
     </div>
-    <p class="forward">&rarr; fixed in Part 2 &mdash; three real paths, from the first click</p>
+    <p class="lead" style="margin-top:1.4rem;max-width:56ch">A facility manager weighing a floor that can run into six figures will look at your website. Then look again.</p>
+    <p class="srcnote">Compiled from published web-credibility research (Stanford Web Credibility Research, Google) as summarized by Shropshire Media (2024) and Tenacity.</p>
   </section>
 
   <!-- 5 -->
-  <section class="slide dark">
-    <div class="tag">His own estimate &mdash; not ours</div>
-    <div class="big">$100K+</div>
-    <p class="lead" style="margin-top:1rem">What Jeremy said an unclear, incomplete web presence has already cost him in missed opportunities.</p>
-    <p class="quote" style="margin-top:1.4rem;font-size:clamp(1.05rem,2.6vh,1.4rem)">I&rsquo;ve already known it&rsquo;s cost me&#8230; probably hundreds of thousands of all types of opportunities, I&rsquo;m sure.</p>
-    <p class="forward">&rarr; every leak on this slide gets a specific fix ahead &mdash; not a redesign, a repair</p>
-  </section>
-
-  <!-- 6 -->
-  <section class="slide dark">
-    <div class="kick">The Base44 concept looked better. It had the same problem.</div>
-    <p class="quote">It&rsquo;s not all complete inside there&#8230; every page doesn&rsquo;t have a landing spot&#8230; I have to work on that some more.</p>
-    <cite>&mdash; Jeremy, on the unfinished Base44 rebuild</cite>
-    <ul class="pts" style="margin-top:1.6rem">
-      <li>Pages with no real destination behind them</li>
-      <li>&ldquo;I don&rsquo;t know how well this reads on Google&rdquo; &mdash; his words, on SEO</li>
-      <li>Nothing stable enough to text a client a direct link</li>
-    </ul>
-  </section>
-
-  <!-- 7 -->
-  <section class="slide dark">
-    <div class="kick">The complexity risk</div>
-    <p class="quote">It&rsquo;s not complicated but it is layers&#8230; people who get this work done all the time butcher it every day. They don&rsquo;t even know the right terms.</p>
-    <cite>&mdash; Jeremy</cite>
-    <p class="lead" style="margin-top:1.4rem">Twelve floor systems. Three environments. Residential, commercial, and industrial audiences who each need to see themselves immediately. Most agencies flatten that into one generic contractor template. That was the actual job &mdash; not a redesign.</p>
-  </section>
-
-
-  <!-- worries -->
-  <section class="slide dark">
-    <div class="kick">What you told us worries you most</div>
-    <h2>Six worries. Each one has a price tag.</h2>
-    <div class="grid2" style="max-width:82ch;margin-top:.8rem">
-      <div><h3>&ldquo;They&rsquo;ll misunderstand my industry.&rdquo;</h3><p>Wrong terms lose the exact buyers who know the trade &mdash; architects, GCs, plant managers &mdash; before they ever call.</p></div>
-      <div><h3>&ldquo;My 20 years will get dumbed down.&rdquo;</h3><p>A generic page gets compared on price. A specialist gets compared on knowledge.</p></div>
-      <div><h3>&ldquo;A $300K buyer will think I do garages.&rdquo;</h3><p>One wrong first impression and that bid never reaches you &mdash; you&rsquo;ll never even see it.</p></div>
-      <div><h3>&ldquo;Urgent problems can&rsquo;t get a fast answer.&rdquo;</h3><p>Someone with a failing floor books the first credible answer they find. Slower is lost.</p></div>
-      <div><h3>&ldquo;I keep answering the same questions.&rdquo;</h3><p>Every repeat call and text is time taken from the work &mdash; and from the jobs you actually want.</p></div>
-      <div><h3>&ldquo;Another vendor who disappears.&rdquo;</h3><p>A site nobody owns goes stale, slips in search, and quietly stops representing you.</p></div>
-    </div>
-    <p class="forward">&rarr; your estimate of the total: &ldquo;probably hundreds of thousands of all types of opportunities&rdquo;</p>
-  </section>
-
-  <!-- annotated desktop -->
   <section class="slide">
     <div class="row ann">
       <div>
@@ -235,7 +200,7 @@
     </div>
   </section>
 
-  <!-- annotated scroll -->
+  <!-- 6 -->
   <section class="slide">
     <div class="row ann">
       <div>
@@ -256,7 +221,7 @@
     </div>
   </section>
 
-  <!-- annotated mobile -->
+  <!-- 7 -->
   <section class="slide">
     <div class="row">
       <div>
@@ -277,42 +242,73 @@
     </div>
   </section>
 
-
   <!-- 8 -->
-  <section class="slide dark" style="align-items:center;text-align:center">
-    <p class="kick" style="align-self:center">Before we show you anything</p>
-    <h1 style="max-width:22ch">Are you aware of what actually fixing this takes?</h1>
-    <p class="lead" style="margin-top:1.2rem;max-width:36ch">Not a redesign. Not a template swap. The real backbone work behind everything on the last six slides.</p>
-    <p class="quote" style="margin-top:2rem;max-width:28ch">On a scale of one to ten &mdash; how committed are you to actually changing it?</p>
-  </section>
-
-  <!-- 9 -->
   <section class="slide dark">
-    <div class="kick">Where that leaves you right now</div>
-    <h2>22 years of expertise. Represented by a five-year-old template.</h2>
-    <div class="grid2" style="margin-top:1.4rem">
-      <div>
-        <h3>$100K+</h3>
-        <p>Jeremy&rsquo;s own estimate of what it&rsquo;s already cost him &mdash; and counting, every month it stays the same.</p>
-      </div>
-      <div>
-        <h3>One undifferentiated homepage</h3>
-        <p>A $300K industrial buyer and a homeowner see the exact same crummy GoDaddy template.</p>
-      </div>
-      <div>
-        <h3>An unfinished backbone</h3>
-        <p>Pages with no landing spot. Uncertain SEO. Nothing stable enough to text a client.</p>
-      </div>
-      <div>
-        <h3>Every day, the gap gets wider</h3>
-        <p>Competitors with a worse trade and a better website are closing the deals this should have won.</p>
-      </div>
+    <div class="kick">What we heard, in our words</div>
+    <h2>Six worries. Each one has a price tag.</h2>
+    <div class="grid2" style="max-width:82ch;margin-top:.8rem">
+      <div><h3>Being misunderstood</h3><p>Wrong terms lose the exact buyers who know the trade &mdash; architects, GCs, plant managers &mdash; before they ever call.</p></div>
+      <div><h3>Twenty years flattened into generic copy</h3><p>A generic page gets compared on price. A specialist gets compared on knowledge.</p></div>
+      <div><h3>The wrong first impression</h3><p>A large industrial buyer who sees the wrong work never sends the bid &mdash; and you never find out.</p></div>
+      <div><h3>Urgent problems, slow answers</h3><p>Someone with a failing floor books the first credible answer they find. Slower is lost.</p></div>
+      <div><h3>Answering the same questions, again</h3><p>Every repeat call and text is time taken from the work &mdash; and from the jobs you actually want.</p></div>
+      <div><h3>A vendor who fades away</h3><p>A site nobody owns goes stale, slips in search, and quietly stops representing you.</p></div>
     </div>
   </section>
 
+  <!-- 9 -->
+  <section class="slide">
+    <div class="kick" style="color:var(--neg)">The market</div>
+    <h2>The demand in Dallas&ndash;Fort Worth is real &mdash; and the search starts online.</h2>
+    <div class="stats4 light">
+      <div class="stat"><div class="n">8.48M</div><p>people in the DFW metro &mdash; the 4th-largest metro in the U.S.</p></div>
+      <div class="stat"><div class="n">123,557</div><p>residents added in a single year &mdash; second-largest gain of any U.S. metro</p></div>
+      <div class="stat"><div class="n">17%</div><p>of B2B buying time is spent meeting with potential suppliers</p></div>
+      <div class="stat"><div class="n">27%</div><p>is spent researching independently online &mdash; before anyone calls you</p></div>
+    </div>
+    <p class="lead" style="margin-top:1.4rem;max-width:62ch">New people mean new homes, offices, restaurants and facilities. Most of the comparing happens on a website, without you in the room. <b>The site is where that comparison is won or lost.</b></p>
+    <p class="srcnote">Sources: U.S. Census Bureau population estimates (July 2025) as reported by Dallas Morning News and The Real Deal, March 2026; Gartner B2B buying journey research.</p>
+  </section>
+
   <!-- 10 -->
+  <section class="slide">
+    <div class="kick" style="color:var(--neg)">What that traffic is worth</div>
+    <h2>Modeled value of a site that converts, per year.</h2>
+    <table class="cmp" style="max-width:52rem">
+      <thead><tr><th>Monthly visitors</th><th>Reach out (2%)</th><th>Become jobs (10%)</th><th class="hi">Modeled revenue / year</th></tr></thead>
+      <tbody>
+        <tr><td>500</td><td>10 / month</td><td>1 / month</td><td class="hi">$72,000</td></tr>
+        <tr><td>1,000</td><td>20 / month</td><td>2 / month</td><td class="hi">$144,000</td></tr>
+        <tr><td>2,000</td><td>40 / month</td><td>4 / month</td><td class="hi">$288,000</td></tr>
+        <tr><td>4,000</td><td>80 / month</td><td>8 / month</td><td class="hi">$576,000</td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:1.1rem;max-width:62ch">And that&rsquo;s at an average job of just $6,000. A single facility floor can run to $300,000 &mdash; one bid that lands differently changes the year.</p>
+    <p class="srcnote">Illustrative model, not a forecast: visitors &times; 2% reach out &times; 10% become jobs &times; $6,000 average job &times; 12 months. Every input is an assumption we refine together with your real numbers.</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide dark" style="justify-content:center">
+    <div class="kick">The cost of waiting</div>
+    <h1 style="max-width:20ch">Every month the site stays as it is, a modeled <span style="color:var(--gold)">$6,000&ndash;$24,000</span> walks past.</h1>
+    <p class="lead" style="margin-top:1.2rem;max-width:52ch">One average job is $6,000. One large commercial or industrial floor can be many times that.</p>
+    <p class="srcnote">Modeled from the 500&ndash;2,000 visitors-per-month rows on the previous slide. Illustrative.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide dark">
+    <div class="kick">Now, what about you?</div>
+    <h2 style="max-width:22ch">On a scale of 1 to 10, how important is fixing this?</h2>
+    <div class="scale"><span class="">1</span><span class="">2</span><span class="">3</span><span class="">4</span><span class="">5</span><span class="">6</span><span class="">7</span><span class="hi">8</span><span class="hi">9</span><span class="hi ten">10</span></div>
+    <div class="grid2" style="max-width:74ch;margin-top:1.6rem">
+      <div><h3>If it isn&rsquo;t a 10</h3><p>What makes it a [your number] &mdash; and not a 10?</p></div>
+      <div><h3>The budget question</h3><p>What would you invest to close this gap?</p></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
   <section class="slide dark" style="align-items:center;text-align:center">
-    <p class="kick" style="align-self:center">Before we explain a single decision</p>
+    <p class="kick" style="align-self:center">What we built for you</p>
     <h1 style="max-width:20ch">Go through it yourself.</h1>
     <p class="lead" style="margin-top:1.1rem;max-width:40ch">Pull out your phone or open a new tab right now. Walk it the way a real homeowner, builder, and facility manager would. Everything after this slide just explains what you&rsquo;re about to feel.</p>
     <div class="cta-row" style="justify-content:center;margin-top:1.8rem">
@@ -321,22 +317,14 @@
     <p class="forward" style="margin-top:1.8rem">&rarr; Part 2 &mdash; why every one of those decisions was made</p>
   </section>
 
-  <!-- 11 -->
-  <section class="slide dark" style="align-items:center;text-align:center">
-    <p class="kick" style="align-self:center">Now that you&rsquo;ve walked through it yourself</p>
-    <h1 style="max-width:22ch">Here&rsquo;s why every decision was made &mdash; not just what it looks like.</h1>
-    <p class="lead" style="margin-top:1rem;max-width:42ch">Point by point: what you told us, what we built, and the effect it has. Built the way you actually think about the trade &mdash; by space, by system, by who&rsquo;s asking.</p>
-  </section>
-
-  <!-- 12 -->
+  <!-- 14 -->
   <section class="slide">
     <div class="row wide-l">
       <div>
-        <div class="kick">What he actually asked for</div>
+        <div class="kick">The first screen</div>
         <h2>One question. Not a quiz.</h2>
         <p class="lead">&ldquo;Where does your project live?&rdquo; The whole homepage is built to answer that in one screen &mdash; a real concrete-restoration film, the gold Floor Rescue sign, then three doors: Residential, Commercial, Industrial.</p>
-        <p class="quote" style="margin-top:1.2rem;font-size:1.05rem">Boom, they see their problem. Boom, they see that we can solve it. Boom, they put their information in.</p>
-        <cite>&mdash; Jeremy, describing what he wanted</cite>
+        
         <p class="fixtag">Fixes: the &ldquo;crummy GoDaddy template&rdquo; first impression</p>
       </div>
       <div class="shot">
@@ -346,7 +334,7 @@
     </div>
   </section>
 
-  <!-- 13 -->
+  <!-- 15 -->
   <section class="slide">
     <div class="row wide-l">
       <div>
@@ -362,24 +350,39 @@
     </div>
   </section>
 
-  <!-- 14 -->
-  <section class="slide dark">
-    <div class="kick">Why the building actually rises &mdash; not just a cinematic flex</div>
-    <h2>Every click is a small yes. By the quote form, they&rsquo;ve already said yes four times.</h2>
-    <p class="lead">Environment. Sector. Project type. Space. Each one is a tiny commitment &mdash; and the psychology behind it is well established: the more small steps someone invests into something, the more likely they are to finish it. That&rsquo;s not decoration. It&rsquo;s the actual mechanism driving the conversion lift, applied to lead generation instead of a checkout flow.</p>
-    <div class="grid2" style="margin-top:1.4rem">
+  <!-- 16 -->
+  <section class="slide">
+    <div class="row wide-l">
       <div>
-        <h3>A generic contractor site</h3>
-        <p>One click to a bare contact form. No investment, no momentum &mdash; easy to bounce, easy to forget by tomorrow.</p>
+        <div class="kick">Every system, side by side</div>
+        <h2>Three families, always open. Read down the one that sounds like you.</h2>
+        <p class="lead">Not everyone arrives knowing the difference between polished concrete and a resinous coating. So nothing is hidden behind tabs: Concrete, Resinous Coatings and Decorative Artistry sit next to each other, each with a photo and its full list underneath.</p>
+        <p class="fixtag">Fixes: a wall of technical terms that only a trade insider can read</p>
       </div>
-      <div>
-        <h3>This site</h3>
-        <p>A guided sequence of small decisions before the form ever appears. By then, the visitor has already built their own project with you.</p>
+      <div class="shot">
+        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com &middot; Floor Systems</span></div>
+        <img src="{{IMG_SYSTEMS}}" alt="Three side-by-side columns: Concrete, Resinous Coatings, Decorative Artistry">
       </div>
     </div>
   </section>
 
-  <!-- 15 -->
+  <!-- 17 -->
+  <section class="slide">
+    <div class="row wide-l">
+      <div>
+        <div class="kick">&ldquo;What are you dealing with?&rdquo;</div>
+        <h2>Say it your way. Spelling doesn&rsquo;t matter.</h2>
+        <p class="lead">A visitor types &ldquo;my floor is breaking&rdquo; &mdash; misspelled, non-technical, whatever &mdash; and the site asks one follow-up question, then sends them to the exact page that explains it. The urgent buyer gets a fast, credible answer at 11pm without calling anyone.</p>
+        <p class="fixtag">Fixes: urgent problems that can&rsquo;t get a fast answer</p>
+      </div>
+      <div class="shot">
+        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com &middot; What are you dealing with?</span></div>
+        <img src="{{IMG_FINDER}}" alt="Plain-language problem finder asking a follow-up question">
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 -->
   <section class="slide">
     <div class="row wide-l">
       <div>
@@ -395,15 +398,14 @@
     </div>
   </section>
 
-  <!-- 16 -->
+  <!-- 19 -->
   <section class="slide">
     <div class="row wide-l">
       <div>
         <div class="kick">His own wish, built</div>
         <h2>Nothing gets asked twice.</h2>
         <p class="lead">Environment, space, and project state carry straight into the quote form and into the email that lands in your inbox. The prospect only fills in what we don&rsquo;t already know &mdash; name, contact, photos.</p>
-        <p class="quote" style="margin-top:1.2rem;font-size:1.05rem">I don&rsquo;t want to ask the same questions over and over again.</p>
-        <cite>&mdash; Jeremy</cite>
+        
         <p class="fixtag">Fixes: leads slipping through a site that never closed the loop</p>
       </div>
       <div class="shot">
@@ -413,7 +415,41 @@
     </div>
   </section>
 
-  <!-- 17 -->
+  <!-- 20 -->
+  <section class="slide">
+    <div class="row wide-l">
+      <div>
+        <div class="kick">Built to move &mdash; and to teach</div>
+        <h2>A floor is layers. Watch it build from the slab up.</h2>
+        <p class="lead">Small moving pieces do real work: a floor that builds itself layer by layer, process steps that light up in turn, a reading-progress bar, a Skip button on every cinematic scene, and smooth scrolling everywhere. Motion here explains the trade &mdash; it never gets in the way.</p>
+        <p class="fixtag">Fixes: a site that reads like every other contractor brochure</p>
+      </div>
+      <div class="shot">
+        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com &middot; Anatomy of a Floor</span></div>
+        <img src="{{IMG_LAYERS}}" alt="Animated floor layer stack from the slab up to the topcoat">
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 -->
+  <section class="slide">
+    <div class="kick" style="color:var(--neg)">The science behind it</div>
+    <h2>Every choice has a reason.</h2>
+    <table class="cmp sci">
+      <thead><tr><th>The gap</th><th>What we did</th><th>What the research says</th></tr></thead>
+      <tbody>
+        <tr><td>Too many choices</td><td>Three doors, one question</td><td>Hick&rsquo;s Law: decision time rises with every added choice.</td></tr>
+        <tr><td>No clear next step</td><td>One gold Request a Quote, always in reach</td><td>Landing pages with a single call to action converted 13.5% vs 10.5% with five or more.</td></tr>
+        <tr><td>Small steps</td><td>Environment &rarr; space &rarr; project &rarr; quote</td><td>Commitment and consistency: the more small steps people invest, the likelier they finish.</td></tr>
+        <tr><td>Trust</td><td>Real jobs, real reviews, consistent design</td><td>Stanford Web Credibility Project (4,500+ people): design and errors shape credibility fast.</td></tr>
+        <tr><td>Form friction</td><td>A prefilled form &mdash; nothing asked twice</td><td>HubSpot (2024): each added form field lowers conversion about 4.1% on average.</td></tr>
+        <tr><td>Slow phones</td><td>Cinematic clips cut ~75% smaller</td><td>Google / SOASTA: 53% of mobile visits are abandoned when a page takes over 3 seconds.</td></tr>
+      </tbody>
+    </table>
+    <p class="srcnote">Sources: Laws of UX; Whitehat; Stanford Web Credibility Project; HubSpot 2024; Google / SOASTA. Single-CTA and form-field figures are typical benchmarks that vary by study &mdash; not promises.</p>
+  </section>
+
+  <!-- 22 -->
   <section class="slide dark">
     <div class="kick">The backbone he said was missing</div>
     <h2>Every page has a landing spot. Every link goes somewhere real.</h2>
@@ -432,24 +468,24 @@
       </div>
       <div>
         <h3>Never guesses at your trade</h3>
-        <p>Garages stay off the main site until you say otherwise. Nothing invented about specs, certifications, or compliance.</p>
+        <p>Garages stay out of the main navigation until you say otherwise. Nothing invented about specs, certifications, or compliance.</p>
       </div>
     </div>
   </section>
 
-  <!-- 18 -->
+  <!-- 23 -->
   <section class="slide">
     <div class="kick">&ldquo;We have barely anything on here&rdquo; &mdash; fixed</div>
     <h2>Twenty-two years of real project history, actually on the site.</h2>
     <p class="lead">We went back through your own prior site content and brought every real project, every system spec, and every credential back &mdash; organized, searchable, and tied to the right page instead of buried in a PDF.</p>
     <div class="pricebar" style="max-width:100%;grid-template-columns:repeat(3,1fr)">
       <div class="pcard" style="text-align:center">
-        <div class="amt" style="font-size:clamp(2rem,5vh,2.6rem)">25+</div>
-        <h4 style="margin-top:.4rem">Real Named Projects</h4>
+        <div class="amt" style="font-size:clamp(2rem,5vh,2.6rem)">65</div>
+        <h4 style="margin-top:.4rem">Documented Projects</h4>
         <p style="margin-top:.5rem;font-size:.8rem;color:var(--ink-soft)">TD Industries, Comerica Bank, Luxe Dental, ASI Gymnastics, and more &mdash; each with its real system, location, and story.</p>
       </div>
       <div class="pcard" style="text-align:center">
-        <div class="amt" style="font-size:clamp(2rem,5vh,2.6rem)">20</div>
+        <div class="amt" style="font-size:clamp(2rem,5vh,2.6rem)">22</div>
         <h4 style="margin-top:.4rem">Floor Systems, Fully Described</h4>
         <p style="margin-top:.5rem;font-size:.8rem;color:var(--ink-soft)">Your own language on every system &mdash; polished concrete, polyaspartic, urethane cement, metallic epoxy, and the rest.</p>
       </div>
@@ -461,7 +497,7 @@
     </div>
   </section>
 
-  <!-- 19 -->
+  <!-- 24 -->
   <section class="slide">
     <div class="kick">Something you never asked for</div>
     <h2>A full technical FAQ system &mdash; built in, not bolted on.</h2>
@@ -479,11 +515,56 @@
     <p class="fixtag">Fixes: the same technical questions, answered by you, on every call</p>
   </section>
 
-  <!-- 20 -->
+  <!-- 25 -->
+  <section class="slide">
+    <div class="kick">Problems you didn&rsquo;t mention &mdash; fixed anyway</div>
+    <h2>The things a visitor never says out loud.</h2>
+    <div class="grid2" style="max-width:82ch">
+      <div><h3>Phone-first</h3><p>Every page is built to be read and tapped on a phone, and checked at phone width before it ships.</p></div>
+      <div><h3>Fast</h3><p>The cinematic clips were cut about 75% smaller with no visible loss &mdash; and a Skip button lets anyone move past them.</p></div>
+      <div><h3>140+ real pages Google can read</h3><p>Every system, problem, project, article and space is its own indexable page with its own title and description.</p></div>
+      <div><h3>Rich space pages</h3><p>Each space &mdash; a restaurant, a warehouse, a home &mdash; gets a full page: what its floor has to survive, matching systems and projects, straight answers, and four reviews with a link to the rest.</p></div>
+      <div><h3>One obvious next step</h3><p>A single Request a Quote button, always in reach &mdash; no hunting through menus.</p></div>
+      <div><h3>Find anything from anywhere</h3><p>Search from every page, plus the plain-language finder that forgives typos.</p></div>
+    </div>
+  </section>
+
+  <!-- 26 -->
+  <section class="slide">
+    <div class="kick" style="color:var(--neg)">What we fixed</div>
+    <h2>Every gap, closed.</h2>
+    <table class="cmp sci" style="max-width:64rem">
+      <thead><tr><th>Before</th><th class="hi">Now</th></tr></thead>
+      <tbody>
+        <tr><td>A retail-store carousel as the first image</td><td class="hi">A real floor being restored, under the gold Floor Rescue sign</td></tr>
+        <tr><td>Two menus and five dropdowns before any project</td><td class="hi">Three doors &mdash; My Home, My Business, My Facility</td></tr>
+        <tr><td>A banner covering the first screen</td><td class="hi">Nothing between the visitor and the work</td></tr>
+        <tr><td>A gray-on-gray main button</td><td class="hi">One gold Request a Quote, always in reach</td></tr>
+        <tr><td>Projects hard to find</td><td class="hi">65 documented projects, each with its own page</td></tr>
+        <tr><td>Technical terms only insiders know</td><td class="hi">Side-by-side systems and a plain-language finder</td></tr>
+        <tr><td>The same questions answered on every call</td><td class="hi">A full technical FAQ, built in</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 27 -->
+  <section class="slide">
+    <div class="kick" style="color:var(--gold-d)">The comparison</div>
+    <h2>Six months from now.</h2>
+    <div class="row" style="align-items:stretch;margin-top:1rem">
+      <div class="pcard" style="padding:1.6rem"><h4 style="color:var(--neg)">Today</h4>
+        <ul style="margin-top:1rem;gap:.7rem"><li>Buyers can&rsquo;t tell what you do in five seconds</li><li>A homeowner and a plant manager land on the same page</li><li>Projects and answers scattered or missing</li><li>Nobody reviewing what works</li><li>The same questions, answered by phone</li></ul></div>
+      <div class="pcard hi" style="padding:1.6rem"><h4 style="color:var(--gold-d)">In six months</h4>
+        <ul style="margin-top:1rem;gap:.7rem"><li>A clear first step on every screen</li><li>Every buyer on a path built for them</li><li>65 projects and a full FAQ live and indexed</li><li>Daily SEO work, reviewed and improved monthly</li><li>Common questions answered before the call</li></ul></div>
+    </div>
+    <p class="srcnote">Outcomes we control &mdash; not promises about rankings or revenue.</p>
+  </section>
+
+  <!-- 28 -->
   <section class="slide">
     <div class="kick">What we actually do, before you pay us another dollar</div>
     <h2>This is what happens after launch &mdash; not just what it looks like on day one.</h2>
-    <p class="lead">We host the site. Every single day, someone on our team is inside it making SEO tweaks &mdash; on-page, technical, AI-assisted. That&rsquo;s not a one-time setup; it&rsquo;s the ongoing work that keeps the &ldquo;I don&rsquo;t know how this reads on Google&rdquo; problem from ever coming back.</p>
+    <p class="lead">We host the site. Every single day, someone on our team is inside it making SEO tweaks &mdash; on-page, technical, AI-assisted. That&rsquo;s not a one-time setup; it&rsquo;s the ongoing work that keeps the uncertainty about how the site reads on Google from ever coming back.</p>
     <div class="grid2" style="margin-top:1.6rem">
       <div>
         <h3>Daily hands-on SEO, every single day</h3>
@@ -504,86 +585,7 @@
     </div>
   </section>
 
-  <!-- 21 -->
-  <section class="slide dark">
-    <div class="kick">Built to be a partner, not a one-time job</div>
-    <p class="quote">I&rsquo;m not looking for a one-time thing. I&rsquo;m looking for someone to partner with and work with long term&#8230; my website needs to continue to evolve.</p>
-    <cite>&mdash; Jeremy</cite>
-    <ul class="pts good" style="margin-top:1.6rem">
-      <li>Residential and Industrial plug into the same system whenever you&rsquo;re ready &mdash; no rebuild</li>
-      <li>Room for the YouTube embeds you mentioned, next to each major system</li>
-      <li>Room for AI-assisted quoting and a client portal down the line</li>
-    </ul>
-  </section>
-
-
-  <!-- beyond -->
-  <section class="slide">
-    <div class="kick">Problems you didn&rsquo;t tell us about &mdash; fixed anyway</div>
-    <h2>The things a visitor never says out loud.</h2>
-    <div class="grid2" style="max-width:82ch">
-      <div><h3>Phone-first</h3><p>Every page is built to be read and tapped on a phone, and checked at phone width before it ships.</p></div>
-      <div><h3>Fast</h3><p>The cinematic clips were cut about 75% smaller with no visible loss, so the hero doesn&rsquo;t stutter on a real connection.</p></div>
-      <div><h3>140+ real pages Google can read</h3><p>Every system, problem, project, and article is its own indexable page with its own title and description &mdash; not one long scroll.</p></div>
-      <div><h3>One obvious next step</h3><p>A single Request a Quote button, always in reach &mdash; no hunting through menus.</p></div>
-      <div><h3>Proof beside every claim</h3><p>16 real five-star reviews and your actual project history sit next to the systems they support.</p></div>
-      <div><h3>Search and problem-finder</h3><p>Type &ldquo;cracked floor&rdquo; or pick a problem &mdash; the site sends people straight to the answer.</p></div>
-    </div>
-    <p class="fixtag">Fixes: &ldquo;visitors will have to dig around to find what they need&rdquo;</p>
-  </section>
-
-  <!-- 22 -->
-  <section class="slide dark">
-    <div class="kick">Before the ask &mdash; what a weak web presence actually compounds into</div>
-    <h2>Twenty years in business. A market that keeps growing. Here&rsquo;s what a gap in the funnel is plausibly worth.</h2>
-    <p class="lead">Illustrative, not a quote &mdash; but grounded in your own numbers and your own project history, not a generic industry statistic.</p>
-    <div style="display:flex;align-items:flex-end;gap:1.4rem;height:clamp(120px,18vh,180px);margin-top:1.6rem;padding:0 .5rem">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.4rem;flex:1">
-        <div style="width:100%;height:18%;background:var(--mute);border-radius:4px 4px 0 0"></div>
-        <span style="font-size:.7rem;color:var(--ink-soft)">Yr 1</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.4rem;flex:1">
-        <div style="width:100%;height:34%;background:var(--mute);border-radius:4px 4px 0 0"></div>
-        <span style="font-size:.7rem;color:var(--ink-soft)">Yr 5</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.4rem;flex:1">
-        <div style="width:100%;height:52%;background:var(--gold-d);border-radius:4px 4px 0 0"></div>
-        <span style="font-size:.7rem;color:var(--ink-soft)">Yr 10</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.4rem;flex:1">
-        <div style="width:100%;height:72%;background:var(--gold)"></div>
-        <span style="font-size:.7rem;color:var(--ink-soft)">Yr 15</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:.4rem;flex:1">
-        <div style="width:100%;height:100%;background:var(--neg-hot);border-radius:4px 4px 0 0;position:relative">
-          <span style="position:absolute;top:-1.5rem;left:50%;transform:translateX(-50%);font-size:.75rem;font-weight:700;color:var(--neg-hot);white-space:nowrap">$100K+</span>
-        </div>
-        <span style="font-size:.7rem;color:var(--ink-soft)">Today</span>
-      </div>
-    </div>
-    <p style="font-size:.75rem;color:var(--ink-soft);margin-top:.5rem">Illustrative trend, not measured data &mdash; the compounding shape of a gap that widens every year the site stays the same while the market grows.</p>
-    <div class="grid2" style="margin-top:1.2rem">
-      <div>
-        <h3>Residential</h3>
-        <p>Smaller tickets, higher volume &mdash; but every missed lead is a referral chain that never gets to start.</p>
-      </div>
-      <div>
-        <h3>Commercial</h3>
-        <p>Your own project list runs from single-space buildouts to six-figure jobs like the 25,000 SF Comerica Bank headquarters.</p>
-      </div>
-      <div>
-        <h3>Industrial</h3>
-        <p>Your own words: a single facility floor can run $300,000. One of those bids landing differently changes the year.</p>
-      </div>
-      <div>
-        <h3>The comparison</h3>
-        <p>You already estimated the old site cost you $100K+ in missed opportunity. This build costs a fraction of one mid-size commercial job &mdash; once, not every year.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- pricing -->
+  <!-- 29 -->
   <section class="slide">
     <div class="kick">The investment &mdash; three ways to start</div>
     <h2>Same build. Different ways to pay for it.</h2>
@@ -626,7 +628,7 @@
     </div>
   </section>
 
-  <!-- pricing math -->
+  <!-- 30 -->
   <section class="slide">
     <div class="kick">Why Option 1 &mdash; in plain numbers</div>
     <h2>Same two sites. $1,776 to $3,000 less.</h2>
@@ -644,14 +646,14 @@
     <p class="lead" style="margin-top:1.1rem;max-width:64ch">The build you walked through is roughly a $4,500 project on its own. Building both in one relationship is why the second site can be included at no added build cost &mdash; today.</p>
   </section>
 
-  <!-- which option -->
+  <!-- 31 -->
   <section class="slide dark" style="align-items:center;text-align:center">
     <p class="kick" style="align-self:center">Before we talk next steps</p>
     <h1 style="max-width:20ch">Which option makes the most sense for you?</h1>
     <p class="lead" style="margin-top:1.2rem;max-width:44ch">Flat price for both sites &middot; payment plan for both &middot; Floor Rescue on its own. All three get you the same build &mdash; the difference is what you pay for the same result.</p>
   </section>
 
-  <!-- next steps -->
+  <!-- 32 -->
   <section class="slide dark">
     <div class="kick">Next steps &mdash; from the first payment to live</div>
     <h2>Here&rsquo;s exactly what happens after you say yes.</h2>
@@ -664,7 +666,7 @@
     <p class="forward">&rarr; a partner that keeps building &mdash; the opposite of the vendor who disappears</p>
   </section>
 
-  <!-- 24 close -->
+  <!-- 33 -->
   <section class="slide dark" style="align-items:center;text-align:center">
     <p class="kick" style="align-self:center">So &mdash; where do we go from here?</p>
     <h1>Let&rsquo;s build both.</h1>
@@ -677,7 +679,7 @@
 
 </div>
 
-<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 32</span></div>
+<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 33</span></div>
 <div class="navhint">&larr; &rarr; or click to move &middot; Esc for overview</div>
 
 <script>
@@ -689,9 +691,10 @@
   var partmark = document.getElementById('partmark');
   var slidenum = document.getElementById('slidenum');
   var parts = [
-    {at:0, label:'Part 1 — the problem'},
-    {at:13, label:'Part 2 — what we built'},
-    {at:26, label:'Part 3 — the investment'}
+    {at:0, label:'Part 1 \u2014 where you are'},
+    {at:8, label:'Part 2 \u2014 what it\u2019s costing'},
+    {at:12, label:'Part 3 \u2014 the site we built'},
+    {at:28, label:'Part 4 \u2014 the investment'}
   ];
   function partFor(i){
     var label = parts[0].label;

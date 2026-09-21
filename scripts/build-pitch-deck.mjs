@@ -18,7 +18,10 @@ html = html
   .replaceAll("{{IMG_QUOTE}}", dataUri("deck-quote.jpg"))
   .replaceAll("{{IMG_OLD_HOME}}", dataUri("old-home.jpg"))
   .replaceAll("{{IMG_OLD_SCROLL}}", dataUri("old-scroll.jpg"))
-  .replaceAll("{{IMG_OLD_MOBILE}}", dataUri("old-mobile.jpg"));
+  .replaceAll("{{IMG_OLD_MOBILE}}", dataUri("old-mobile.jpg"))
+  .replaceAll("{{IMG_SYSTEMS}}", dataUri("v4-systems.jpg"))
+  .replaceAll("{{IMG_FINDER}}", dataUri("v4-finder-ask.jpg"))
+  .replaceAll("{{IMG_LAYERS}}", dataUri("v4-layers.jpg"));
 
 const outPath = path.join(root, "pitch-deck-final.html");
 fs.writeFileSync(outPath, html, "utf8");
