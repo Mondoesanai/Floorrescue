@@ -123,6 +123,11 @@
   .scale span.hi{border-color:var(--gold)} .scale span.ten{background:var(--gold);color:var(--ink)}
   .cmp td{color:var(--ink)} .cmp tr td:first-child{color:var(--ink-soft)}
   .cmp.sci td,.cmp.sci th{vertical-align:top}
+  .cmp.tight td,.cmp.tight th{padding:.42rem .8rem;font-size:clamp(.74rem,1.65vh,.92rem)}
+  /* green circles: we are improving our own work, not marking it wrong */
+  .hot{border-color:#2FA36B;box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 18px rgba(47,163,107,.55)}
+  .hot b{background:#2FA36B}
+  ol.leg li::before{background:#2FA36B}
   @media (max-width:900px){.cards3,.stats4{grid-template-columns:1fr 1fr}}
 </style>
 
@@ -143,10 +148,10 @@
     <h2>What you&rsquo;re about to see is an example &mdash; not a final answer.</h2>
     <p class="lead" style="max-width:60ch">We built it from what you gave us: your projects, your systems, your language. It&rsquo;s here to show what&rsquo;s possible &mdash; nothing more.</p>
     <div class="grid2" style="max-width:74ch;margin-top:1.4rem">
-      <div><h3>Everything is editable</h3><p>Every word, photo, page, and the order things appear in. Nothing is locked, and you never need us to change a comma &mdash; though we will.</p></div>
-      <div><h3>Don&rsquo;t like it? We redo it</h3><p>If the direction isn&rsquo;t right, we start over. This is a starting point for the conversation, not a take-it-or-leave-it.</p></div>
-      <div><h3>The words matter most</h3><p>Your services and the way they&rsquo;re described are what a trade buyer judges you on. We refine every line with you before anything goes live.</p></div>
-      <div><h3>Built from your own material</h3><p>Real project names, your systems, your credentials &mdash; nothing invented about your work, and nothing published you haven&rsquo;t approved.</p></div>
+      <div><h3>Everything is editable</h3><p>Every word, photo, page, and the order things appear in. Nothing is locked.</p></div>
+      <div><h3>Don&rsquo;t like it? We redo it</h3><p>If the direction isn&rsquo;t right, we start over. This is a starting point, not a take-it-or-leave-it.</p></div>
+      <div><h3>The words matter most</h3><p>Your services and how they&rsquo;re described are what a trade buyer judges you on. We refine every line with you before anything goes live.</p></div>
+      <div><h3>Built from your own material</h3><p>Real project names, your systems, your credentials &mdash; nothing invented, nothing published you haven&rsquo;t approved.</p></div>
     </div>
   </section>
 
@@ -191,7 +196,7 @@
           <li><strong>Two menus, five dropdowns</strong> before a single project is visible.</li>
           <li><strong>A cookie banner</strong> covers the hero on every visit.</li>
           <li><strong>The scrolling text is about your project,</strong> not the visitor&rsquo;s problem.</li>
-        </ol>
+        </ol><p class="fixtag">Every circled item is fixed on the new site</p>
       </div>
       <div class="annot">
         <img src="{{IMG_OLD_HOME}}" alt="Current floorrescue.com homepage with four problem areas circled">
@@ -212,7 +217,7 @@
           <li><strong>The main button is gray on gray</strong> &mdash; low contrast is why calls to action get overlooked.</li>
           <li><strong>Three plain links in a bullet list.</strong> Nothing tells a homeowner from a plant manager where to click.</li>
           <li><strong>The cookie banner returns</strong> and covers the content again.</li>
-        </ol>
+        </ol><p class="fixtag">Every circled item is fixed on the new site</p>
       </div>
       <div class="annot">
         <img src="{{IMG_OLD_SCROLL}}" alt="Current floorrescue.com scrolled view with four problem areas circled">
@@ -233,7 +238,7 @@
           <li><strong>The logo</strong> sits low-contrast on a busy photo.</li>
           <li><strong>The hero shows an oil pump jack</strong> &mdash; and not one word about floors.</li>
           <li><strong>The phone number is plain text,</strong> not a one-tap call button.</li>
-        </ol>
+        </ol><p class="fixtag">Every circled item is fixed on the new site</p>
       </div>
       <div class="annot mob">
         <img src="{{IMG_OLD_MOBILE}}" alt="Current floorrescue.com on a phone with four problem areas circled">
@@ -322,10 +327,9 @@
     <div class="row wide-l">
       <div>
         <div class="kick">The first screen</div>
-        <h2>One question. Not a quiz.</h2>
-        <p class="lead">&ldquo;Where does your project live?&rdquo; The whole homepage is built to answer that in one screen &mdash; a real concrete-restoration film, the gold Floor Rescue sign, then three doors: Residential, Commercial, Industrial.</p>
-        
-        <p class="fixtag">Fixes: the &ldquo;crummy GoDaddy template&rdquo; first impression</p>
+        <h2>One question. Three doors. Nothing in the way.</h2>
+        <p class="lead">&ldquo;Where does your project live?&rdquo; A real concrete-restoration film, the gold Floor Rescue sign, then three doors: My Home, My Business, My Facility. Pick one and the camera moves &mdash; a full commercial building rises out of the floor, then sector, project type, and a page built for that exact space. The industrial buyer never has to sit through a garage.</p>
+        <p class="fixtag">Fixes: the wrong first impression &mdash; and a Skip button lets anyone move past the film</p>
       </div>
       <div class="shot">
         <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com</span></div>
@@ -338,25 +342,9 @@
   <section class="slide">
     <div class="row wide-l">
       <div>
-        <div class="kick">Three very different buyers, three real paths</div>
-        <h2>The $300K industrial buyer never sees a garage.</h2>
-        <p class="lead">Choosing &ldquo;My Business&rdquo; doesn&rsquo;t swap a headline &mdash; the camera moves, a full commercial building rises out of the same floor, and the site keeps going: sector, project type, then a page built for that exact space. This is the premium feel a $300K buyer expects to see before they&rsquo;ll trust you with the floor.</p>
-        <p class="fixtag">Fixes: the $300K industrial buyer seeing garages</p>
-      </div>
-      <div class="shot">
-        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com/commercial</span></div>
-        <img src="{{IMG_BUILD}}" alt="Commercial building rising from the garage floor, sector choices appearing">
-      </div>
-    </div>
-  </section>
-
-  <!-- 16 -->
-  <section class="slide">
-    <div class="row wide-l">
-      <div>
         <div class="kick">Every system, side by side</div>
         <h2>Three families, always open. Read down the one that sounds like you.</h2>
-        <p class="lead">Not everyone arrives knowing the difference between polished concrete and a resinous coating. So nothing is hidden behind tabs: Concrete, Resinous Coatings and Decorative Artistry sit next to each other, each with a photo and its list underneath &mdash; the first few showing, with a View all button so nothing overwhelms a first-time visitor.</p>
+        <p class="lead">Not everyone arrives knowing the difference between polished concrete and a resinous coating. So nothing is hidden behind tabs: Concrete, Resinous Coatings and Decorative Artistry sit next to each other, each with a photo and its first few systems &mdash; and a View all button so nothing overwhelms a first-time visitor.</p>
         <p class="fixtag">Fixes: a wall of technical terms that only a trade insider can read</p>
       </div>
       <div class="shot">
@@ -366,13 +354,13 @@
     </div>
   </section>
 
-  <!-- 17 -->
+  <!-- 16 -->
   <section class="slide">
     <div class="row wide-l">
       <div>
         <div class="kick">&ldquo;What are you dealing with?&rdquo;</div>
         <h2>Say it your way. Spelling doesn&rsquo;t matter.</h2>
-        <p class="lead">A visitor types &ldquo;my floor is breaking&rdquo; &mdash; misspelled, non-technical, whatever &mdash; and the site asks one follow-up question, then sends them to the exact page that explains it. The urgent buyer gets a fast, credible answer at 11pm without calling anyone.</p>
+        <p class="lead">A visitor types &ldquo;my floor is breaking&rdquo; &mdash; misspelled, non-technical, whatever &mdash; and the site asks one follow-up question, then sends them to a real guide that explains it. The same box lives in the header on every page. Twelve in-depth problem guides sit behind it, and they help you get found on Google too.</p>
         <p class="fixtag">Fixes: urgent problems that can&rsquo;t get a fast answer</p>
       </div>
       <div class="shot">
@@ -382,56 +370,39 @@
     </div>
   </section>
 
-  <!-- 18 -->
+  <!-- 17 -->
   <section class="slide">
     <div class="row wide-l">
       <div>
-        <div class="kick">Two decisions. The right answer.</div>
-        <h2>&ldquo;A kitchen floor that can handle the part of the business that never stops.&rdquo;</h2>
-        <p class="lead">Restaurant, then Failed Floor &mdash; two clicks &mdash; and this is the real headline it generates, live, in the running build. Not a mockup for this deck. Built from your approved language, never an invented technical claim.</p>
-        <p class="fixtag">Fixes: every trade getting butchered into generic contractor copy</p>
+        <div class="kick">A page built for their exact space</div>
+        <h2>Seventeen spaces. Seventeen different pages.</h2>
+        <p class="lead">Every space &mdash; a restaurant, a warehouse, a hotel, a cold-storage facility &mdash; gets its own page with its own interactive floor plan: tap the kitchen line, the dish pit, the walk-in cooler and see what each floor faces. Then matching projects, straight answers, four reviews, and a quote form that already knows the space.</p>
+        <p class="fixtag">Fixes: every trade getting flattened into generic contractor copy</p>
       </div>
       <div class="shot">
         <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com/commercial/restaurant-food-service</span></div>
-        <img src="{{IMG_LANDING}}" alt="Personalized commercial landing page for Restaurant / Food Service, Failed Floor">
+        <img src="{{IMG_WALK}}" alt="Interactive Walk Your Restaurant floor plan on the restaurant page">
       </div>
     </div>
   </section>
 
-  <!-- 19 -->
-  <section class="slide">
-    <div class="row wide-l">
-      <div>
-        <div class="kick">His own wish, built</div>
-        <h2>Nothing gets asked twice.</h2>
-        <p class="lead">Environment, space, and project state carry straight into the quote form and into the email that lands in your inbox. The prospect only fills in what we don&rsquo;t already know &mdash; name, contact, photos.</p>
-        
-        <p class="fixtag">Fixes: leads slipping through a site that never closed the loop</p>
-      </div>
-      <div class="shot">
-        <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com/quote</span></div>
-        <img src="{{IMG_QUOTE}}" alt="Request a Quote form, prefilled from the guided journey">
-      </div>
-    </div>
-  </section>
-
-  <!-- 20 -->
+  <!-- 18 -->
   <section class="slide">
     <div class="row wide-l">
       <div>
         <div class="kick">Built to move &mdash; and to teach</div>
         <h2>A floor is layers. Watch it build from the slab up.</h2>
-        <p class="lead">Small moving pieces do real work: a floor that builds itself layer by layer, process steps that light up in turn, a reading-progress bar, a Skip button on every cinematic scene, and smooth scrolling everywhere. Motion here explains the trade &mdash; it never gets in the way.</p>
+        <p class="lead">A cross-section that builds itself layer by layer, process steps that light up in turn, a photo rail you can pause, drag and open full size, and a progress bar that shows where you are on the page. Motion here explains the trade &mdash; it never gets in the way.</p>
         <p class="fixtag">Fixes: a site that reads like every other contractor brochure</p>
       </div>
       <div class="shot">
         <div class="bar"><span></span><span></span><span></span><span class="url">floorrescue.com &middot; Anatomy of a Floor</span></div>
-        <img src="{{IMG_LAYERS}}" alt="Animated floor layer stack from the slab up to the topcoat">
+        <img src="{{IMG_LAYERS}}" alt="Animated floor layer cross-section from the slab up to the topcoat">
       </div>
     </div>
   </section>
 
-  <!-- 21 -->
+  <!-- 19 -->
   <section class="slide">
     <div class="kick" style="color:var(--neg)">The science behind it</div>
     <h2>Every choice has a reason.</h2>
@@ -449,228 +420,104 @@
     <p class="srcnote">Sources: Laws of UX; Whitehat; Stanford Web Credibility Project; HubSpot 2024; Google / SOASTA. Single-CTA and form-field figures are typical benchmarks that vary by study &mdash; not promises.</p>
   </section>
 
-  <!-- 22 -->
-  <section class="slide dark">
-    <div class="kick">The backbone he said was missing</div>
-    <h2>Every page has a landing spot. Every link goes somewhere real.</h2>
-    <div class="grid2">
-      <div>
-        <h3>One content system</h3>
-        <p>Residential, commercial, industrial, systems, projects, resources &mdash; every page pulls from the same real data, not disconnected one-offs.</p>
-      </div>
-      <div>
-        <h3>A stable link for every page</h3>
-        <p>/commercial/restaurants, /systems/polished-concrete &mdash; a real address you can text a client, exactly like you asked for.</p>
-      </div>
-      <div>
-        <h3>Built to be found</h3>
-        <p>Real titles, descriptions, and a sitemap from day one &mdash; not something bolted on after launch.</p>
-      </div>
-      <div>
-        <h3>Never guesses at your trade</h3>
-        <p>Garages stay out of the main navigation until you say otherwise. Nothing invented about specs, certifications, or compliance.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 23 -->
+  <!-- 20 -->
   <section class="slide">
-    <div class="kick">&ldquo;We have barely anything on here&rdquo; &mdash; fixed</div>
-    <h2>Twenty-two years of real project history, actually on the site.</h2>
-    <p class="lead">We went back through your own prior site content and brought every real project, every system spec, and every credential back &mdash; organized, searchable, and tied to the right page instead of buried in a PDF.</p>
-    <div class="pricebar" style="max-width:100%;grid-template-columns:repeat(3,1fr)">
-      <div class="pcard" style="text-align:center">
-        <div class="amt" style="font-size:clamp(2rem,5vh,2.6rem)">65</div>
-        <h4 style="margin-top:.4rem">Documented Projects</h4>
-        <p style="margin-top:.5rem;font-size:.8rem;color:var(--ink-soft)">TD Industries, Comerica Bank, Luxe Dental, ASI Gymnastics, and more &mdash; each with its real system, location, and story.</p>
-      </div>
-      <div class="pcard" style="text-align:center">
-        <div class="amt" style="font-size:clamp(2rem,5vh,2.6rem)">22</div>
-        <h4 style="margin-top:.4rem">Floor Systems, Fully Described</h4>
-        <p style="margin-top:.5rem;font-size:.8rem;color:var(--ink-soft)">Your own language on every system &mdash; polished concrete, polyaspartic, urethane cement, metallic epoxy, and the rest.</p>
-      </div>
-      <div class="pcard" style="text-align:center">
-        <div class="amt" style="font-size:clamp(2rem,5vh,2.6rem)">4</div>
-        <h4 style="margin-top:.4rem">Trust Credentials, Live</h4>
-        <p style="margin-top:.5rem;font-size:.8rem;color:var(--ink-soft)">USDA/FDA compliance, Matrix certification, licensing &amp; bonding &mdash; on the pages where a buyer is deciding.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 24 -->
-  <section class="slide">
-    <div class="kick">Something you never asked for</div>
-    <h2>A full technical FAQ system &mdash; built in, not bolted on.</h2>
-    <p class="lead">A $300K facility manager researching moisture testing or urethane cement versus epoxy at 11pm shouldn&rsquo;t have to wait on a callback for a real answer &mdash; and you shouldn&rsquo;t have to give the same explanation on every single call.</p>
-    <div class="grid2" style="margin-top:1.4rem">
-      <div>
-        <h3>Per system, per audience</h3>
-        <p>Moisture testing, durability, maintenance, and timeline questions answered specifically for polished concrete, metallic epoxy, polyaspartic, urethane cement, stained concrete, and seal systems.</p>
-      </div>
-      <div>
-        <h3>Written at your standard</h3>
-        <p>Real ASTM moisture thresholds and honest, specific answers &mdash; the depth a 22-year expert would actually give, not a generic contractor FAQ.</p>
-      </div>
-    </div>
-    <p class="fixtag">Fixes: the same technical questions, answered by you, on every call</p>
-  </section>
-
-  <!-- 25 -->
-  <section class="slide">
-    <div class="kick">Problems you didn&rsquo;t mention &mdash; fixed anyway</div>
-    <h2>The things a visitor never says out loud.</h2>
-    <div class="grid2" style="max-width:82ch">
-      <div><h3>Phone-first</h3><p>Every page is built to be read and tapped on a phone, and checked at phone width before it ships.</p></div>
-      <div><h3>Fast</h3><p>The cinematic clips were cut about 75% smaller with no visible loss &mdash; and a Skip button lets anyone move past them.</p></div>
-      <div><h3>140+ real pages Google can read</h3><p>Every system, problem, project, article and space is its own indexable page with its own title and description.</p></div>
-      <div><h3>Rich space pages</h3><p>Each space &mdash; a restaurant, a warehouse, a home &mdash; gets a full page: what its floor has to survive, matching systems and projects, straight answers, and four reviews with a link to the rest.</p></div>
-      <div><h3>One obvious next step</h3><p>A single Request a Quote button, always in reach &mdash; no hunting through menus.</p></div>
-      <div><h3>Find anything from anywhere</h3><p>Search from every page, plus the plain-language finder that forgives typos.</p></div>
-    </div>
-  </section>
-
-  <!-- 26 -->
-  <section class="slide">
-    <div class="kick" style="color:var(--neg)">What we fixed</div>
-    <h2>Every gap, closed.</h2>
-    <table class="cmp sci" style="max-width:64rem">
-      <thead><tr><th>Before</th><th class="hi">Now</th></tr></thead>
+    <div class="kick" style="color:var(--gold-d)">Every improvement, at a glance</div>
+    <h2>What we&rsquo;re actually fixing.</h2>
+    <table class="cmp sci tight" style="max-width:none">
+      <thead><tr><th style="width:17%"></th><th style="width:33%">Before</th><th class="hi">Now</th></tr></thead>
       <tbody>
-        <tr><td>A retail-store carousel as the first image</td><td class="hi">A real floor being restored, under the gold Floor Rescue sign</td></tr>
-        <tr><td>Two menus and five dropdowns before any project</td><td class="hi">Three doors &mdash; My Home, My Business, My Facility</td></tr>
-        <tr><td>A banner covering the first screen</td><td class="hi">Nothing between the visitor and the work</td></tr>
-        <tr><td>A gray-on-gray main button</td><td class="hi">One gold Request a Quote, always in reach</td></tr>
-        <tr><td>Projects hard to find</td><td class="hi">65 documented projects, each with its own page</td></tr>
-        <tr><td>Technical terms only insiders know</td><td class="hi">Side-by-side systems and a plain-language finder</td></tr>
-        <tr><td>The same questions answered on every call</td><td class="hi">A full technical FAQ, built in</td></tr>
+        <tr><td>First screen</td><td>A retail-store carousel and a banner over the top</td><td class="hi">A real floor being restored under the gold sign &mdash; nothing in the way</td></tr>
+        <tr><td>Getting around</td><td>Two menus, five dropdowns</td><td class="hi">Three doors, plus one search that understands plain language</td></tr>
+        <tr><td>Finding help</td><td>No way to describe a problem</td><td class="hi">&ldquo;What are you dealing with?&rdquo; &mdash; typo-proof, with a follow-up question</td></tr>
+        <tr><td>Your systems</td><td>A long list of terms only insiders know</td><td class="hi">Three side-by-side families with a View all button</td></tr>
+        <tr><td>Problem pages</td><td>Little to read</td><td class="hi">12 in-depth guides: signs, causes, mistakes, the fix, FAQs</td></tr>
+        <tr><td>Each space</td><td>One page for every kind of buyer</td><td class="hi">17 space pages, each with its own interactive floor plan</td></tr>
+        <tr><td>Proof</td><td>Projects hard to find</td><td class="hi">65 documented projects, 16 five-star reviews, a photo rail that opens full size</td></tr>
+        <tr><td>Next step</td><td>A gray-on-gray button</td><td class="hi">One gold Request a Quote, always in reach &mdash; and nothing asked twice</td></tr>
+        <tr><td>Behind the scenes</td><td>An unfinished backbone</td><td class="hi">140+ pages Google can read, fast on phones, hosted and watched</td></tr>
       </tbody>
     </table>
   </section>
 
-  <!-- 27 -->
+  <!-- 21 -->
+  <section class="slide dark">
+    <div class="kick">Before we talk price</div>
+    <h2>Here&rsquo;s exactly what happens after you say yes.</h2>
+    <div class="tl">
+      <div><b>1</b><h4>The first payment goes through</h4><p>That&rsquo;s the starting gun &mdash; nothing else to sign or set up.</p></div>
+      <div><b>2</b><h4>A quick onboarding call</h4><p>30 minutes to an hour. I walk you through everything inside the plan and how it all works.</p></div>
+      <div><b>3</b><h4>A whole team on your site, 24/7</h4><p>Constantly updating pages, working on SEO, keeping it fresh &mdash; not a one-and-done.</p></div>
+      <div><b>4</b><h4>Revisions in 72 hours</h4><p>Need a change? Send it over and a team has it live within 72 hours.</p></div>
+    </div>
+    <p class="lead" style="margin-top:1.4rem;max-width:66ch">Not ready to publish yet? The first payment still starts everything. Take your time going through the site, send us every revision you want, and we&rsquo;ll make them &mdash; it goes live when you say.</p>
+    <p class="forward">&rarr; as simple as we can make it, so this gets live and working for you</p>
+  </section>
+
+  <!-- 22 -->
   <section class="slide">
-    <div class="kick" style="color:var(--gold-d)">The comparison</div>
-    <h2>Six months from now.</h2>
+    <div class="kick" style="color:var(--gold-d)">So, to recap</div>
+    <h2>Keep losing it every month &mdash; or fix it once.</h2>
     <div class="row" style="align-items:stretch;margin-top:1rem">
-      <div class="pcard" style="padding:1.6rem"><h4 style="color:var(--neg)">Today</h4>
-        <ul style="margin-top:1rem;gap:.7rem"><li>Buyers can&rsquo;t tell what you do in five seconds</li><li>A homeowner and a plant manager land on the same page</li><li>Projects and answers scattered or missing</li><li>Nobody reviewing what works</li><li>The same questions, answered by phone</li></ul></div>
-      <div class="pcard hi" style="padding:1.6rem"><h4 style="color:var(--gold-d)">In six months</h4>
-        <ul style="margin-top:1rem;gap:.7rem"><li>A clear first step on every screen</li><li>Every buyer on a path built for them</li><li>65 projects and a full FAQ live and indexed</li><li>Daily SEO work, reviewed and improved monthly</li><li>Common questions answered before the call</li></ul></div>
+      <div class="pcard" style="padding:1.6rem"><h4 style="color:var(--neg)">If nothing changes</h4>
+        <div class="amt" style="color:var(--neg)">$6,000&ndash;$24,000</div>
+        <div class="sub" style="color:var(--ink-soft)">modeled, walking past every month</div>
+        <ul style="margin-top:1rem;gap:.6rem"><li>The same first impression, every visit</li><li>The same questions answered by phone</li><li>Urgent buyers booking someone else</li></ul></div>
+      <div class="pcard hi" style="padding:1.6rem"><span class="ptag">The fix</span><h4 style="color:var(--gold-d)">Fix it once</h4>
+        <div class="amt">$6,000 <span style="font-size:1rem;color:var(--ink-soft)">+ $149/mo</span></div>
+        <div class="sub">and you never deal with it again</div>
+        <ul style="margin-top:1rem;gap:.6rem"><li>Everything on the last slides &mdash; already built</li><li>Hosted, watched and improved by a team, 24/7</li><li>Your second site included &mdash; built whenever you&rsquo;re ready, on newer technology</li></ul></div>
     </div>
-    <p class="srcnote">Outcomes we control &mdash; not promises about rankings or revenue.</p>
+    <p class="lead" style="margin-top:1.1rem;max-width:66ch">And whatever you decide, you now have the list of what to fix &mdash; so it gets fixed, fast.</p>
   </section>
 
-  <!-- 28 -->
-  <section class="slide">
-    <div class="kick">What we actually do, before you pay us another dollar</div>
-    <h2>This is what happens after launch &mdash; not just what it looks like on day one.</h2>
-    <p class="lead">We host the site. Every single day, someone on our team is inside it making SEO tweaks &mdash; on-page, technical, AI-assisted. That&rsquo;s not a one-time setup; it&rsquo;s the ongoing work that keeps the uncertainty about how the site reads on Google from ever coming back.</p>
-    <div class="grid2" style="margin-top:1.6rem">
-      <div>
-        <h3>Daily hands-on SEO, every single day</h3>
-        <p>A team member goes into the site and makes real tweaks &mdash; on-page and technical, plus AI SEO &mdash; not a quarterly check-in.</p>
-      </div>
-      <div>
-        <h3>Top 10 nationwide, one to six months</h3>
-        <p>That&rsquo;s the goal we work every day toward &mdash; not a launch-day promise, a target we&rsquo;re actively pushing for.</p>
-      </div>
-      <div>
-        <h3>Hosted and monitored, not abandoned</h3>
-        <p>A text-a-client link doesn&rsquo;t rot into a dead page six months from now &mdash; that&rsquo;s on us, every month.</p>
-      </div>
-      <div>
-        <h3>The website finally working for you</h3>
-        <p>Instead of losing hundreds of thousands in opportunities, it&rsquo;s actively bringing business in &mdash; that&rsquo;s the actual point.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 29 -->
+  <!-- 23 -->
   <section class="slide">
     <div class="kick">The investment &mdash; three ways to start</div>
     <h2>Same build. Different ways to pay for it.</h2>
     <div class="pricebar three">
       <div class="pcard hi">
         <span class="ptag">Best value &mdash; today only</span>
-        <h4>Option 1 &middot; Both sites, one flat price</h4>
+        <h4>Option 1 &middot; Flat price</h4>
         <div class="amt">$6,000 <span class="was">$9,000</span></div>
-        <div class="sub">then only $149/mo &mdash; covers both sites</div>
+        <div class="sub">then only $149/mo</div>
         <ul>
           <li>The Floor Rescue site you just walked through</li>
-          <li>Your second site &mdash; included</li>
-          <li>Hosting, security, and updates for both</li>
-          <li>Ongoing SEO work, around the clock</li>
-          <li>One-hour onboarding &middot; live within 72 hours after</li>
+          <li>A second site included &mdash; built whenever you&rsquo;re ready</li>
+          <li>Hosting, security and updates</li>
+          <li>A team on it 24/7 &middot; revisions in 72 hours</li>
+          <li>Year-one total: $7,788</li>
         </ul>
       </div>
       <div class="pcard dim">
         <h4>Option 2 &middot; Payment plan</h4>
         <div class="amt">$2,000 <span style="font-size:1rem;color:var(--ink-soft)">&times; 3 months</span></div>
-        <div class="sub">then $297/mo &mdash; both sites</div>
+        <div class="sub">then $297/mo</div>
         <ul>
-          <li>The same two sites, the same build</li>
+          <li>The same package as Option 1</li>
           <li>Spread across three payments</li>
-          <li>Higher monthly care fee ($297 vs. $149)</li>
+          <li>Higher monthly care fee</li>
           <li>Year-one total: $9,564</li>
         </ul>
       </div>
       <div class="pcard dim">
         <h4>Option 3 &middot; Floor Rescue only</h4>
         <div class="amt">$4,500</div>
-        <div class="sub">then $149/mo &mdash; one site</div>
+        <div class="sub">then $297/mo</div>
         <ul>
-          <li>The Floor Rescue build only</li>
-          <li>A second site later is priced at the standard ~$4,500</li>
-          <li>The two-site rate isn&rsquo;t available after today</li>
-          <li>Year-one total: $6,288 for one site</li>
+          <li>The Floor Rescue site only</li>
+          <li>No second site &mdash; one later is a new project at standard pricing</li>
+          <li>Year-one total: $8,064 &mdash; $276 more than Option 1, for half the build</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- 30 -->
-  <section class="slide">
-    <div class="kick">Why Option 1 &mdash; in plain numbers</div>
-    <h2>Same two sites. $1,776 to $3,000 less.</h2>
-    <table class="cmp">
-      <thead><tr><th></th><th class="hi">Option 1 &middot; Flat</th><th>Option 2 &middot; Plan</th><th>Option 3 &middot; One site</th></tr></thead>
-      <tbody>
-        <tr><td>Sites you end up with</td><td class="hi">2</td><td>2</td><td>1 (2 only by paying again later)</td></tr>
-        <tr><td>To start</td><td class="hi">$6,000</td><td>$2,000 &times; 3</td><td>$4,500</td></tr>
-        <tr><td>Monthly care</td><td class="hi">$149</td><td>$297</td><td>$149</td></tr>
-        <tr><td>Year-one total</td><td class="hi">$7,788</td><td>$9,564</td><td>$6,288</td></tr>
-        <tr><td>Year-one cost per site</td><td class="hi">$3,894</td><td>$4,782</td><td>$6,288</td></tr>
-        <tr><td>Total to end with both sites</td><td class="hi">$7,788</td><td>$9,564</td><td>$10,788</td></tr>
-      </tbody>
-    </table>
-    <p class="lead" style="margin-top:1.1rem;max-width:64ch">The build you walked through is roughly a $4,500 project on its own. Building both in one relationship is why the second site can be included at no added build cost &mdash; today.</p>
-  </section>
-
-  <!-- 31 -->
-  <section class="slide dark" style="align-items:center;text-align:center">
-    <p class="kick" style="align-self:center">Before we talk next steps</p>
-    <h1 style="max-width:20ch">Which option makes the most sense for you?</h1>
-    <p class="lead" style="margin-top:1.2rem;max-width:44ch">Flat price for both sites &middot; payment plan for both &middot; Floor Rescue on its own. All three get you the same build &mdash; the difference is what you pay for the same result.</p>
-  </section>
-
-  <!-- 32 -->
-  <section class="slide dark">
-    <div class="kick">Next steps &mdash; from the first payment to live</div>
-    <h2>Here&rsquo;s exactly what happens after you say yes.</h2>
-    <div class="tl">
-      <div><b>1</b><h4>First payment</h4><p>Secure checkout &mdash; the moment it goes through, we&rsquo;re moving.</p></div>
-      <div><b>2</b><h4>One-hour onboarding call</h4><p>We connect your domain and walk you through how the site and its emails work.</p></div>
-      <div><b>3</b><h4>Live within 72 hours</h4><p>Your site goes live within 72 hours of that call.</p></div>
-      <div><b>4</b><h4>We keep working</h4><p>Our team works around the clock on SEO and improvements &mdash; ongoing, not one-and-done.</p></div>
-    </div>
-    <p class="forward">&rarr; a partner that keeps building &mdash; the opposite of the vendor who disappears</p>
-  </section>
-
-  <!-- 33 -->
+  <!-- 24 -->
   <section class="slide dark" style="align-items:center;text-align:center">
     <p class="kick" style="align-self:center">So &mdash; where do we go from here?</p>
-    <h1>Let&rsquo;s build both.</h1>
-    <p class="lead" style="margin-top:1rem;max-width:42ch">You&rsquo;ve walked through the site yourself and seen why each decision was made. Start with Option 1 and both sites begin on the same foundation &mdash; hosting and SEO included from day one.</p>
+    <h1 style="max-width:20ch">Which option makes the most sense for you?</h1>
+    <p class="lead" style="margin-top:1rem;max-width:46ch">Option 1 gets you the site now and a second one whenever you&rsquo;re ready &mdash; hosting, a team and revisions included from day one.</p>
     <div class="cta-row" style="justify-content:center">
       <a href="https://buy.stripe.com/eVq7sN9g56EB4pNgFt8ww0d" target="_blank" rel="noopener noreferrer">Start with Option 1 &mdash; $6,000 &rarr;</a>
     </div>
@@ -679,7 +526,7 @@
 
 </div>
 
-<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 33</span></div>
+<div class="foot"><span class="bl">FLOOR RESCUE</span><span id="slidenum">1 / 24</span></div>
 <div class="navhint">&larr; &rarr; or click to move &middot; Esc for overview</div>
 
 <script>
@@ -694,7 +541,7 @@
     {at:0, label:'Part 1 \u2014 where you are'},
     {at:8, label:'Part 2 \u2014 what it\u2019s costing'},
     {at:12, label:'Part 3 \u2014 the site we built'},
-    {at:28, label:'Part 4 \u2014 the investment'}
+    {at:20, label:'Part 4 \u2014 the investment'}
   ];
   function partFor(i){
     var label = parts[0].label;
