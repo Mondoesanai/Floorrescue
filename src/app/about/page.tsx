@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { StatsStrip } from "@/components/ui/StatsStrip";
+import { getSiteStats } from "@/content/stats";
 import { CredentialsStrip } from "@/components/landing/CredentialsStrip";
 
 export const metadata: Metadata = {
@@ -53,6 +55,8 @@ export default function AboutPage() {
           </h1>
         </Container>
       </section>
+
+      <StatsStrip stats={getSiteStats()} />
 
       <section className="py-16 sm:py-20">
         <Container className="max-w-2xl">

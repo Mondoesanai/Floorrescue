@@ -10,7 +10,7 @@ const families = [
       "Polished, stained, and decorative concrete, overlays, micro cement, restoration, and moisture mitigation — working with the slab itself as the finished surface.",
     examples: ["Polished Concrete", "Stained Concrete", "Micro Cement", "Concrete Restoration"],
     image: "/assets/images/04-commercial-ground-floor-lobby.jpg",
-    href: "/systems#concrete",
+    href: "/systems",
   },
   {
     id: "resinous",
@@ -19,7 +19,7 @@ const families = [
       "Metallic epoxy, urethane cement, polyaspartic, and broadcast systems — an engineered layer built for specific exposure: chemicals, washdown, or heavy traffic.",
     examples: ["Metallic Epoxy", "Urethane Cement", "Polyaspartic", "Flake & Broadcast"],
     image: "/assets/images/team-photos/project-mclaren-garage.png",
-    href: "/systems#resinous",
+    href: "/systems",
   },
   {
     id: "service",

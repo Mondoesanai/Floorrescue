@@ -60,7 +60,7 @@ export function QuoteForm() {
 
   const [step, setStep] = useState<Step>(1);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
-  const [values, setValues] = useState<FormValues>(emptyValues);
+  const [values, setValues] = useState<FormValues>(() => ({ ...emptyValues, notes: searchParams.get("describe") ?? "" }));
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);

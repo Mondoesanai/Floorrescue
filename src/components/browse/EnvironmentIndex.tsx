@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { Marquee } from "@/components/ui/Marquee";
 import { CredentialsStrip } from "@/components/landing/CredentialsStrip";
 import { environmentCopy } from "@/content/environments";
 import { getSector } from "@/content/sectors";
@@ -27,6 +28,8 @@ export function EnvironmentIndex({ environment, sectorIds }: { environment: Envi
           </Button>
         </Container>
       </section>
+
+      <Marquee items={sectorIds.map((id) => getSector(id)?.name ?? id)} seconds={45} />
 
       <section className="py-16">
         <Container>

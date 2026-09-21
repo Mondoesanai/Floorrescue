@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { audiences } from "@/content/audiences";
 import { PhotoBanner } from "@/components/ui/PhotoBanner";
+import { Marquee } from "@/components/ui/Marquee";
 
 export const metadata: Metadata = {
   title: "For the Trade",
@@ -33,6 +34,7 @@ export default function ForTheTradeIndexPage() {
         alt="Floor Rescue on an active jobsite"
         caption="On site, on schedule"
       />
+      <Marquee items={["Specifications","Samples","Mockups","Pre-pour coordination","Substrate review","Submittals","Scheduling","RFIs","Closeout"]} seconds={35} />
       <div className="py-16">
       <Container>
         <SectionHeading eyebrow="For the Trade" title="Built for how you actually work" />

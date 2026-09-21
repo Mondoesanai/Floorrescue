@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { resourceCategories, resources } from "@/content/resources";
 import { PhotoBanner } from "@/components/ui/PhotoBanner";
+import { Marquee } from "@/components/ui/Marquee";
+import { FilterBrowser, type BrowserItem } from "@/components/browse/FilterBrowser";
+import { resourceCategories, resources } from "@/content/resources";
 
 export const metadata: Metadata = {
   title: "Education & Resources",
@@ -12,6 +13,16 @@ export const metadata: Metadata = {
 };
 
 export default function ResourcesIndexPage() {
+  const items: BrowserItem[] = resources.map((r) => ({
+    id: r.id,
+    href: `/resources/${r.slug}`,
+    title: r.title,
+    meta: r.category,
+    summary: r.summary,
+    group: r.category,
+  }));
+  const groups = resourceCategories.filter((c) => resources.some((r) => r.category === c)).map((c) => ({ id: c, label: c }));
+
   return (
     <div>
       <PhotoBanner
@@ -19,31 +30,14 @@ export default function ResourcesIndexPage() {
         alt="A Floor Rescue crew member applying a metallic epoxy system"
         caption="The knowledge behind the install"
       />
+      <Marquee items={resourceCategories as unknown as string[]} seconds={45} />
       <div className="py-16">
-      <Container>
-        <SectionHeading eyebrow="Education / Resources" title="Learn how the trade actually works" />
-        {resourceCategories.map((category) => {
-          const inCategory = resources.filter((r) => r.category === category);
-          if (inCategory.length === 0) return null;
-          return (
-            <div key={category} className="mt-12">
-              <h2 className="text-sm font-semibold tracking-[0.2em] text-gold-300 uppercase">{category}</h2>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                {inCategory.map((resource) => (
-                  <Link
-                    key={resource.id}
-                    href={`/resources/${resource.slug}`}
-                    className="block rounded-md border border-warm-white/10 bg-charcoal-900 p-5 transition-[transform,border-color] duration-200 hover:-translate-y-1 hover:border-gold-300/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-300"
-                  >
-                    <h3 className="text-base font-medium text-warm-white">{resource.title}</h3>
-                    <p className="mt-2 text-sm leading-[1.7] text-warm-white/65">{resource.summary}</p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </Container>
+        <Container>
+          <SectionHeading eyebrow="Education / Resources" title="Learn how the trade actually works" />
+          <div className="mt-8">
+            <FilterBrowser items={items} groups={groups} searchLabel="Search articles — e.g. moisture, polished, epoxy" cta="Read" />
+          </div>
+        </Container>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { PhotoBanner } from "@/components/ui/PhotoBanner";
+import { AudienceTabs } from "@/components/browse/AudienceTabs";
 import { floorSystems, getFloorSystem } from "@/content/floorSystems";
 import { getFAQsForSystem } from "@/content/faqs";
 import { getProjectsBySystem } from "@/content/projects";
@@ -56,14 +57,7 @@ export default async function SystemPage({ params }: { params: Promise<{ system:
         <p className="text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">{familyLabel[system.family]}</p>
         <h1 className="mt-3 text-balance text-4xl font-semibold tracking-[-0.03em] text-warm-white">{system.name}</h1>
 
-        <div className="mt-8 space-y-4">
-          {Object.entries(system.summaryByAudience).map(([audience, text]) => (
-            <p key={audience} className="text-base leading-[1.7] text-warm-white/75">
-              <span className="font-medium text-gold-200 capitalize">{audience}: </span>
-              {text}
-            </p>
-          ))}
-        </div>
+        <AudienceTabs summaries={system.summaryByAudience} />
 
         {system.technicalNotes?.length ? (
           <div className="mt-6 rounded-md border border-warm-white/10 bg-charcoal-900 p-5">

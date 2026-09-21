@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { testimonials } from "@/content/testimonials";
+import { Marquee } from "@/components/ui/Marquee";
 import { TestimonialsModule } from "@/components/landing/TestimonialsModule";
 
 export const metadata: Metadata = {
@@ -42,6 +43,7 @@ export default function TestimonialsPage() {
           Request a Quote
         </Button>
       </Container>
+      <Marquee items={testimonials.map((t) => t.attribution.split(" — ")[0])} seconds={50} />
       <TestimonialsModule testimonials={testimonials} />
     </div>
   );

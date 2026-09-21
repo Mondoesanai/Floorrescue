@@ -43,7 +43,7 @@ export function FindYourSpaceSection() {
         <div className="mt-12 space-y-6">
           {rows.map((row, i) => {
             const photo = (
-              <div className="group/photo relative aspect-[16/10] min-h-[16rem] w-full overflow-hidden rounded-xl lg:min-h-[22rem] lg:rounded-none">
+              <div className="group/photo relative h-64 w-full overflow-hidden rounded-xl lg:h-auto lg:min-h-[22rem] lg:rounded-none">
                 <Image
                   src={row.image}
                   alt=""

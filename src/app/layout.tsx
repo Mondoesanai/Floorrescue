@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { Header } from "@/components/layout/Header";
+import { StickyQuoteBar } from "@/components/layout/StickyQuoteBar";
 import { Footer } from "@/components/layout/Footer";
 import { JourneyProvider } from "@/lib/journey/context";
 import "./globals.css";
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <StickyQuoteBar />
         </JourneyProvider>
       </body>
     </html>
