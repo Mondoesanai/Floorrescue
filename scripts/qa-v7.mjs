@@ -12,16 +12,16 @@ const viewports = [
   { name: "tablet", width: 820, height: 1180, isMobile: true, hasTouch: true },
   { name: "desktop", width: 1366, height: 900 },
 ];
-const pages = ["/", "/commercial/restaurant-food-service", "/industrial/cold-storage", "/problems/moisture", "/quote", "/projects", "/systems", "/about"];
+const pages = ["/", "/commercial/restaurant-food-service", "/residential/inside-home", "/industrial/cold-storage", "/problems/moisture", "/systems/metallic-epoxy", "/quote", "/projects"];
 
 for (const vp of viewports) {
-  for (const mode of ["concrete", "fallback"]) {
+  for (const mode of ["default"]) {
     const bad = [];
     for (const p of pages) {
       const page = await browser.newPage();
       await page.setViewport(vp);
       await page.goto(BASE + p, { waitUntil: "networkidle2", timeout: 60000 });
-      if (mode === "fallback") await page.evaluate(() => document.body.classList.remove("theme-concrete"));
+      
       await sleep(200);
       const w = await page.evaluate(() => document.documentElement.scrollWidth);
       if (w > vp.width) bad.push(`${p}:${w}`);

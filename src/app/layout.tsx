@@ -17,9 +17,6 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-// One-line switch: false returns the flat black look (also tagged in git as before-concrete-theme).
-const CONCRETE_THEME = true;
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://floorrescue.com"),
   title: {
@@ -33,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}>
-      <body className={`flex min-h-full flex-col bg-charcoal-950 text-warm-white ${CONCRETE_THEME ? "theme-concrete" : ""}`}>
+      <body className="flex min-h-full flex-col bg-charcoal-950 text-warm-white">
         <JourneyProvider>
           <Header />
           <main className="flex-1">{children}</main>

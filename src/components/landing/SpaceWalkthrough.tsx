@@ -2,10 +2,47 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import clsx from "clsx";
 import { Container } from "@/components/ui/Container";
 import { getFloorSystem } from "@/content/floorSystems";
 import { sectorPlans } from "@/content/sectorPlans";
+
+const TP = "/assets/images/team-photos/";
+// A real Floor Rescue photo for each system, used as the zone's visual.
+const IMG_BY_SYSTEM: Record<string, string> = {
+  "polished-concrete": TP + "project-industrial-warehouse-polished.png",
+  "stained-concrete": TP + "project-residential-home-office.png",
+  "metallic-epoxy": TP + "project-metallic-white-garage.png",
+  "urethane-cement": TP + "project-commercial-kitchen-concrete.png",
+  "epoxy-coatings": TP + "project-metallic-blue-garage.png",
+  "quartz-broadcast": TP + "project-commercial-kitchen-concrete.png",
+  "flake-broadcast": TP + "project-commercial-kitchen-concrete.png",
+  polyaspartic: TP + "project-mclaren-garage.png",
+  "micro-cement": TP + "project-residential-kitchen-polished.png",
+  "concrete-overlays": TP + "project-modern-commercial-patio.png",
+  "decorative-concrete": TP + "project-modern-commercial-patio.png",
+  "concrete-restoration": TP + "crew-troweling-floor.png",
+  "seal-systems": TP + "project-residential-kitchen-polished.png",
+  "moisture-mitigation": TP + "crew-metallic-blue-application.png",
+  "floor-preparation": TP + "crew-troweling-floor.png",
+  "new-construction-slab-coordination": TP + "crew-jobsite-trailer.png",
+  "esd-static-systems": "/assets/images/card-industrial.jpg",
+  "sport-courts": "/assets/images/hero-industrial.jpg",
+};
+// Zone names that have a better-matching photo than their system's default.
+const IMG_BY_NAME: [RegExp, string][] = [
+  [/lobby|arrival|reception|entry|first impression/i, "/assets/images/04-commercial-ground-floor-lobby.jpg"],
+  [/terminal|threshold/i, TP + "project-airport-terminal-scored-concrete.png"],
+  [/pool|patio|outdoor|walkway|driveway|deck|yard|lounge/i, TP + "project-modern-commercial-patio.png"],
+  [/bar|statement|feature|showpiece/i, TP + "project-metallic-white-garage.png"],
+  [/kitchen line|dish|prep|processing|wash/i, TP + "project-commercial-kitchen-concrete.png"],
+  [/racking|warehouse|hangar|production|plant|dock/i, TP + "project-industrial-warehouse-polished.png"],
+  [/^kitchen$|living|bedroom|office|basement|bath/i, TP + "project-residential-kitchen-polished.png"],
+];
+function zoneImage(name: string, systemId: string) {
+  return IMG_BY_NAME.find(([re]) => re.test(name))?.[1] ?? IMG_BY_SYSTEM[systemId] ?? TP + "crew-troweling-floor.png";
+}
 
 /**
  * A clickable floor plan that is different on every space page: its own rooms,
@@ -62,7 +99,7 @@ export function SpaceWalkthrough({ sectorId, quoteHref }: { sectorId: string; qu
         <div ref={ref} className="mt-10 grid gap-6 lg:grid-cols-[1.5fr_1fr]" onMouseLeave={() => undefined}>
           {/* the plan */}
           <div
-            className="relative rounded-2xl border border-warm-white/15 bg-charcoal-950 p-3 shadow-elevated sm:p-4"
+            className="relative rounded-2xl border border-warm-white/15 bg-charcoal-950 p-3 shadow-elevated sm:p-4 lg:self-start"
             style={{
               backgroundImage:
                 "linear-gradient(rgba(232,205,138,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(232,205,138,0.06) 1px, transparent 1px)",
@@ -94,17 +131,25 @@ export function SpaceWalkthrough({ sectorId, quoteHref }: { sectorId: string; qu
                     } as React.CSSProperties
                   }
                   className={clsx(
-                    "relative flex min-h-[5.25rem] flex-col justify-between rounded-md border-2 p-3 text-left transition-[transform,opacity,border-color,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:[grid-column:var(--gc)] lg:[grid-row:var(--gr)]",
+                    "relative flex min-h-[5.25rem] flex-col justify-between overflow-hidden rounded-md border-2 p-3 text-left transition-[transform,opacity,border-color,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:[grid-column:var(--gc)] lg:[grid-row:var(--gr)]",
                     seen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
                     active === i
                       ? "z-10 border-gold-300 bg-gold-300/15 shadow-[0_0_0_4px_rgba(232,205,138,0.12),0_16px_36px_-14px_rgba(201,162,75,0.55)]"
                       : "border-warm-white/25 bg-charcoal-900 hover:border-gold-300/60",
                   )}
                 >
-                  <span className="text-[10px] font-semibold tracking-[0.16em] text-gold-300 uppercase">
+                  <Image
+                    src={zoneImage(zn.name, zn.systemId)}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 20vw, 50vw"
+                    className={clsx("pointer-events-none object-cover transition-opacity duration-500", active === i ? "opacity-65" : "opacity-35")}
+                  />
+                  <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/40 to-charcoal-950/30" />
+                  <span className="relative text-[10px] font-semibold tracking-[0.16em] text-gold-300 uppercase">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span>
+                  <span className="relative">
                     <span className="block text-sm leading-tight font-bold text-warm-white">{zn.name}</span>
                     <span className="mt-1 hidden text-[10px] font-medium tracking-[0.06em] text-gold-200/70 sm:block">
                       {getFloorSystem(zn.systemId)?.name}
@@ -118,6 +163,11 @@ export function SpaceWalkthrough({ sectorId, quoteHref }: { sectorId: string; qu
 
           {/* the detail */}
           <div aria-live="polite" className="rounded-2xl border border-gold-300/30 bg-charcoal-950 p-6 shadow-elevated">
+            <div className="relative -mx-6 -mt-6 mb-5 h-44 overflow-hidden rounded-t-2xl">
+              <Image key={zone.id} src={zoneImage(zone.name, zone.systemId)} alt={`Floor Rescue work — ${system?.name ?? zone.name}`} fill sizes="(min-width: 1024px) 40vw, 100vw" className="animate-[hero-fade-in_0.5s_ease-out_both] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-transparent" />
+              <p className="absolute bottom-2.5 left-4 text-[10px] font-semibold tracking-[0.14em] text-warm-white/70 uppercase">Real Floor Rescue work · {system?.name}</p>
+            </div>
             <p className="text-xs font-semibold tracking-[0.2em] text-gold-300 uppercase">
               Zone {active + 1} of {plan.zones.length}
             </p>

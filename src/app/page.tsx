@@ -9,7 +9,7 @@ import { SystemExplorer, type ExplorerFamily } from "@/components/home/SystemExp
 import { ProblemFinder } from "@/components/home/ProblemFinder";
 import { WorkRail } from "@/components/home/WorkRail";
 import { FloorLayers } from "@/components/home/FloorLayers";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { Level } from "@/components/home/Level";
 import { WhyFloorRescue } from "@/components/home/WhyFloorRescue";
 import { HomeFAQ } from "@/components/home/HomeFAQ";
 import { DescribeCTA } from "@/components/home/DescribeCTA";
@@ -60,27 +60,56 @@ function buildFamilies(): ExplorerFamily[] {
 export default function Home() {
   return (
     <div>
-      <ScrollProgress />
       <ImmersiveJourney />
 
       {/* Crawlable content below the immersive hero — never relies on the
           client-only cinematic state for essential content or navigation,
           per implementation/seo-and-directory.md. */}
-      <WhoWeAreSection />
-      <ClientMarquee />
-      <StatsStrip stats={getSiteStats()} />
-      <ProblemFinder />
-      <ServicesSection />
-      <SystemExplorer families={buildFamilies()} />
-      <FindYourSpaceSection />
-      <WorkRail />
-      <WhyFloorRescue />
-      <FloorLayers />
-      <ProcessSteps />
-      <TestimonialsPreview />
-      <HomeFAQ />
-      <DescribeCTA />
-      <ExploreEverything />
+      <Level index={0}>
+        <WhoWeAreSection />
+      </Level>
+      <Level index={1}>
+        <ClientMarquee />
+      </Level>
+      <Level index={2}>
+        <StatsStrip stats={getSiteStats()} />
+      </Level>
+      <Level index={3}>
+        <ProblemFinder />
+      </Level>
+      <Level index={4}>
+        <ServicesSection />
+      </Level>
+      <Level index={5}>
+        <SystemExplorer families={buildFamilies()} />
+      </Level>
+      <Level index={6}>
+        <FindYourSpaceSection />
+      </Level>
+      <Level index={7}>
+        <WorkRail />
+      </Level>
+      <Level index={8}>
+        <WhyFloorRescue />
+      </Level>
+      <Level index={9}>
+        <FloorLayers />
+      </Level>
+      <Level index={10}>
+        <ProcessSteps />
+      </Level>
+      <Level index={11}>
+        <TestimonialsPreview />
+      </Level>
+      <Level index={12}>
+        <HomeFAQ />
+      </Level>
+      <Level index={13}>
+        <DescribeCTA />
+      </Level>
+      <Level index={14}>
+        <ExploreEverything />
+      </Level>
     </div>
   );
 }
