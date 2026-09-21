@@ -171,6 +171,12 @@ export function GarageIdleScene() {
 
           <a
             href="#learn-more"
+            onClick={(e) => {
+              const target = document.getElementById("learn-more");
+              if (!target) return;
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
             className="inline-flex items-center gap-1.5 text-xs font-medium text-warm-white/60 transition-colors hover:text-gold-200 sm:text-sm"
           >
             Who We Are

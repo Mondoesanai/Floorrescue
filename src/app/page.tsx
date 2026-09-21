@@ -8,6 +8,8 @@ import { ExploreEverything } from "@/components/home/ExploreEverything";
 import { SystemExplorer, type ExplorerFamily } from "@/components/home/SystemExplorer";
 import { ProblemFinder } from "@/components/home/ProblemFinder";
 import { WorkRail } from "@/components/home/WorkRail";
+import { FloorLayers } from "@/components/home/FloorLayers";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { WhyFloorRescue } from "@/components/home/WhyFloorRescue";
 import { HomeFAQ } from "@/components/home/HomeFAQ";
 import { DescribeCTA } from "@/components/home/DescribeCTA";
@@ -58,6 +60,7 @@ function buildFamilies(): ExplorerFamily[] {
 export default function Home() {
   return (
     <div>
+      <ScrollProgress />
       <ImmersiveJourney />
 
       {/* Crawlable content below the immersive hero — never relies on the
@@ -72,6 +75,7 @@ export default function Home() {
       <FindYourSpaceSection />
       <WorkRail />
       <WhyFloorRescue />
+      <FloorLayers />
       <ProcessSteps />
       <TestimonialsPreview />
       <HomeFAQ />

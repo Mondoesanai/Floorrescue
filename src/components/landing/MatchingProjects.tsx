@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
 import type { Project } from "@/content/types";
 
 export function MatchingProjects({ projects, atmospherePhoto }: { projects: Project[]; atmospherePhoto?: string }) {
@@ -11,8 +13,9 @@ export function MatchingProjects({ projects, atmospherePhoto }: { projects: Proj
       <Container>
         <SectionHeading eyebrow="Matching Projects" title="Similar Floor Rescue work" />
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <div key={project.id} className="overflow-hidden rounded-md border border-warm-white/10 bg-charcoal-900 shadow-elevated">
+          {projects.map((project, i) => (
+            <Reveal key={project.id} delay={(i % 3) * 90} className="h-full">
+            <div className="h-full overflow-hidden rounded-md border border-warm-white/10 bg-charcoal-900 shadow-elevated transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-gold-300/30">
               {/* No confirmed jobsite photo yet — a real environment atmosphere shot
                   stands in, clearly tagged, rather than a flat placeholder gradient. */}
               <div className="relative h-40 overflow-hidden">
@@ -33,8 +36,12 @@ export function MatchingProjects({ projects, atmospherePhoto }: { projects: Proj
                 ) : null}
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
+        <Link href="/projects" className="mt-8 inline-flex text-sm font-semibold text-gold-200 hover:text-gold-100">
+          Browse every documented project →
+        </Link>
       </Container>
     </section>
   );

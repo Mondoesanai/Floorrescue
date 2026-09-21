@@ -21,6 +21,12 @@ export function Header() {
     // "/" the entire time — pathname alone can't tell "already home" apart
     // from "mid-journey", so always reset the journey state. Only skip the
     // navigation call itself when we're already on "/" (nothing to route to).
+    // Already home and scrolled down the page: glide back to the top instead
+    // of resetting the scene underneath the visitor.
+    if (pathname === "/" && window.scrollY > 40) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     dispatch({ type: "RESET" });
     if (pathname !== "/") router.push("/");
   }

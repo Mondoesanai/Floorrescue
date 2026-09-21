@@ -26,6 +26,8 @@ interface CinematicStageProps {
   /** Render the settled poster only, skipping playback — a refresh/back restored
    *  a stage that's already past this scene's video, so it must not replay. */
   static?: boolean;
+  /** Increment to jump the playing clip to its final moments (the Skip button). */
+  skipSignal?: number;
 }
 
 /**
@@ -44,6 +46,7 @@ export function CinematicStage({
   onEnded,
   className,
   static: isStatic,
+  skipSignal = 0,
 }: CinematicStageProps) {
   const viewport = useViewport();
   const reducedMotion = usePrefersReducedMotion();
@@ -134,6 +137,26 @@ export function CinematicStage({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sceneKey, skipPlayback]);
+
+  // Skip: seek the playing clip to just before its end; the normal timeupdate /
+  // ended handlers then settle the journey exactly as if it had played out.
+  useEffect(() => {
+    if (!skipSignal || skipPlayback) return;
+    let sought = false;
+    for (const ref of [videoARef, videoBRef]) {
+      const v = ref.current;
+      if (!v || !v.src || v.paused || !Number.isFinite(v.duration) || v.duration <= 0) continue;
+      v.playbackRate = 1;
+      v.currentTime = Math.max(0, v.duration - 0.15);
+      sought = true;
+    }
+    if (!sought) {
+      firedNearEnd.current = true;
+      onNearEnd?.();
+      if (!loop) onEnded?.();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [skipSignal]);
 
   function handleTimeUpdate(slot: "A" | "B") {
     return (e: React.SyntheticEvent<HTMLVideoElement>) => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useJourney } from "@/lib/journey/context";
 import { getSector } from "@/content/sectors";
@@ -54,6 +54,7 @@ export function ImmersiveJourney() {
   const router = useRouter();
   const navigatedRef = useRef(false);
   const staticResolved = useRef<Map<SceneKey, boolean>>(new Map());
+  const [skipSignal, setSkipSignal] = useState(0);
 
   const sceneKey = sceneKeyForStage(state.stage);
 
@@ -119,6 +120,7 @@ export function ImmersiveJourney() {
         sceneKey={sceneKey}
         loop={state.stage === "garage-idle"}
         static={isStatic}
+        skipSignal={skipSignal}
         onNearEnd={() => {
           if (state.stage === "commercial-build") dispatch({ type: "COMMERCIAL_BUILD_SETTLED" });
           else if (state.stage === "commercial-door-entry") dispatch({ type: "DOOR_ENTRY_SETTLED" });
@@ -141,6 +143,27 @@ export function ImmersiveJourney() {
       {state.stage === "residential-build" || state.stage === "residential-sector" ? <ResidentialBuildScene /> : null}
       {state.stage === "residential-door-entry" || state.stage === "residential-project-state" ? (
         <ResidentialDoorEntryScene />
+      ) : null}
+
+      {[
+        "intro",
+        "commercial-build",
+        "commercial-door-entry",
+        "commercial-deep-dive",
+        "residential-build",
+        "residential-door-entry",
+        "residential-deep-dive",
+      ].includes(state.stage) && !isStatic ? (
+        <button
+          type="button"
+          onClick={() => setSkipSignal((n) => n + 1)}
+          className="fixed right-5 bottom-6 z-30 flex items-center gap-1.5 rounded-full border border-warm-white/25 bg-charcoal-950/60 px-4 py-2.5 text-sm font-semibold text-warm-white/85 backdrop-blur-md transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-gold-300/60 hover:text-warm-white focus-visible:outline-2 focus-visible:outline-gold-300"
+        >
+          Skip
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+            <path d="M5 5l7 7-7 7M13 5l7 7-7 7" />
+          </svg>
+        </button>
       ) : null}
 
       {[

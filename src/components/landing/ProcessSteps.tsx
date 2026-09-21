@@ -1,4 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import clsx from "clsx";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -21,7 +25,18 @@ const steps = [
   },
 ];
 
+/** Four steps that light up in turn — hover or tap any step to take over. */
 export function ProcessSteps() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = window.setInterval(() => setActive((a) => (a + 1) % steps.length), 3200);
+    return () => window.clearInterval(t);
+  }, [paused]);
+
   return (
     <section className="py-16">
       <Container>
@@ -37,12 +52,45 @@ export function ProcessSteps() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/60 via-transparent to-transparent" />
           </div>
-          <ol className="grid gap-6 sm:grid-cols-2">
+          <ol className="grid gap-4 sm:grid-cols-2" onMouseLeave={() => setPaused(false)}>
             {steps.map((step, i) => (
-              <li key={step.title} className="relative rounded-md border border-warm-white/10 bg-charcoal-900 p-5">
-                <span className="text-gold-gradient text-3xl font-semibold">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-3 text-base font-medium text-warm-white">{step.title}</h3>
-                <p className="mt-2 text-sm leading-[1.7] text-warm-white/65">{step.body}</p>
+              <li key={step.title}>
+                <button
+                  type="button"
+                  onMouseEnter={() => {
+                    setPaused(true);
+                    setActive(i);
+                  }}
+                  onClick={() => {
+                    setPaused(true);
+                    setActive(i);
+                  }}
+                  aria-current={active === i ? "step" : undefined}
+                  className={clsx(
+                    "relative block h-full w-full overflow-hidden rounded-md border p-5 text-left transition-[transform,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                    active === i
+                      ? "-translate-y-1 border-gold-300/60 bg-charcoal-950 shadow-elevated"
+                      : "border-warm-white/10 bg-charcoal-900",
+                  )}
+                >
+                  <span
+                    className={clsx(
+                      "text-3xl font-semibold transition-colors duration-500",
+                      active === i ? "text-gold-gradient" : "text-warm-white/25",
+                    )}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-3 text-base font-medium text-warm-white">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-[1.7] text-warm-white/65">{step.body}</p>
+                  <span
+                    aria-hidden="true"
+                    className={clsx(
+                      "absolute inset-x-0 bottom-0 h-0.5 origin-left bg-gold-300 transition-transform ease-linear",
+                      active === i && !paused ? "scale-x-100 duration-[3200ms]" : "scale-x-0 duration-300",
+                    )}
+                  />
+                </button>
               </li>
             ))}
           </ol>
